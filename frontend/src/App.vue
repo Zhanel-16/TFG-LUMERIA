@@ -2,6 +2,9 @@
 import { estaAutenticado, logOut } from '@/servicios/autenticacion'
 import { useRouter } from 'vue-router'
 
+import CookieBanner from "@/components/CookieBanner.vue"
+
+
 const router = useRouter()
 const logout = async () => {
   await logOut()
@@ -9,6 +12,8 @@ const logout = async () => {
 }
 </script>
 <template>
+
+  <!-- <CookieBanner/> -->
   <header class="header">
     <!-- <div class="logo"><img src="../public/images/Logo.png" alt=""></div> -->
 
@@ -37,6 +42,7 @@ const logout = async () => {
     </div>
   </header>
   <router-view></router-view>
+  <CookieBanner />
 
   <footer class="footer">
     <div class="footer_container">
@@ -52,8 +58,15 @@ const logout = async () => {
       <div class="footer_links">
         <h4>Información</h4>
         <span>Aviso legal</span>
-        <span>Política de privacidad</span>
-        <span>Política de cookies</span>
+        <!-- <span>Política de privacidad</span>
+        <span>Política de cookies</span> -->
+        <router-link to="/cookies">
+          Política de cookies
+        </router-link>
+
+        <router-link to="/privacy">
+          Política de privacidad
+        </router-link>
         <!-- <a href="#">Aviso legal</a>
         <a href="#">Política de privacidad</a>
         <a href="#">Política de cookies</a> -->
@@ -77,6 +90,7 @@ const logout = async () => {
       © 2026 LUMERIA — Todos los derechos reservados
     </div>
   </footer>
+  
 </template>
 
 <!-- para q no haya scroll lateral -->
@@ -134,6 +148,9 @@ body
   background: #111
   color: white
   margin-top: 4rem
+  img
+    width: 13.7rem
+    height: 6.2rem
 
 .footer_container
   display: flex

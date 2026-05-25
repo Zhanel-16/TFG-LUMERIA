@@ -9,13 +9,18 @@ import BlogArticleView from '@/views/BlogArticleView.vue'
 import ProductDetailView from '@/views/ProductDetailView.vue'
 import ExperienceView from '@/views/ExperienceView.vue'
 import FaqView from '@/views/FaqView.vue'
+import CookieBanner from '@/components/CookieBanner.vue'
+import PrivacyView from '@/views/PrivacyView.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 import { estaAutenticado, authReady } from '@/servicios/autenticacion' //carga mas rap
+import CookiesView from '@/views/CookiesView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    { path: "/cookies", component: CookiesView },
+    { path: "/privacy", component: PrivacyView },
     { path: "/", component: ProductsView },
     //SI ESTA LOGUEADO NO SE PUEDE!! 
     { path: "/login", component: LoginView, meta:{ guestOnly:true }},
