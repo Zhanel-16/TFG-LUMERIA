@@ -9,7 +9,6 @@ import BlogArticleView from '@/views/BlogArticleView.vue'
 import ProductDetailView from '@/views/ProductDetailView.vue'
 import ExperienceView from '@/views/ExperienceView.vue'
 import FaqView from '@/views/FaqView.vue'
-import CookieBanner from '@/components/CookieBanner.vue'
 import PrivacyView from '@/views/PrivacyView.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'

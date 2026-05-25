@@ -1,14 +1,20 @@
 <script setup>
 import { estaAutenticado, logOut } from '@/servicios/autenticacion'
 import { useRouter } from 'vue-router'
-
 import CookieBanner from "@/components/CookieBanner.vue"
+import { useToast } from "vue-toastification"
 
-
+const toast = useToast() //toast de iniciar sesion para favs
 const router = useRouter()
 const logout = async () => {
   await logOut()
   router.push("/login")
+}
+const mostrarToastFav = () => {
+  if (!estaAutenticado()) {
+    toast.info(
+      "Inicia sesión para guardar favoritos")
+  }
 }
 </script>
 <template>
@@ -34,10 +40,13 @@ const logout = async () => {
       <!-- montar buscar por palabra y luego ya tipo de joya /pendientes/anillos etc   -->
       <router-link :to="estaAutenticado() ? '/carrito' : '/login'">
         <i class="fa-solid fa-bag-shopping"></i>
-        
       </router-link>
-      
-      <router-link to="/favoritos"><i class="fa-solid fa-heart"></i></router-link>
+
+        <div class="favIcon" @mouseenter="mostrarToastFav">
+          <router-link :to="estaAutenticado() ? '/favoritos' : '/login'">
+            <i class="fa-solid fa-heart" :class="{ disabled: !estaAutenticado() }"></i>
+          </router-link>
+        </div>
       <!-- <router-link to="/carrito"><i class="fa-solid fa-user"></i></router-link> -->
     </div>
   </header>
@@ -185,7 +194,17 @@ body
   gap: 1rem
   font-size: 1.6rem
   cursor: pointer
+.favIcon
+  display: flex
+  align-items: center
 
+.disabled
+  cursor: not-allowed
+  opacity: .55
+  transition: .3s
+
+  &:hover
+    color: #999
 .copyright
   text-align: center
   padding: 1rem
