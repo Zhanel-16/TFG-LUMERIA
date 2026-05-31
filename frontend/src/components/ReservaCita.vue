@@ -37,7 +37,7 @@ const reservar = async () => {
       toast.error("Selecciona una hora")
       return
     }
-    await axios.post("http://localhost:5000/appointments/", {
+    await axios.post("https://tfg-lumeria.onrender.com/appointments/", {
       user_id: user.uid,
       email: user.email,
       date: fecha.value,

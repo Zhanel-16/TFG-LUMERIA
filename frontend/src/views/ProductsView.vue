@@ -16,7 +16,7 @@ const router = useRouter()
 // onmounted anterior simple, cambiado ahora a por el de abajo
 // onMounted(async () => {
 //   try {
-//     let res = await axios.get("http://localhost:5000/products/")
+//     let res = await axios.get("")
 //     productos.value = res.data
 //   } catch (error) {
 //     console.error(error)
@@ -45,7 +45,7 @@ onMounted(async () => {
     return
   }try {
     let res = await axios.get(
-      "http://localhost:5000/products/"
+      "https://tfg-lumeria.onrender.com/products/"
     )
     productos.value = res.data
     productosCache.data = res.data // GUARDAR

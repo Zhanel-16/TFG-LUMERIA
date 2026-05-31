@@ -121,7 +121,7 @@ const mostrarToastLogin = () => {
 // peticion a los q tienen de category = anilloCompromiso
 const cargarProductos = async () => {
   const res = await axios.get(
-    "http://localhost:5000/products/search?q=anillosCompromiso"
+    "https://tfg-lumeria.onrender.com/products/search?q=anillosCompromiso"
   )
   productos.value = (res.data.products || res.data).slice(0, 4)
 }
@@ -161,7 +161,7 @@ const reservar = async () => {
   `Presupuesto: ${presupuesto.value}`
 
     await axios.post(
-      "http://localhost:5000/appointments/",
+      "https://tfg-lumeria.onrender.com/appointments/",
       {
         user_id: user.uid,
         email: user.email,

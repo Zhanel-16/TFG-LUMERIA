@@ -13,7 +13,7 @@ const toast = useToast()
 onMounted(async () => {
   let id = route.params.id
   let res = await axios.get(
-    `http://localhost:5000/products/${id}`
+    `https://tfg-lumeria.onrender.com/products/${id}`
   )
 
   producto.value = res.data

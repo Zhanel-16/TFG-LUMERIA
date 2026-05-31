@@ -12,7 +12,7 @@ const buscarProductos = async () => {
     return
   }
   const res = await axios.get(
-    `http://localhost:5000/products/search?q=${busqueda.value}`
+    `https://tfg-lumeria.onrender.com/products/search?q=${busqueda.value}`
   )
   resultados.value = res.data
 }
