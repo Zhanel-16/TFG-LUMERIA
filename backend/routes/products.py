@@ -56,4 +56,7 @@ def search_products():
 
     return jsonify(results)
 
+@products.route("/ping", methods=["GET"])
+def ping():
+    return {"ok": True}
 
