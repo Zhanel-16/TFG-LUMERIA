@@ -14,4 +14,9 @@ def db_conn():
         use_unicode=True,
         collation="utf8mb4_general_ci"
     )
+    cursor = conn.cursor()
+    cursor.execute("SET NAMES utf8mb4")
+    cursor.close()
+
+    return conn
     
