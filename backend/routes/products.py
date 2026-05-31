@@ -3,7 +3,6 @@ from bd.bd import db_conn
 
 from flask import request
 
-
 products = Blueprint("products", __name__)
 
 # main /
