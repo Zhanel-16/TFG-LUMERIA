@@ -11,6 +11,7 @@ def db_conn():
         password=os.getenv("MYSQL_PASS"),
         database=os.getenv("MYSQL_BD"),
         charset="utf8mb4",
-        use_unicode=True
+        use_unicode=True,
+        collation="utf8mb4_general_ci"
     )
     
