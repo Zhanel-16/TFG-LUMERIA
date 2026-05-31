@@ -1,5 +1,3 @@
-CREATE DATABASE IF NOT EXISTS db_joyeria;
-USE db_joyeria;
 
 -- =========================
 -- USERS
