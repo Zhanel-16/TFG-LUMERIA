@@ -10,4 +10,4 @@ class Config:
     MYSQL_HOST = os.getenv("MYSQL_HOST")
     MYSQL_USER = os.getenv("MYSQL_USER")
     MYSQL_PASS = os.getenv("MYSQL_PASS")
-    MYSQL_DB = os.getenv("MYSQL_BD")
+    MYSQL_BD = os.getenv("MYSQL_BD")
