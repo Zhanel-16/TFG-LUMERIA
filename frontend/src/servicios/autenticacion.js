@@ -262,7 +262,6 @@ export let estaAutenticado = () => {
   return usuario.value !== null
 }
 
-
 // OBTENER USUARIO
 export let obtenerUsuario = () => {
 

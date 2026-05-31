@@ -3,7 +3,6 @@ import { ref } from "vue";
 import { login } from "@/servicios/autenticacion";
 import { useRouter } from "vue-router";
 import { useToast } from "vue-toastification";
-
 const email = ref("");
 const password = ref("");
 const router = useRouter();
@@ -16,12 +15,10 @@ const iniciarSesion = async () => {
     toast.error("Credenciales incorrectas");
     return;
   }
-
   if (!res.usuario.user.emailVerified) {
     toast.error("Por favor, verifica su email");
     return;
   }
-
   toast.success("Tu brillo empieza aquí... ¡Descubre piezas hechas para ti!");
   router.push("/");
 };
@@ -31,17 +28,15 @@ const iniciarSesion = async () => {
   <section class="auth">
     <div class="card">
       <h1>Iniciar sesión</h1>
+      <p class="subtitle">Accede a tu cuenta y descubre nuestras colecciones exclusivas.</p>
 
       <form @submit.prevent="iniciarSesion">
         <input v-model="email" type="email" placeholder="Email" />
         <input v-model="password" type="password" placeholder="Contraseña" />
         <button>Iniciar sesión</button>
       </form>
-
       <router-link to="/" class="back">← Volver a la tienda</router-link>
-
-      <p class="switch">
-        ¿Todavía no tiene cuenta?
+      <p class="cambio">¿Todavía no tiene cuenta?
         <router-link to="/register">Crear una cuenta</router-link>
       </p>
     </div>
@@ -50,45 +45,137 @@ const iniciarSesion = async () => {
 
 <style lang="sass" scoped>
 .auth
-  height: 100vh
+  min-height: 100vh
   display: flex
   justify-content: center
   align-items: center
-  background: #FAF8F3
+  padding: 40px 20px
+  background: linear-gradient(to bottom, #faf8f3, #f5f1e8)
 
 .card
-  width: 380px
+  width: 100%
+  max-width: 480px
   background: white
-  padding: 50px
+  padding: 55px 50px
+  border-radius: 30px
+  box-shadow: 0 20px 60px rgba(0,0,0,.08)
+  border: 1px solid rgba(212,175,55,.12)
   text-align: center
-  box-shadow: 0 10px 30px rgba(0,0,0,.08)
 
 h1
-  font-family: "Times New Roman"
-  letter-spacing: 4px
-  color: #3A3A38
-  margin-bottom: 35px
+  font-family: "Outfit", sans-serif
+  font-size: 34px
+  font-weight: 300
+  letter-spacing: 2px
+  color: #111
+  margin-bottom: 10px
+.subtitle
+  color: #777
+  font-size: 15px
+  line-height: 1.7
+  max-width: 320px
+  margin: 0 auto
+form
+  margin-top: 35px
 
 input
   width: 100%
-  padding: 12px
-  margin-bottom: 15px
-  border: 1px solid #ddd
+  height: 58px
+  padding: 0 18px
+  margin-bottom: 16px
+  border-radius: 16px
+  border: 1px solid #e6e6e6
+  background: #fafafa
+  font-size: 15px
+  transition: .3s ease
+  outline: none
 
+  &:focus
+    border-color: #D4AF37
+    background: white
+    box-shadow: 0 0 0 4px rgba(212,175,55,.12)
 button
-  width: 100%
-  padding: 12px
-  background: #D4AF37
-  color: white
-  border: none
-  cursor: pointer
+  width: 45%
+  height: 54px
   margin-top: 10px
+  border: none
+  border-radius: 50px
+  background: #111
+  color: white
+  font-size: 17.3px
+  font-weight: 500
+  cursor: pointer
+  transition: .35s ease
+  &:hover
+    background: #D4AF37
+    color: #111
 
 .back
-  display: block
-  margin-top: 25px
-  color: #999
+  display: inline-block
+  margin-top: 28px
+  color: #777
+  text-decoration: none
+  transition: .3s
 
-.switch
-  margin-top: 20px
-</style> 
+  &:hover
+    color: #111
+
+.cambio
+  margin-top: 25px
+  color: #666
+  font-size: 14px
+
+  a
+    color: #AA7C11
+    text-decoration: none
+    font-weight: 600
+    margin-left: 4px
+
+    &:hover
+      text-decoration: underline
+
+@media (max-width: 768px) // TABLET
+  .card
+    max-width: 520px
+    padding: 45px 35px
+
+  h1
+    font-size: 30px
+
+  input
+    height: 54px
+
+  button
+    height: 54px
+
+@media (max-width: 480px) // MÓVIL
+
+  .auth
+    padding: 20px
+
+  .card
+    padding: 35px 22px
+    border-radius: 24px
+
+  h1
+    font-size: 26px
+    margin-bottom: 5px
+
+  form
+    margin-top: 25px
+
+  input
+    height: 50px
+    font-size: 14px
+    border-radius: 14px
+
+  button
+    height: 50px
+    font-size: 14px
+
+  .cambio
+    font-size: 13px
+
+  .back
+    font-size: 13px
+</style>          

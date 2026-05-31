@@ -28,9 +28,7 @@ const reservar = async () => {
       toast.error("Selecciona una fecha válida")
       return
     }
-
     const user = auth.currentUser
-
     if (!user) {
       toast.error("Debes iniciar sesión")
       return
@@ -39,9 +37,7 @@ const reservar = async () => {
       toast.error("Selecciona una hora")
       return
     }
-
     await axios.post("http://localhost:5000/appointments/", {
-
       user_id: user.uid,
       email: user.email,
       date: fecha.value,
@@ -49,52 +45,32 @@ const reservar = async () => {
       service: servicio.value,
       notes: notes.value,
       interest: interest.value
-
     })
-
     toast.success("¡Reserva realizada correctamente!")
-
     // limpiar formulario
     fecha.value = ""
     hora.value = ""
     notes.value = ""
     interest.value = ""
-
   } catch (error) {
-
     console.log(error)
-
     toast.error("Error al reservar")
-
   }
-
 }
 </script>
 
 <template>
 
 <div class="box">
-
-  <div class="agenda">
-    Agenda privada abierta desde junio 2026 hasta diciembre 2028.
-    Las plazas son limitadas para garantizar una experiencia exclusiva y personalizada.
-  </div>
-
+  <div class="agenda">Agenda privada abierta desde junio 2026 hasta diciembre 2028. Las plazas son limitadas para garantizar una experiencia exclusiva y personalizada.</div>
   <!-- FECHA -->
-  <input
-    type="date"
-    v-model="fecha"
-    :min="fechaMin"
-    :max="fechaMax"
-  >
+  <input type="date" v-model="fecha" :min="fechaMin" :max="fechaMax">
 
   <!-- HORAS -->
   <select v-model="hora" required>
-
     <option disabled value="">
       Selecciona una hora
     </option>
-
     <option>10:30</option>
     <option>11:30</option>
     <option>12:30</option>
@@ -103,16 +79,13 @@ const reservar = async () => {
 
     <option>17:30</option>
     <option>18:30</option>
-
   </select>
 
   <!-- INTERÉS -->
   <select v-model="interest" required>
-
     <option disabled value="">
       ¿Qué te interesa?
     </option>
-
     <option>Anillos de compromiso</option>
     <option>Diamantes</option>
     <option>Pulseras</option>
@@ -120,19 +93,15 @@ const reservar = async () => {
     <option>Alta joyería</option>
     <option>Lucky Charms</option>
     <option>Otros</option>
-
   </select>
-
   <!-- NOTAS -->
   <textarea v-model="notes" placeholder="Cuéntanos qué tipo de experiencia buscas y prepararemos una selección personalizada para tu visita."></textarea>
 
   <button @click="reservar" :disabled="!fecha || !hora || !interest">Reservar asesoramiento</button>
 </div>
-
 </template>
 
 <style scoped lang="sass">
-
 .box
   display: flex
   flex-direction: column
@@ -147,7 +116,6 @@ const reservar = async () => {
   color: #555
   line-height: 1.7
   font-size: .95rem
-
 input,
 select,
 textarea
@@ -181,5 +149,4 @@ button
 button:disabled
   opacity: .5
   cursor: not-allowed
-
 </style>

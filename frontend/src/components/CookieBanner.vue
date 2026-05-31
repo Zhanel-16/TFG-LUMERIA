@@ -1,26 +1,18 @@
 <script setup>
 import { ref, onMounted } from "vue"
 import { auth } from "@/firebase/config"
-
 const visible = ref(false)
-
 onMounted(() => {
-
   const cookies = localStorage.getItem("cookiesAccepted")
-
   // usuario logeado
   const user = auth.currentUser
 
-  // si ya aceptó/está logeado → no mostrar
-  if (cookies || user) return
-
-  // mostrar banner
-  visible.value = true
-
+  if (cookies || user) return // si ya aceptó/está logeado → no mostrar
+  
+  visible.value = true // mostrar banner
 })
 
 const aceptar = () => {
-
   localStorage.setItem("cookiesAccepted", "true")
   visible.value = false
 
@@ -30,47 +22,28 @@ const necesarias = () => {
 
   localStorage.setItem("cookiesAccepted", "necessary")
   visible.value = false
-
 }
 </script>
 
 <template>
-
 <transition name="slide">
 
   <div v-if="visible" class="cookies">
-
     <div class="content">
-
       <div class="text">
-
         <h3>Este sitio utiliza cookies</h3>
-
-        <p>Utilizamos cookies técnicas necesarias para el funcionamiento del sitio
-          y cookies analíticas para mejorar la experiencia de usuario.</p>
-
+        <p>Utilizamos cookies técnicas necesarias para el funcionamiento del sitio y cookies analíticas para mejorar la experiencia de usuario.</p>
       </div>
-
       <div class="buttons">
-
-        <button @click="aceptar">
-          Aceptar todas
-        </button>
-
+        <button @click="aceptar">Aceptar todas</button>
         <button class="secondary" @click="necesarias">Solo necesarias</button>
-
       </div>
-
     </div>
-
   </div>
-
 </transition>
 
 </template>
-
 <style scoped lang="sass">
-
 .cookies
   position: fixed
   bottom: 30px
@@ -84,7 +57,6 @@ const necesarias = () => {
   box-shadow: 0 10px 40px rgba(0,0,0,.15)
   padding: 28px
   z-index: 9999
-
 .content
   display: flex
   justify-content: space-between
@@ -133,16 +105,12 @@ button
   transform: translate(-50%, 50px)
 
 @media(max-width: 700px)
-
   .content
     flex-direction: column
     align-items: flex-start
-
   .buttons
     width: 100%
     flex-direction: column
-
   button
     width: 100%
-
 </style>

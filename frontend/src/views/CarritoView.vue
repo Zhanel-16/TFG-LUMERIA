@@ -14,7 +14,6 @@ const toast = useToast()
 const irHome = () => {
   router.push('/')
 }
-
 const totalItems = computed(() => carrito.value.length)
 
 const carrito = ref([])
@@ -39,7 +38,6 @@ const borrar = async (id) => {
   obtenerDatos() // recargar
 }
 
-// cerrar sesión elegante
 const cerrarSesion = async () => {
   const resultado = await logOut()
 
@@ -62,9 +60,7 @@ const cerrarSesion = async () => {
       </div>
     </div>
 
-    <button class="logoutBtn" @click="cerrarSesion">
-      Cerrar sesión
-    </button>
+    <button class="logoutBtn" @click="cerrarSesion">Cerrar sesión</button>
   </div>
 
   <h1>Tu carrito</h1>
@@ -81,7 +77,6 @@ const cerrarSesion = async () => {
     <p class="price">{{ prod?.price }} €</p>
     <p class="cantidad">Cantidad: {{ prod.rating?.count }}</p>
     <button @click="borrar(prod.idDoc)">Eliminar</button>
-    
   </div>
   <!-- <div>
     <span class="badge">Total productos: {{ totalItems }}</span>
@@ -89,7 +84,7 @@ const cerrarSesion = async () => {
 </div> -->
 
 <!-- FORMULARIO -->
-<ReservaCita />
+  <ReservaCita />
 </div>
 
 </section>
@@ -107,7 +102,6 @@ h1
   font-weight: 300
   letter-spacing: 3px
   color: #3A3A38
-
 
 .userPanel
   background: white

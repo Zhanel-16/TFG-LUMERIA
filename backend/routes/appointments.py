@@ -9,6 +9,19 @@ appointments = Blueprint("appointments", __name__)
 def create_appointment():
     try:
         data = request.get_json()
+        # añadi eso 25/05 para proteger
+        if not data.get("user_id"):
+            return jsonify({
+                "ok": False,
+                "error": "Usuario no autenticado"
+            }), 401
+        # añadi eso 25/05 para proteger; evita: POST manual, peticiones falsas, reservas sin login
+        if (not data.get("date") or not data.get("time") or not data.get("email")):
+            # por si falta algun campo q no se rompa pero q diga --> "error": "Faltan campos obligatorios"
+            return jsonify({
+                "ok": False,
+                "error": "Faltan campos obligatorios"
+            }), 400   
         conn = db_conn()
         cursor = conn.cursor()
 
@@ -19,6 +32,7 @@ def create_appointment():
                 data["time"],
                 data["interest"],
                 data["notes"]
+                # me sirve para: Private Experience, Engagement Concierge, cualquier formulario de citas GC 
             )
         )
         conn.commit()

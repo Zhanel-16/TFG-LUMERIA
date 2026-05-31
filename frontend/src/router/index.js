@@ -10,7 +10,7 @@ import ProductDetailView from '@/views/ProductDetailView.vue'
 import ExperienceView from '@/views/ExperienceView.vue'
 import FaqView from '@/views/FaqView.vue'
 import PrivacyView from '@/views/PrivacyView.vue'
-
+import AvisoView from '@/views/AvisoView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import { estaAutenticado, authReady } from '@/servicios/autenticacion' //carga mas rap
 import CookiesView from '@/views/CookiesView.vue'
@@ -18,6 +18,7 @@ import CookiesView from '@/views/CookiesView.vue'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    { path: "/aviso", component: AvisoView},
     { path: "/cookies", component: CookiesView },
     { path: "/privacy", component: PrivacyView },
     { path: "/", component: ProductsView },
@@ -53,7 +54,6 @@ const router = createRouter({
 
 //carga rapida para q cuando una vez usuario esté auth, q lea --> hay usuario y no me mande a login aunque ya estoy con sesión iniciada
 router.beforeEach(async (to, from, next) => {
-
   // esperar firebase
   while (!authReady.value) {
 
@@ -61,25 +61,19 @@ router.beforeEach(async (to, from, next) => {
       setTimeout(resolve, 50)
     )
   }
-
   // rutas protegidas
   if (
     to.meta.requiresAuth &&
     !estaAutenticado()
   ) {
-
     return next("/login")
   }
-
   // login/register bloqueados
   if (
-    to.meta.guestOnly &&
-    estaAutenticado()
+    to.meta.guestOnly && estaAutenticado()
   ) {
-
     return next("/")
   }
-
   next()
 })
 

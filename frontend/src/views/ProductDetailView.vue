@@ -12,23 +12,18 @@ const producto = ref({})
 const toast = useToast()
 
 onMounted(async () => {
-
   let id = route.params.id
-
   let res = await axios.get(
     `http://localhost:5000/products/${id}`
   )
 
   producto.value = res.data
 })
-
 const favClick = async () => { //wishlist
-
   if(!estaAutenticado()){
     toast.info("Inicia sesión para guardar tu wishlist.")
     return
   }
-
   const res = await anadirAFavoritos(producto.value)
 
   if(res.ok){
@@ -37,14 +32,11 @@ const favClick = async () => { //wishlist
     toast.info("¡Ups! Ya está en tu wishlist...")
   }
 }
-
 const cartClick = async () => {
-
   if(!estaAutenticado()){
     toast.info("Inicia sesión para añadir al carrito.")
     return
   }
-
   const res = await anadirFavoritos(producto.value)
 
   if(res.ok){
@@ -55,32 +47,28 @@ const cartClick = async () => {
   }
 }
 </script>
-
 <template>
 <section v-if="producto">
-
-  <div class="product-wrapper">
-
-    <!-- IZQUIERDA IMAGEN -->
-    <div class="image">
-      <img :src="producto.image">
-    </div>
-
-    <!-- DERECHA INFO -->
+  <div class="productGeneral">
+    <!-- IZQUIERDA info -->
     <div class="info">
       <h1>{{ producto.name }}</h1>
-      <p class="gold">{{ producto.color_oro }}</p>
       <p class="price">{{ producto.price }} €</p>
-
-      <button class="fav" @click="favClick">❤ Añadir a favoritos</button>
+      <p class="gold">{{ producto.color_oro }}</p>
 
       <p class="desc">{{ producto.description }}</p>
 
-      <button class="cart" @click="cartClick">Añadir al carrito</button>
-      
+      <div class="botones2">
+        <button class="cart" @click="cartClick">Añadir al carrito</button>
+        <button class="fav" @click="favClick">Añadir a favoritos ❤</button>
+      </div>
     </div>
-
+    <!-- DERECHA img -->
+    <div class="image">
+      <img :src="producto.image">
+    </div>
   </div>
+
   <WhatsappExpert />
 
 </section>
@@ -88,44 +76,80 @@ const cartClick = async () => {
 
 <style lang="sass" scoped>
 section
-  max-width: 1200px
-  margin: 80px auto
-  padding: 0 40px
+  max-width: 1100px
+  margin: 42px auto
+  padding: 0 30px
 
-.product-wrapper
+.productGeneral
   display: grid
-  grid-template-columns: 1fr 1fr
+  grid-template-columns: 1.1fr 0.9fr
   gap: 60px
+  align-items: center
 
 .image img
   width: 100%
-  border-radius: 20px
+  border-radius: 18px
+  object-fit: cover
+  max-height: 520px
+  box-shadow: 0 20px 50px rgba(0,0,0,.08)
 
 .info h1
-  font-size: 32px
+  font-size: 24px
+  font-weight: 500
+  letter-spacing: 0.3px
+  margin-bottom: 10px
+
+.price
+  font-size: 22px
+  font-weight: 600
+  color: #111
+  margin-bottom: 6px
 
 .gold
   color: #777
-  margin: 10px 0
+  font-size: 13px
+  letter-spacing: 1px
+  margin-bottom: 20px
 
-.price
-  font-size: 26px
-  font-weight: bold
-  margin: 20px 0
-
-.desc
+.desc //SCROLL, le doy altura maxima + q se vea scroll barra
+  font-size: 15px
   line-height: 1.7
-  margin-top: 25px
-
-button
-  padding: 12px 25px
-  border-radius: 30px
-  border: none
-  margin-top: 15px
+  color: #444
+  margin-bottom: 30px
+  overflow: hidden
+  position: relative
+  max-height: 310px
+  overflow-y: auto
+  padding-right: 6px
   cursor: pointer
 
+.desc::-webkit-scrollbar //estilos scroll cute
+  width: 4px
+
+.desc::-webkit-scrollbar-thumb
+  background: #ccc
+  border-radius: 10px
+
+.botones2
+  display: flex
+  flex-direction: row
+  gap: 12px
+
+button
+  padding: 14px 20px
+  border-radius: 40px
+  border: none
+  cursor: pointer
+  font-size: 14px
+  transition: .3s ease
+  width: 35%
+
 .fav
-  background: #eee
+  background: #f3f3f3
+  color: #111
+
+  &:hover
+    background: #e8e8e8
 
 .cart
   background: #111
@@ -133,4 +157,47 @@ button
 
   &:hover
     background: #D4AF37
+
+@media (max-width: 1024px)
+  .productGeneral
+    grid-template-columns: 1fr
+    gap: 30px
+
+  .image
+    order: 1
+
+  .info
+    order: 2
+
+  .image img
+    max-height: 420px
+    object-fit: cover
+    border-radius: 16px
+  .botones2 button
+    flex: 1
+
+@media (max-width: 768px)
+  section
+    margin: 20px auto
+    padding: 0 16px
+
+  .productGeneral
+    gap: 20px
+
+  .info h1
+    font-size: 20px
+
+  .price
+    font-size: 18px
+
+  .gold
+    font-size: 12px
+  .desc
+    max-height: none
+    overflow: visible
+    font-size: 14px
+
+  .botones2 button
+    flex: 1
+    width: auto
 </style>
