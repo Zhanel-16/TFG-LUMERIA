@@ -6,7 +6,6 @@ import { useRoute } from "vue-router"
 import { estaAutenticado } from '@/servicios/autenticacion'
 import { useToast } from 'vue-toastification'
 import { anadirAFavoritos, anadirFavoritos } from '@/servicios/tarea' //wish y carrito 
-
 const route = useRoute()
 const producto = ref({})
 const toast = useToast()
