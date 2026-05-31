@@ -94,93 +94,126 @@ const cerrarSesion = async () => {
 .carrito
   max-width: 1200px
   margin: 40px auto
-  padding: 0 30px
+  padding: 0 20px
 
 h1
   text-align: center
-  margin: 40px 0
+  margin: 30px 0
   font-weight: 300
-  letter-spacing: 3px
+  letter-spacing: 2px
   color: #3A3A38
 
 .userPanel
   background: white
-  padding: 25px 35px
+  padding: 20px 25px
   border-radius: 14px
   display: flex
   justify-content: space-between
   align-items: center
+  flex-wrap: wrap
+  gap: 15px
   box-shadow: 0 8px 25px rgba(0,0,0,.07)
 
 .userInfo
   display: flex
   align-items: center
-  gap: 15px
+  gap: 12px
 
   i
-    font-size: 2.5rem
+    font-size: 2.2rem
     color: #D4AF37
-
-.welcome
-  font-size: 13px
-  color: #888
 
 .logoutBtn
   background: transparent
   border: 1px solid #D4AF37
-  padding: 10px 22px
+  padding: 10px 18px
   border-radius: 30px
   cursor: pointer
   transition: .3s
-  font-family: "Nunito"
 
   &:hover
     background: #D4AF37
     color: white
 
-.loadFavs
-  display: block
-  margin: 30px auto
-  background: #3A3A38
-  color: white
-  border: none
-  padding: 12px 26px
-  border-radius: 30px
-  cursor: pointer
-  transition: .3s
+.emptyCart
+  text-align: center
+  margin-top: 60px
 
-  &:hover
-    background: #D4AF37
+  p
+    color: #666
+    margin-bottom: 20px
+
+  button
+    padding: 12px 24px
+    border: none
+    border-radius: 30px
+    background: #111
+    color: white
+    cursor: pointer
+
+    &:hover
+      background: #D4AF37
+
 .favsGrid
   margin-top: 40px
   display: grid
-  grid-template-columns: repeat(4,1fr)
-  gap: 30px
+  grid-template-columns: repeat(4, 1fr)
+  gap: 25px
 
 .favCard
   background: white
   padding: 20px
-  border-radius: 14px
+  border-radius: 16px
   text-align: center
-  box-shadow: 0 5px 18px rgba(0,0,0,.05)
+  box-shadow: 0 6px 18px rgba(0,0,0,.05)
   transition: .3s
+  display: flex
+  flex-direction: column
+  gap: 10px
 
   &:hover
     transform: translateY(-6px)
-    box-shadow: 0 12px 30px rgba(0,0,0,.12)
+    box-shadow: 0 15px 35px rgba(0,0,0,.12)
 
   img
     width: 100%
     height: 180px
     object-fit: contain
-    margin-bottom: 15px
 
 .price
   color: #D4AF37
   font-weight: bold
-  margin-top: 5px
 
 .cantidad
   font-size: 13px
-  color: #888
+  color: #777
+
+button
+  margin-top: 10px
+  padding: 10px
+  border-radius: 30px
+  border: none
+  cursor: pointer
+  background: #111
+  color: white
+
+  &:hover
+    background: #D4AF37
+
+/* RESPONSIVE */
+@media (max-width: 1024px)
+  .favsGrid
+    grid-template-columns: repeat(3, 1fr)
+
+@media (max-width: 768px)
+  .favsGrid
+    grid-template-columns: repeat(2, 1fr)
+
+  .userPanel
+    flex-direction: column
+    align-items: flex-start
+
+@media (max-width: 480px)
+  .favsGrid
+    grid-template-columns: 1fr
 </style>

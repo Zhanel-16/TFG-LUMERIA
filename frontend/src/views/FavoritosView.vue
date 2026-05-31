@@ -72,151 +72,97 @@ onMounted(async () => {
 <style lang="sass" scoped>
 .favs
   max-width: 1300px
-  margin: 80px auto
-  padding: 0 40px
+  margin: 60px auto
+  padding: 0 20px
 
-  h1
-    text-align: center
-    font-size: 42px
-    font-weight: 400
-    margin-bottom: 50px
+h1
+  text-align: center
+  font-size: 36px
+  font-weight: 400
+  margin-bottom: 40px
 
 .notLogged
   background: white
-  padding: 60px
+  padding: 50px 20px
   text-align: center
   border-radius: 18px
   box-shadow: 0 8px 25px rgba(0,0,0,.06)
 
   p
-    margin-top: 15px
+    margin-top: 10px
     color: #666
 
 .loginBtn
   display: inline-block
-  margin-top: 25px
-  padding: 12px 28px
+  margin-top: 20px
+  padding: 12px 26px
   border-radius: 30px
   background: #111
   color: white
   text-decoration: none
-  transition: .3s
 
   &:hover
     background: #D4AF37
 
 .grid
   display: grid
-  grid-template-columns: repeat(4, 260px)
-  justify-content: center
-  gap: 45px
+  grid-template-columns: repeat(4, 1fr)
+  gap: 25px
 
 .card
-  border: 1px solid rgba(0,0,0,.04)
   background: white
-  display: flex
-  flex-direction: column
-  justify-content: space-between
   border-radius: 18px
-  padding: 25px
+  padding: 20px
   text-align: center
   box-shadow: 0 8px 25px rgba(0,0,0,.06)
-  position: relative
-  overflow: hidden
-  transition: transform .35s ease, box-shadow .35s ease
+  transition: .3s
   opacity: 0
   transform: translateY(10px)
-  animation: aparecer .45s ease forwards
+  animation: aparecer .4s ease forwards
 
   &:hover
-    transform: translateY(-8px) scale(1.01)
-    box-shadow: 0 20px 45px rgba(0,0,0,.10)
-
-button:disabled
-  background: #999
-  cursor: wait
-  opacity: .8
-  position: relative
-  overflow: hidden
-  
-  &::after
-    content: ""
-    position: absolute
-    top: 0
-    left: -100%
-    width: 100%
-    height: 100%
-    background: linear-gradient(
-  90deg,
-  transparent,
-  rgba(255,255,255,.35),
-  transparent
-)
-
-  animation: shimmer 1s infinite
+    transform: translateY(-6px)
 
 img
   width: 100%
-  height: 260px
+  height: 220px
   object-fit: cover
   border-radius: 14px
   margin-bottom: 15px
 
 h3
-  font-size: 20px
-  font-weight: 400
+  font-size: 18px
   margin-top: 10px
-  color: #111
 
 .price
   font-weight: bold
-  color: #111
   margin-top: 8px
-  font-size: 18px
 
 button
-  margin-top: 18px
+  margin-top: 15px
   padding: 10px 20px
   border: none
   border-radius: 30px
   background: #111
-  min-height: 42px
   color: white
   cursor: pointer
-  transition: .3s
 
   &:hover
     background: #D4AF37
-@keyframes shimmer
 
-  100%
-    left: 100%
+button:disabled
+  background: #999
 
-@keyframes aparecer
-
-  from
-    opacity: 0
-    transform: translateY(10px)
-
-  to
-    opacity: 1
-    transform: translateY(0)
-
+/* RESPONSIVE */
 @media (max-width: 1200px)
-
   .grid
-    grid-template-columns: repeat(3, 260px)
+    grid-template-columns: repeat(3, 1fr)
 
 @media (max-width: 900px)
-
   .grid
-    grid-template-columns: repeat(2, 260px)
+    grid-template-columns: repeat(2, 1fr)
 
 @media (max-width: 600px)
-
   .grid
     grid-template-columns: 1fr
-
-  .card
-    width: 100%
 </style>
