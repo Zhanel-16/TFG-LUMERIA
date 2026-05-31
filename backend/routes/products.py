@@ -5,6 +5,7 @@ from flask import request
 
 
 products = Blueprint("products", __name__)
+
 # main /
 @products.route("/", methods=["GET"])
 def get_products():
@@ -15,6 +16,27 @@ def get_products():
     cursor.close()
     conn.close()
     return jsonify(data)
+
+
+@products.route("/db-check")
+def db_check():
+    try:
+        conn = db_conn()
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT DATABASE()")
+        db = cursor.fetchone()
+
+        cursor.execute("SHOW TABLES")
+        tables = cursor.fetchall()
+
+        return {
+            "database": db,
+            "tables": tables
+        }
+
+    except Exception as e:
+        return {"error": str(e)}
 
 # PRODUCTO INDIVIDUAL --> detalles
 @products.route("/<int:id>", methods=["GET"])
