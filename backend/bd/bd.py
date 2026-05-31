@@ -9,6 +9,7 @@ def db_conn():
         host=os.getenv("MYSQL_HOST"),
         user=os.getenv("MYSQL_USER"),
         password=os.getenv("MYSQL_PASS"),
-        database=os.getenv("MYSQL_BD")
+        database=os.getenv("MYSQL_BD"),
+        charset="utf8mb4"
     )
     
