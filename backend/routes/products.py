@@ -23,7 +23,6 @@ def db_check():
     try:
         conn = db_conn()
         cursor = conn.cursor()
-
         cursor.execute("SELECT DATABASE()")
         db = cursor.fetchone()
 
