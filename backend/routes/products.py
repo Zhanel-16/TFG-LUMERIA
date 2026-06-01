@@ -35,6 +35,12 @@ def db_check():
 
     except Exception as e:
         return {"error": str(e)}
+    
+@products.route("/test")
+def test():
+    return {
+        "texto": "corazón protección símbolo más conexión"
+    }
 
 # PRODUCTO INDIVIDUAL --> detalles
 @products.route("/<int:id>", methods=["GET"])
