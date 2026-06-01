@@ -1,14 +1,26 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from bd.bd import db_conn
 
-from flask import request
-
-from flask import Response
-import json
+# from flask import Response
+# import json
 
 products = Blueprint("products", __name__)
 
 # main /
+
+
+@products.route("/", methods=["GET"])
+def get_products():
+    conn = db_conn()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM products")
+    data = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return jsonify(data)
 @products.route("/<int:id>", methods=["GET"])
 def get_product(id):
     conn = db_conn()
@@ -23,11 +35,11 @@ def get_product(id):
 
     cursor.close()
     conn.close()
-
-    return Response(
-        json.dumps(data, ensure_ascii=False),
-        content_type="application/json; charset=utf-8"
-    )
+    return jsonify(data)
+    # return Response(
+    #     json.dumps(data, ensure_ascii=False),
+    #     content_type="application/json; charset=utf-8"
+    # )
 
 
 @products.route("/db-check")
@@ -56,15 +68,15 @@ def db_check():
 #     }
 
 # PRODUCTO INDIVIDUAL --> detalles
-@products.route("/<int:id>", methods=["GET"])
-def get_product(id):
-    conn = db_conn()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM products WHERE id=%s", (id,))
-    data = cursor.fetchone()
-    cursor.close()
-    conn.close()
-    return jsonify(data)
+# @products.route("/<int:id>", methods=["GET"])
+# def get_product(id):
+#     conn = db_conn()
+#     cursor = conn.cursor(dictionary=True)
+#     cursor.execute("SELECT * FROM products WHERE id=%s", (id,))
+#     data = cursor.fetchone()
+#     cursor.close()
+#     conn.close()
+#     return jsonify(data)
 
 @products.route("/search")
 def search_products():

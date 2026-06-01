@@ -15,6 +15,7 @@ from flask_mail import Mail #correo autom
 app = Flask(__name__)
 app.json.ensure_ascii = False
 load_dotenv() 
+# app.config['JSON_AS_ASCII'] = False
 #para mandar correo
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
