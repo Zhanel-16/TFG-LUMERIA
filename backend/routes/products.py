@@ -3,18 +3,31 @@ from bd.bd import db_conn
 
 from flask import request
 
+from flask import Response
+import json
+
 products = Blueprint("products", __name__)
 
 # main /
-@products.route("/", methods=["GET"])
-def get_products():
+@products.route("/<int:id>", methods=["GET"])
+def get_product(id):
     conn = db_conn()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM products")
-    data = cursor.fetchall()
+
+    cursor.execute(
+        "SELECT * FROM products WHERE id=%s",
+        (id,)
+    )
+
+    data = cursor.fetchone()
+
     cursor.close()
     conn.close()
-    return jsonify(data)
+
+    return Response(
+        json.dumps(data, ensure_ascii=False),
+        content_type="application/json; charset=utf-8"
+    )
 
 
 @products.route("/db-check")
@@ -36,11 +49,11 @@ def db_check():
     except Exception as e:
         return {"error": str(e)}
     
-@products.route("/test")
-def test():
-    return {
-        "texto": "corazón protección símbolo más conexión"
-    }
+# @products.route("/test")
+# def test():
+#     return {
+#         "texto": "corazón protección símbolo más conexión"
+#     }
 
 # PRODUCTO INDIVIDUAL --> detalles
 @products.route("/<int:id>", methods=["GET"])
