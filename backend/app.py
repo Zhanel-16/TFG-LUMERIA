@@ -13,6 +13,7 @@ from routes.appointments import appointments
 from flask_mail import Mail #correo autom
 
 app = Flask(__name__)
+app.json.ensure_ascii = False
 load_dotenv() 
 #para mandar correo
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
