@@ -1,7 +1,8 @@
+CREATE DATABASE IF NOT EXISTS db_joyeria
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
 
--- =========================
--- USERS
--- =========================
+USE db_joyeria;
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(120) UNIQUE NOT NULL,
@@ -47,15 +48,25 @@ CREATE TABLE IF NOT EXISTS favorites (
 -- =========================
 -- APPOINTMENTS
 -- =========================
+-- CREATE TABLE IF NOT EXISTS appointments (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     user_id INT,
+--     date DATE,
+--     time TIME,
+--     notes TEXT,
+--     interest VARCHAR(255),
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (user_id) REFERENCES users(id)
+-- );
+
 CREATE TABLE IF NOT EXISTS appointments (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
+    user_id VARCHAR(255) NOT NULL,
     date DATE,
     time TIME,
     notes TEXT,
     interest VARCHAR(255),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- =========================

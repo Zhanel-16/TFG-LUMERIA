@@ -10,7 +10,6 @@ SECRET = os.getenv("SECRET_KEY")
 #JWT usa el valor de var SECRET, se necesita --> cadena secreta privada para firmar tokens
 @auth.route("/register", methods=["POST"])
 def register():
-    
     data = request.json
     email = data["email"]
     password = generate_password_hash(data["password"])
