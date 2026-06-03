@@ -9,6 +9,7 @@ appointments = Blueprint("appointments", __name__)
 def create_appointment():
     try:
         data = request.get_json()
+        print(data) #prueba si llega hasta aqui  
         # añadi eso 25/05 para proteger
         if not data.get("user_id"):
             return jsonify({

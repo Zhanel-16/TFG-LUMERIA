@@ -1,14 +1,9 @@
 from flask import Blueprint, jsonify, request
 from bd.bd import db_conn
-
 # from flask import Response
 # import json
-
 products = Blueprint("products", __name__)
-
 # main /
-
-
 @products.route("/", methods=["GET"])
 def get_products():
     conn = db_conn()
