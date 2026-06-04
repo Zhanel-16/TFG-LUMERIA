@@ -74,8 +74,8 @@ const irProducto = (id) => {
 <div>
   <section class="hero_products">
     <div class="overlay">
-      <p class="mini">COLLECTION</p>
-      <h1>Descubre nuestra colección exclusiva de joyas diseñadas para cada historia</h1>
+      <p class="mini">CRAFTED TO LAST FOREVER</p>
+      <h1>Piezas atemporales elaboradas en España con oro de 18 quilates y diamantes naturales, diseñadas para durar toda la vida.</h1>
       <p class="desc">
         Piezas seleccionadas cuidadosamente por nuestro equipo para reflejar elegancia, calidad
         y personalidad en cada detalle.
