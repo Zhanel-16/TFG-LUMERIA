@@ -75,7 +75,7 @@ const irProducto = (id) => {
   <section class="hero_products">
     <div class="overlay">
       <p class="mini">CRAFTED TO LAST FOREVER</p>
-      <h1>Alta joyería creada en España con oro de 18 quilates y diamantes naturales.</h1>
+      <h1>Alta joyería creada en España con oro de 18 quilates y diamantes naturales</h1>
       <p class="desc">Joyas excepcionales diseñadas para acompañarte toda la vida...</p>
     </div>
 </section>

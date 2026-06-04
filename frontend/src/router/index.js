@@ -17,6 +17,9 @@ import CookiesView from '@/views/CookiesView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
+  scrollBehavior() {
+    return { top: 0 }
+  },
   routes: [
     { path: "/aviso", component: AvisoView},
     { path: "/cookies", component: CookiesView },
