@@ -74,9 +74,9 @@ const irProducto = (id) => {
 <div>
   <section class="hero_products">
     <div class="overlay">
-      <p class="mini">CRAFTED TO LAST FOREVER</p>
+      <p class="mini">CRAFTED TO LAST FOREVER | LUMERIA </p>
       <h1>Alta joyería creada en España con oro de 18 quilates y diamantes naturales</h1>
-      <p class="desc">Joyas excepcionales diseñadas para acompañarte toda la vida...</p>
+      <p class="desc">Joyas exclusivas diseñadas para acompañarte toda la vida... Explora nuestro catálogo y encuentra tu estilo único.</p>
     </div>
 </section>
 <div class="products-container">
