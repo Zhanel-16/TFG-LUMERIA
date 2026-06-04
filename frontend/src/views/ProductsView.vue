@@ -70,9 +70,19 @@ const irProducto = (id) => {
     router.push(`/products/${id}`)
 }
 </script>
-
 <template>
-<section>  
+<div>
+  <section class="hero_products">
+    <div class="overlay">
+      <p class="mini">COLLECTION</p>
+      <h1>Descubre nuestra colección exclusiva de joyas diseñadas para cada historia</h1>
+      <p class="desc">
+        Piezas seleccionadas cuidadosamente por nuestro equipo para reflejar elegancia, calidad
+        y personalidad en cada detalle.
+      </p>
+    </div>
+</section>
+<div class="products-container">
   <div class="product-grid"> <!-- productos de bd -->
     <!-- <div v-for="prod in productos" :key="prod.id" class="card"> -->
     <div v-for="(prod,index) in productos" :key="prod.id" class="card" :style="{ animationDelay: `${index * 0.08}s` }">
@@ -87,19 +97,56 @@ const irProducto = (id) => {
       </div>
     </div>
   </div>
+</div>
   <transition name="fade">
     <WhatsappExpert v-if="productos.length" />
   </transition>
   <!-- aparece cuando productos ya cargaron -->
-</section>
+</div>
 </template>
 
 <style lang="sass" scoped>
-section
+.hero_products
+  width: 100%
+  height: 75vh
+  background: url('/images/products.webp') center/cover
+  position: relative
+
+.overlay
+  position: absolute
+  inset: 0
+  background: rgba(0,0,0,.35)
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  text-align: center
+  color: white
+  padding: 30px
+
+  h1
+    font-size: 38px
+    font-family: "Outfit", sans-serif
+    max-width: 800px
+    font-weight: 460
+    line-height: 1.1
+
+.desc
+  max-width: 750px
+  margin-top: 24px
+  line-height: 1.8
+  font-size: 18px
+
+.mini
+  letter-spacing: 5.8px
+  font-size: 14px
+  margin-bottom: 18px
+  font-weight: 630
+  color: #D4AF37
+.products-container
   max-width: 1180px
   margin: 80px auto
   padding: 0 20px
-
 .product-grid
   display: grid
   grid-template-columns: repeat(4, 250px)
@@ -205,8 +252,6 @@ button
 .fade-leave-to
   opacity: 0
 @media (max-width: 1200px)
-  section
-    max-width: 100%
 
   .product-grid
     grid-template-columns: repeat(4, minmax(180px, 1fr))
@@ -224,41 +269,26 @@ button
   .price
     font-size: 18px
 
-  button
-    width: 100%
-
 @media (max-width: 768px)
-  section
-    padding: 0 15px
-    margin: 50px auto
+  .hero_products
+    height: 60vh
 
-  .product-grid
-    grid-template-columns: repeat(2, 1fr)
-    gap: 16px
+  .overlay h1
+    font-size: 30px
 
-  .card
-    border-radius: 18px
+  .desc
+    font-size: 16px
 
-  .img-wrap
-    height: 180px
+@media (max-width: 480px)
+  .hero_products
+    height: 50vh
 
-  .contenido
-    padding: 14px
+  .overlay h1
+    font-size: 24px
 
-  h3
+  .desc
     font-size: 14px
-    line-height: 1.4
-
-  .oro
-    font-size: 12px
-
-  .price
-    font-size: 15px
-
-  button
-    width: 100%
-    height: 40px
-    font-size: 12px
+    line-height: 1.6
 
 @media (max-width: 480px)
   .product-grid
