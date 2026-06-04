@@ -75,11 +75,8 @@ const irProducto = (id) => {
   <section class="hero_products">
     <div class="overlay">
       <p class="mini">CRAFTED TO LAST FOREVER</p>
-      <h1>Piezas atemporales elaboradas en España con oro de 18 quilates y diamantes naturales, diseñadas para durar toda la vida.</h1>
-      <p class="desc">
-        Piezas seleccionadas cuidadosamente por nuestro equipo para reflejar elegancia, calidad
-        y personalidad en cada detalle.
-      </p>
+      <h1>Alta joyería creada en España con oro de 18 quilates y diamantes naturales.</h1>
+      <p class="desc">Joyas excepcionales diseñadas para acompañarte toda la vida...</p>
     </div>
 </section>
 <div class="products-container">
@@ -109,7 +106,7 @@ const irProducto = (id) => {
 .hero_products
   width: 100%
   height: 75vh
-  background: url('/images/products.webp') center/cover
+  background: url('/images/main.webp') center/cover
   position: relative
 
 .overlay

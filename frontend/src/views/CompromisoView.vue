@@ -81,7 +81,7 @@ import { useRouter } from "vue-router"
 const router = useRouter()
 
 const goToProducto = (id) => {
-  router.push(`/producto/${id}`)
+  router.push(`/products/${id}`)
 }
 
 import axios from "axios"
