@@ -70,8 +70,16 @@ const article = computed(() => articles[route.params.id])
         Sin embargo, hoy el anillo perfecto no responde a una única fórmula. Cada persona tiene su 
         propio estilo, su forma de entender el lujo y su manera de expresar el compromiso.</p>
 
+      <div class="holis">
+        "El mejor anillo de compromiso no es el más grande,
+          sino aquel que sigue emocionando dentro de treinta años."
+      </div>
+
       <p>Por eso, esta guía nace para ayudarte a comprender los aspectos clave que debes tener en cuenta 
         antes de elegir la joya que marcará uno de los momentos más importantes de tu vida.</p>
+      <div class="blog-image">
+        <img src="/images/compromiso.webp">
+      </div>
       <div class="two-cols">
         <img :src="article.sideImg">
         <div>
@@ -83,17 +91,86 @@ const article = computed(() => articles[route.params.id])
             inclusiones y el quilataje mide su peso. La combinación equilibrada de estos factores crea 
             el brillo perfecto.</p>
         </div>
+        
+      </div>
+      <div class="blog-image">
+        <img src="/images/radiantCut.webp">
       </div>
 
-      <h2>Elegir el estilo adecuado</h2>
-      <p>Existen múltiples estilos de anillos de compromiso, desde el clásico solitario hasta diseños pavé, 
-        halo o vintage. Cada uno transmite una personalidad distinta.</p>
+      <!-- seccion 1 -->
+      <h2>Los estilos de anillo más icónicos</h2>
+      <p>
+      Cada estilo de anillo transmite una personalidad distinta.
+      Mientras algunas personas buscan líneas clásicas y atemporales,
+      otras prefieren diseños con más presencia visual o detalles
+      inspirados en épocas históricas.
+      </p>
+
+      <p>
+      Comprender las diferencias entre los principales estilos
+      permite tomar una decisión más consciente y encontrar una pieza
+      que siga representándoos dentro de veinte o treinta años.
+      </p>
+
+      <!-- bloque 1 -->
+      <h2>Solitario</h2>
+
+      <p>
+      El solitario es el diseño más icónico de la historia de la joyería.
+      Un único diamante ocupa todo el protagonismo, permitiendo que la luz
+      se refleje con máxima intensidad.
+      </p>
+
+      <p>
+      Su estética limpia y elegante lo convierte en una elección segura
+      para quienes buscan una pieza verdaderamente atemporal.
+      </p>
+      <!-- mostrar aqui los solitarios q tengo con boton de ver producto -->
+
+      <!-- bloque 2 -->
+      <h2>Pavé</h2>
+      <p>
+      En los diseños pavé, pequeños diamantes se integran a lo largo del
+      brazo del anillo creando una superficie continua de luz.
+      </p>
+
+      <p>
+      El resultado es una joya elegante, femenina y especialmente luminosa.
+      </p>
+
+      <!-- seccion ESTILO -->
+      <h2>¿Qué estilo encaja contigo?</h2>
+
+      <p>Si te identificas con la elegancia más clásica, el solitario seguirá
+      siendo una apuesta infalible.</p>
+
+      <p>Si buscas una pieza con mayor impacto visual, los diseños halo o pavé
+      pueden ofrecer un brillo extraordinario.</p>
+
+      <p>Para quienes valoran la exclusividad y los detalles artesanales,
+      los anillos de inspiración vintage aportan una personalidad única.</p>
+
+      <!-- ------------------------------------------------ -->
 
       <h2>¿Oro amarillo, blanco o rosa?</h2>
       <p>El metal elegido influye tanto en la estética como en la personalidad del anillo.</p>
 
-      <h2>Una joya para toda la vida...</h2>
-      <p>Más allá de tendencias y estilos, un anillo de compromiso representa una promesa eterna.</p>
+      <h2>Más que un anillo</h2>
+      <p>Un anillo de compromiso no se elige únicamente por su diseño.
+      Se elige por lo que representa.</p>
+
+      <p>Será la joya que acompañe fotografías, celebraciones, viajes,
+      aniversarios y recuerdos durante décadas.</p>
+
+      <p>Por eso la mejor elección no siempre es la más grande ni la más
+      llamativa, sino aquella capaz de reflejar vuestra historia de forma
+      auténtica.
+      </p>
+
+
+      <div class="blog-image">
+        <img src="/images/boda.webp">
+      </div>
 
   </div>
   <div v-if="article.type === 'cuidado'" class="content"><!-- 2 -->
@@ -171,7 +248,7 @@ const article = computed(() => articles[route.params.id])
 <div v-if="article.type === 'gemas'" class="content">
 
   <p class="intro">El topacio y la aguamarina comparten tonalidades azules fascinantes, pero transmiten sensaciones completamente distintas.</p>
-
+  
   <p>Mientras la aguamarina suele asociarse con serenidad y sofisticación ligera, el topacio azul ofrece una presencia más intensa y vibrante.</p>
 
   <div class="blog-image">
@@ -245,8 +322,12 @@ const article = computed(() => articles[route.params.id])
   height: 100%
   object-fit: cover
   filter: brightness(55%)
+  filter: brightness(45%)
+  transform: scale(1.03)
+
 
 .hero-overlay
+  z-index: 2 //texto encima del overlay
   position: absolute
   top: 50%
   left: 50%
@@ -255,38 +336,82 @@ const article = computed(() => articles[route.params.id])
   text-align: center
   width: 90%
   max-width: 900px
+.hero::after
+  z-index: 1
+  content: ""
+  position: absolute
+  inset: 0
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.15),
+    rgba(0,0,0,.45)
+  )
 
   h1
-    font-size: 52px
-    margin-bottom: 20px
-    line-height: 1.2
+    font-size: 68px
+    font-weight: 300
+    letter-spacing: -1px
+    line-height: 1.05
+    text-shadow: 0 10px 30px rgba(0,0,0,.25)
 
   p
-    font-size: 20px
-    line-height: 1.7
+    font-size: 19px
+    max-width: 720px
+    margin: 0 auto
+    opacity: .95
 
 .content
-  max-width: 950px
-  margin: 90px auto
+  margin: 120px auto
+  // max-width: 950px
+  max-width: 1100px
   padding: 0 25px 120px
 
 .content p
-  color: #555
-  line-height: 2
-  margin-bottom: 28px
-  font-size: 17px
+  color: #4a4a4a
+  font-size: 18px
+  line-height: 2.1
 
 .intro
-  font-size: 22px !important
-  line-height: 1.9 !important
-  color: #222 !important
-  margin-bottom: 45px !important
+  position: relative
+  padding-left: 30px
+  font-size: 28px !important
+  line-height: 1.8 !important
+  color: #111 !important
+  font-weight: 300
+  max-width: 900px
+.intro::before
+  content: ""
+  position: absolute
+  left: 0
+  top: 10px
+  width: 2px
+  height: 85%
+  background: #D4AF37
+
+.holis
+  text-align: center
+  font-size: 32px
+  line-height: 1.6
+  color: #111
+  font-weight: 300
+  max-width: 850px
+  margin: 90px auto
 
 .content h2
   font-size: 34px
   margin: 70px 0 25px
   color: #111
   font-weight: 500
+  position: relative
+  padding-top: 22px
+.content h2::before
+  content: ""
+  position: absolute
+  top: 0
+  left: 0
+  width: 70px
+  height: 2px
+  background: #D4AF37
 
 .two-cols
   display: grid
@@ -296,6 +421,7 @@ const article = computed(() => articles[route.params.id])
   margin: 70px 0
 
 .two-cols img
+  box-shadow: 0 20px 60px rgba(0,0,0,.10)
   width: 100%
   height: 500px
   object-fit: cover
@@ -305,10 +431,20 @@ const article = computed(() => articles[route.params.id])
   margin: 60px 0
 
 .blog-image img
+  box-shadow: 0 30px 80px rgba(0,0,0,.12)
   width: 100%
   height: 550px
   object-fit: cover
   border-radius: 24px
+
+// imagenes
+.blog-image img,
+.two-cols img
+  transition: .7s ease
+
+.blog-image img:hover,
+.two-cols img:hover
+  transform: scale(1.02)
 
 @media(max-width: 900px)
   .hero
