@@ -340,7 +340,7 @@ h3
 
 .clientPanel
   margin: 40px auto 0 auto
-  width: 35%
+  width: 45%
   min-width: 320px
   max-width: 420px
   background: white

@@ -81,14 +81,13 @@ onMounted(async () => {
           :src="prod?.image"
           :loading="index < 4 ? 'eager' : 'lazy'"
           decoding="async"
-          :alt="prod.name"
-        >
+          :alt="prod.name">
 
       </div>
 
       <div class="contenido">
 
-        <h3>{{ prod.name || prod.title }}</h3>
+        <h3>{{ prod.title }}</h3>
 
         <p class="oro">
           {{ prod?.color_oro }}
