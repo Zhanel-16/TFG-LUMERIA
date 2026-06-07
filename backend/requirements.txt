@@ -2,13 +2,6 @@ Flask
 flask-cors
 python-dotenv
 mysql-connector-python
-PyJWT
-werkzeug
 
-google-api-python-client
-google-auth
-google-auth-httplib2
-google-auth-oauthlib
-
-flask-mail
+resend
 gunicorn

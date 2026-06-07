@@ -2,7 +2,6 @@ from flask import Flask
 from flask_cors import CORS
 from dotenv import load_dotenv #pip install python-dotenv
 import os
-
 from routes.products import products
 from routes.blog import blog
 from routes.contact import contact
@@ -10,26 +9,26 @@ from routes.auth import auth
 from routes.favorites import favorites
 from routes.cart import cart
 from routes.appointments import appointments
-from flask_mail import Mail #correo autom
+# from flask_mail import Mail #correo autom
 
 app = Flask(__name__)
 app.json.ensure_ascii = False
 load_dotenv() 
 # app.config['JSON_AS_ASCII'] = False
 #para mandar correo
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
+# app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+# app.config['MAIL_PORT'] = 587
+# app.config['MAIL_USE_TLS'] = True
 
-app.config['MAIL_USERNAME'] = os.getenv("MAIL_USERNAME")
-app.config['MAIL_PASSWORD'] = os.getenv("MAIL_PASSWORD")
+# app.config['MAIL_USERNAME'] = os.getenv("MAIL_USERNAME")
+# app.config['MAIL_PASSWORD'] = os.getenv("MAIL_PASSWORD")
 
-app.config['MAIL_DEFAULT_SENDER'] = os.getenv("MAIL_USERNAME")
-app.config['MAIL_USE_SSL'] = False
+# app.config['MAIL_DEFAULT_SENDER'] = os.getenv("MAIL_USERNAME")
+# app.config['MAIL_USE_SSL'] = False
 # mail = Mail(app) #error del circular import ???
 from extensions import mail
 
-mail.init_app(app)
+# mail.init_app(app)
 CORS(app)
 
 @app.route("/")
