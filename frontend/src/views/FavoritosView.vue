@@ -196,6 +196,8 @@ onMounted(async () => {
     transform: scale(1.05)
     filter: brightness(.75)
 
+
+
 .img-wrap
   height: 250px
   overflow: hidden
