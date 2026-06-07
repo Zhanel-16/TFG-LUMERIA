@@ -232,8 +232,8 @@ onMounted(async () => {
   flex-direction: column
   text-align: center
 
-  // opacity: 0
-  // animation: aparecer .5s ease forwards
+  opacity: 0
+  animation: aparecer .5s ease forwards
 
   
   &:hover
@@ -307,14 +307,14 @@ button
 button:disabled
   opacity: .7
 
-// @keyframes aparecer
-//   from
-//     opacity: 0
-//     transform: translateY(20px)
+@keyframes aparecer
+  from
+    opacity: 0
+    transform: translateY(20px)
 
-//   to
-//     opacity: 1
-//     transform: translateY(0)
+  to
+    opacity: 1
+    transform: translateY(0)
 
 @media (max-width: 1200px)
 

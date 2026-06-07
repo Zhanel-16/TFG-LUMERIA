@@ -241,6 +241,9 @@ const cerrarSesion = async () => {
   display: flex
   flex-direction: column
   text-align: center
+  opacity: 0
+  animation: aparecer .5s ease forwards
+
 
   &:hover
     transform: translateY(-10px)
@@ -418,7 +421,14 @@ h3
   line-height: 1.8
   max-width: 650px
   margin: auto auto 35px
+@keyframes aparecer
+  from
+    opacity: 0
+    transform: translateY(20px)
 
+  to
+    opacity: 1
+    transform: translateY(0)
 @media (max-width: 1200px)
 
   .favsGrid
