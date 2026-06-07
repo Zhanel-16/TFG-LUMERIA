@@ -55,7 +55,7 @@ onMounted(async () => {
       </p>
 
       <h1>
-        Wishlist Privada
+        Wishlist
       </h1>
 
       <p class="subtitle">
@@ -88,7 +88,7 @@ onMounted(async () => {
 
       <div class="contenido">
 
-        <h3>{{ prod?.name }}</h3>
+        <h3>{{ prod.name || prod.title }}</h3>
 
         <p class="oro">
           {{ prod?.color_oro }}
