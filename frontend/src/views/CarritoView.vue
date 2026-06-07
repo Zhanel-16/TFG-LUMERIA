@@ -181,7 +181,7 @@ h1
   color: #111
 
 .logoutBtn
-  width: 500px
+  width: 700px
   height: 48px
   border: none
   border-radius: 40px
@@ -340,7 +340,7 @@ h3
 
 .clientPanel
   margin: 40px auto 0 auto
-  width: 105%
+  width: 155%
   min-width: 320px
   max-width: 420px
   background: white

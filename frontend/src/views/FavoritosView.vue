@@ -76,7 +76,8 @@ onMounted(async () => {
     <button @click="irHome">Ir a explorar</button>
 </div>
 
-<div v-else class="grid">
+<div v-else>
+
   <div class="grid">
 
     <div
@@ -87,7 +88,6 @@ onMounted(async () => {
     >
 
       <div class="img-wrap">
-
         <img
           :src="prod?.image"
           :loading="index < 4 ? 'eager' : 'lazy'"
@@ -133,8 +133,14 @@ onMounted(async () => {
 
 <style lang="sass" scoped>
 .emptyFavs
+  background: white
+  padding: 50px
+  border-radius: 24px
   text-align: center
-  margin-top: 80px
+  box-shadow: 0 10px 30px rgba(0,0,0,.06)
+  border: 1px solid rgba(212,175,55,.12)
+  max-width: 500px
+  margin: 80px auto 0
 
   p
     color: #777
