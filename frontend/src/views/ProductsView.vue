@@ -154,15 +154,12 @@ const irProducto = (id) => {
   background: white
   border-radius: 24px
   overflow: hidden
-  cursor: pointer
   position: relative
   transition: .45s ease
   box-shadow: 0 10px 30px rgba(0,0,0,.06)
   border: 1px solid rgba(212,175,55,.12)
   display: flex
   flex-direction: column
-  opacity: 0
-  animation: aparecer .5s ease forwards
 
   &:hover
     transform: translateY(-10px)

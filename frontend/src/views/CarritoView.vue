@@ -181,7 +181,7 @@ h1
   color: #111
 
 .logoutBtn
-  width: 390px
+  width: 460px
   height: 48px
   border: none
   border-radius: 40px
@@ -345,7 +345,7 @@ h3
   max-width: 420px
   background: white
   border-radius: 24px
-  padding: 22px 28px
+  padding: 22px 37px
   display: flex
   justify-content: space-between
   align-items: center
