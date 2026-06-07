@@ -242,16 +242,16 @@ h1
     transform: scale(1.05)
     filter: brightness(.75)
 
-  .img-wrap
+.img-wrap
   position: relative
   height: 250px
   overflow: hidden
 
-  .img-wrap img
-    width: 100%
-    height: 100%
-    object-fit: cover
-    transition: .6s ease
+.img-wrap img
+  width: 100%
+  height: 100%
+  object-fit: cover
+  transition: .6s ease
 
 h3
   font-size: 17px

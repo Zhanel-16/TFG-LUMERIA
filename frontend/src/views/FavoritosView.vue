@@ -81,14 +81,14 @@ onMounted(async () => {
           :src="prod?.image"
           :loading="index < 4 ? 'eager' : 'lazy'"
           decoding="async"
-          :alt="prod?.title"
+          :alt="prod.name"
         >
 
       </div>
 
       <div class="contenido">
 
-        <h3>{{ prod?.title }}</h3>
+        <h3>{{ prod?.name }}</h3>
 
         <p class="oro">
           {{ prod?.color_oro }}
@@ -194,8 +194,8 @@ onMounted(async () => {
     box-shadow: 0 25px 60px rgba(0,0,0,.12)
 
   &:hover img
-  transform: scale(1.05)
-  filter: brightness(.75)
+    transform: scale(1.05)
+    filter: brightness(.75)
 
 .img-wrap
   height: 250px
