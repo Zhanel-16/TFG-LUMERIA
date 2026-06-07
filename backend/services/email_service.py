@@ -7,12 +7,16 @@ import os
 # ImportError: cannot import name 'appointments' from partially initialized module 'routes.appointments' (most likely due to a circular import) (C:\Users\zhane\Desktop\TFG-Zhanel\backend\routes\appointments.py)
 # PS C:\Users\zhane\Desktop\TFG-Zhanel\backend> 
 
+
 def enviar_confirmacion(destinatario, fecha, hora, notes, interest=""):
+    print("1 - Entrando en enviar_confirmacion")
+    # prueba1
     msg = Message(
         "Reserva confirmada | LUMERIA",
         sender=os.getenv("MAIL_USERNAME"),
         recipients=[destinatario]
     )
+    print("2 - Message creado")
     msg.body = f"""
 Tu cita privada ha sido confirmada ✨
 
@@ -26,4 +30,8 @@ Será un placer acompañarte en esta experiencia exclusiva, nuestro equipo prepa
 Gracias por confiar en LUMERIA, joyería fina diseñada para brillar toda la vida 💛
 """
 
+    print("3 - Antes de mail.send")
+
     mail.send(msg)
+
+    print("4 - Correo enviado")
