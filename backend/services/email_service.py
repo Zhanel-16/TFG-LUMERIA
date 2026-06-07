@@ -16,7 +16,7 @@ def enviar_confirmacion(destinatario, fecha, hora, notes, interest=""):
         sender=os.getenv("MAIL_USERNAME"),
         recipients=[destinatario]
     )
-    print("2 - Message creado")
+    # print("2 - Message creado")
     msg.body = f"""
 Tu cita privada ha sido confirmada ✨
 
@@ -31,7 +31,14 @@ Gracias por confiar en LUMERIA, joyería fina diseñada para brillar toda la vid
 """
 
     print("3 - Antes de mail.send")
+    
+    try:
+        mail.send(msg)
+        print("4 - Email enviado OK")
+    except Exception as e:
+        print("ERROR enviando email:", e)
 
-    mail.send(msg)
-
-    print("4 - Correo enviado")
+  
+    
+print("MAIL USER:", os.getenv("MAIL_USERNAME"))
+print("MAIL PASS EXISTS:", bool(os.getenv("MAIL_PASSWORD")))
