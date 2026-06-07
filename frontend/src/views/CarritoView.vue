@@ -98,8 +98,8 @@ const cerrarSesion = async () => {
 </div>
 
   <div v-if="carrito.length === 0" class="emptyCart">
-  <p>Tu carrito está vacío</p>
-  <button @click="irHome">Ir a explorar</button>
+    <p>Tu carrito está vacío</p>
+    <button @click="irHome">Ir a explorar</button>
 </div>
 
 <div v-else>
@@ -192,15 +192,21 @@ h1
 
   &:hover
     background: #D4AF37
-
+    
 .emptyCart
+  background: white
+  padding: 50px
+  border-radius: 24px
   text-align: center
-  margin-top: 80px
+  box-shadow: 0 10px 30px rgba(0,0,0,.06)
+  border: 1px solid rgba(212,175,55,.12)
+  max-width: 500px
+  margin: 80px auto 0
 
   p
     color: #777
     margin-bottom: 20px
-    font-size: 18px
+    font-size: 20px
 
   button
     width: 180px

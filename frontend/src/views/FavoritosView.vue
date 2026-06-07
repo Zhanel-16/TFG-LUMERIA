@@ -145,7 +145,7 @@ onMounted(async () => {
   p
     color: #777
     margin-bottom: 20px
-    font-size: 18px
+    font-size: 20px
 
   button
     width: 180px
