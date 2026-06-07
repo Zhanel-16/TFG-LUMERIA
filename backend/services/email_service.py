@@ -50,7 +50,6 @@ import resend
 
 resend.api_key = os.getenv("RESEND_API_KEY")
 
-
 def enviar_confirmacion(destinatario, fecha, hora, notes, interest=""):
     print("1 - Entrando en enviar_confirmacion")
 
