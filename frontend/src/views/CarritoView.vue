@@ -181,7 +181,7 @@ h1
   color: #111
 
 .logoutBtn
-  width: 700px
+  width: 400px
   height: 48px
   border: none
   border-radius: 40px
@@ -192,7 +192,7 @@ h1
 
   &:hover
     background: #D4AF37
-    
+
 .emptyCart
   background: white
   padding: 50px
@@ -217,6 +217,7 @@ h1
     color: white
     cursor: pointer
     transition: .35s ease
+    font-size: 19px
 
     &:hover
       background: #D4AF37
@@ -346,13 +347,14 @@ h3
 
 .clientPanel
   margin: 40px auto 0 auto
-  width: 155%
+  width: 100%
+  max-width: 520px
   min-width: 320px
-  max-width: 420px
   background: white
   border-radius: 24px
   padding: 22px 37px
   display: flex
+  gap: 20px
   justify-content: space-between
   align-items: center
   border: 1px solid rgba(212,175,55,.12)
