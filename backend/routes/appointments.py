@@ -82,7 +82,6 @@ from services.email_service import enviar_confirmacion
 
 appointments = Blueprint("appointments", __name__)
 
-
 # EMAIL THREAD FUNCTION
 def send_email(app, data):
     with app.app_context():
@@ -152,3 +151,4 @@ def create_appointment():
         return jsonify({"ok": False, "error": str(e)})
     
 # arreglo de: WORKER TIMEOUT, bloqueo de SMTP
+# Flask responde rapido, no hay timeout
