@@ -74,8 +74,8 @@
 #     conn.close()
 #     return jsonify(data)
 
-from flask import Blueprint, request, jsonify, current_app
-import threading
+from flask import Blueprint, request, jsonify
+# import threading
 from bd.bd import db_conn
 from services.google_calendar import create_calendar_event
 from services.email_service import enviar_confirmacion
@@ -83,18 +83,18 @@ from services.email_service import enviar_confirmacion
 appointments = Blueprint("appointments", __name__)
 
 # EMAIL THREAD FUNCTION
-def send_email(app, data):
-    with app.app_context():
-        try:
-            enviar_confirmacion(
-                data["email"],
-                data["date"],
-                data["time"],
-                data["notes"],
-                data["interest"]
-            )
-        except Exception as e:
-            print("EMAIL ERROR:", e)
+# def send_email(app, data):
+#     with app.app_context():
+#         try:
+#             enviar_confirmacion(
+#                 data["email"],
+#                 data["date"],
+#                 data["time"],
+#                 data["notes"],
+#                 data["interest"]
+#             )
+#         except Exception as e:
+#             print("EMAIL ERROR:", e)
 
 
 @appointments.route("/", methods=["POST"])
@@ -135,11 +135,18 @@ def create_appointment():
         )
 
         # EMAIL (ASYNC - CLAVE)
-        threading.Thread(
-            target=send_email,
-            args=(current_app._get_current_object(), data),
-            daemon=True
-        ).start()
+        # threading.Thread(
+        #     target=send_email,
+        #     args=(current_app._get_current_object(), data),
+        #     daemon=True
+        # ).start()
+        enviar_confirmacion(
+            data["email"],
+            data["date"],
+            data["time"],
+            data["notes"],
+            data["interest"]
+        )
 
         return jsonify({
             "ok": True,
