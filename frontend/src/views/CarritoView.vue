@@ -171,15 +171,16 @@ const cerrarSesion = async () => {
   max-width: 1180px
   margin: 60px auto
   padding: 0 20px
+.luxuryText
+  text-align: center
 
-h1
+.luxuryText h1
   text-align: center
   font-family: "Outfit", sans-serif
-  font-size: 37px
+  font-size: 39px
   font-weight: 450
   margin: 50px 0
   color: #111
-
 .logoutBtn
   width: 400px
   height: 48px
@@ -323,14 +324,6 @@ h3
 .luxuryHeader
   margin-bottom: 70px
 
-.luxuryText
-  text-align: center
-
-.luxuryText h1
-  font-size: 48px
-  font-weight: 450
-  margin-bottom: 15px
-  color: #111
 
 .subtitle
   max-width: 700px

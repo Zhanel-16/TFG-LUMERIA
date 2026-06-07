@@ -174,7 +174,7 @@ onMounted(async () => {
 .luxuryText h1
   text-align: center
   font-family: "Outfit", sans-serif
-  font-size: 37px
+  font-size: 39px
   font-weight: 450
   margin: 50px 0
   color: #111
