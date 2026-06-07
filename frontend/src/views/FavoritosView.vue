@@ -3,6 +3,7 @@ import { estaAutenticado } from '@/servicios/autenticacion'
 import { obtenerWishlist, eliminarFavorito } from '@/servicios/tarea'
 import { ref, onMounted, computed } from 'vue'
 import { useToast } from "vue-toastification"
+import { useRouter } from 'vue-router'
 const toast = useToast()
 const favoritos = ref([])
 const totalFavs = computed(() => favoritos.value.length)
@@ -11,7 +12,11 @@ const formatPrice = (price) => {
     maximumFractionDigits: 0
   }).format(Number(price))
 }
+const router = useRouter()
 
+const irHome = () => {
+  router.push('/')
+}
 const cargarFavoritos = async () => {
   const res = await obtenerWishlist()
   if (res.ok) {
@@ -65,7 +70,13 @@ onMounted(async () => {
     </div>
 
   </div>
+  
+  <div v-if="favoritos.length === 0" class="emptyFavs">
+    <p>Tu wishlist está vacía</p>
+    <button @click="irHome">Ir a explorar</button>
+</div>
 
+<div v-else class="grid">
   <div class="grid">
 
     <div
@@ -115,11 +126,33 @@ onMounted(async () => {
   </div>
 
 </div>
+</div>
 
 </section>
 </template>
 
 <style lang="sass" scoped>
+.emptyFavs
+  text-align: center
+  margin-top: 80px
+
+  p
+    color: #777
+    margin-bottom: 20px
+    font-size: 18px
+
+  button
+    width: 180px
+    height: 50px
+    border: none
+    border-radius: 40px
+    background: #111
+    color: white
+    cursor: pointer
+    transition: .35s ease
+
+    &:hover
+      background: #D4AF37
 .favs
   max-width: 1180px
   margin: 60px auto
@@ -182,9 +215,14 @@ onMounted(async () => {
   background: white
   border-radius: 24px
   overflow: hidden
-  border: 1px solid rgba(212,175,55,.12)
-  box-shadow: 0 10px 30px rgba(0,0,0,.06)
+  position: relative
   transition: .45s ease
+  box-shadow: 0 10px 30px rgba(0,0,0,.06)
+  border: 1px solid rgba(212,175,55,.12)
+  display: flex
+  flex-direction: column
+  text-align: center
+
   opacity: 0
   animation: aparecer .5s ease forwards
 
@@ -197,6 +235,7 @@ onMounted(async () => {
     filter: brightness(.75)
 
 .img-wrap
+  position: relative
   height: 250px
   overflow: hidden
 
@@ -248,6 +287,9 @@ button
   cursor: pointer
   margin-top: 18px
   transition: .35s ease
+  margin-left: auto
+  margin-right: auto
+  display: block
 
   &:hover
     background: #D4AF37
