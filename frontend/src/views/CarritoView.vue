@@ -97,8 +97,6 @@ const cerrarSesion = async () => {
 
 </div>
 
-  
-
   <div v-if="carrito.length === 0" class="emptyCart">
   <p>Tu carrito está vacío</p>
   <button @click="irHome">Ir a explorar</button>
@@ -114,12 +112,13 @@ const cerrarSesion = async () => {
       class="favCard"
     >
 
-      <img :src="prod?.image" alt="">
+      <div class="img-wrap">
+        <img :src="prod?.image" :loading="index < 4 ? 'eager' : 'lazy'" decoding="async"
+          :alt="prod?.title">
+      </div>
 
       <div class="contenido">
-
-        <h4>{{ prod?.title }}</h4>
-
+        <h3>{{ prod.name }}</h3>
         <p class="oro">
           {{ prod?.color_oro }}
         </p>
@@ -154,7 +153,9 @@ const cerrarSesion = async () => {
         Descubre nuestras colecciones junto a un especialista y encuentra la joya perfecta.
       </p>
 
-      <ReservaCita />
+      <div class="formWrap">
+        <ReservaCita />
+      </div>
 
     </div>
 
@@ -178,8 +179,6 @@ h1
   font-weight: 450
   margin: 50px 0
   color: #111
-
-
 
 .logoutBtn
   width: 170px
@@ -241,27 +240,33 @@ h1
 
   &:hover img
     transform: scale(1.05)
+    filter: brightness(.75)
 
-  img
+  .img-wrap
+  position: relative
+  height: 250px
+  overflow: hidden
+
+  .img-wrap img
     width: 100%
-    height: 250px
+    height: 100%
     object-fit: cover
     transition: .6s ease
-    background: #fafafa
 
-.favCard h4
-  font-size: 16px
+h3
+  font-size: 17px
   font-weight: 600
   line-height: 1.4
   color: #111
-  padding: 20px 20px 0
-  min-height: 70px
+  text-align: center
+  min-height: 20px
+  margin-bottom: 6px
 
 .price
   color: #AA7C11
-  font-size: 24px
+  font-size: 20px
   font-weight: 650
-  margin-top: 8px
+  margin: 6px 0 12px
 
 .cantidad
   color: #777
@@ -269,14 +274,17 @@ h1
   margin-top: 5px
 
 .favCard button
-  width: 170px
+  display: block
+  width: 160px
   height: 48px
   border: none
   border-radius: 40px
   background: #111
   color: white
+  margin-top: 12px
+  margin-left: auto
+  margin-right: auto
   cursor: pointer
-  margin: 18px auto 25px
   transition: .35s ease
 
   &:hover
@@ -290,7 +298,9 @@ h1
   box-shadow: 0 10px 30px rgba(0,0,0,.06)
   border: 1px solid rgba(212,175,55,.12)
   text-align: center
-
+.formWrap
+  max-width: 500px
+  margin: 0 auto
 .badge
   display: inline-block
   background: rgba(212,175,55,.12)
@@ -329,10 +339,13 @@ h1
   margin-bottom: 18px
 
 .clientPanel
-  margin-top: 40px
+  margin: 40px auto 0 auto
+  width: 35%
+  min-width: 320px
+  max-width: 420px
   background: white
   border-radius: 24px
-  padding: 25px 35px
+  padding: 22px 28px
   display: flex
   justify-content: space-between
   align-items: center
@@ -364,13 +377,22 @@ h1
   margin-top: 5px
 
 .contenido
-  padding: 20px 22px 30px
+  padding: 12px 25px 35px
+  text-align: center
+  display: flex
+  flex-direction: column
+  flex: 1
 
 .oro
   color: #777
   font-size: 13px
-  margin-top: 8px
-  min-height: 40px
+  line-height: 1.4
+  min-height: 54px
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  margin: 7px 0
 
 .appointmentSection
   margin-top: 90px
@@ -378,10 +400,12 @@ h1
 .appointmentBox
   background: white
   border-radius: 24px
-  padding: 60px
+  padding: 50px 30px
   text-align: center
   border: 1px solid rgba(212,175,55,.12)
   box-shadow: 0 10px 30px rgba(0,0,0,.06)
+  max-width: 700px
+  margin: 0 auto
 
 .appointmentBox h2
   font-size: 34px

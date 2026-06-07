@@ -194,7 +194,8 @@ onMounted(async () => {
     box-shadow: 0 25px 60px rgba(0,0,0,.12)
 
   &:hover img
-    transform: scale(1.05)
+  transform: scale(1.05)
+  filter: brightness(.75)
 
 .img-wrap
   height: 250px
@@ -207,20 +208,30 @@ onMounted(async () => {
   transition: .6s ease
 
 .contenido
-  padding: 18px 22px 30px
+  padding: 12px 25px 35px
   text-align: center
+  display: flex
+  flex-direction: column
+  flex: 1
 
 h3
-  font-size: 16px
+  font-size: 17px
   font-weight: 600
   line-height: 1.4
   color: #111
-
+  text-align: center
+  min-height: 20px
+  margin-bottom: 6px
 .oro
   color: #777
   font-size: 13px
-  margin-top: 8px
-  min-height: 40px
+  line-height: 1.4
+  min-height: 54px
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  margin: 7px 0
 
 .price
   color: #AA7C11
