@@ -6,6 +6,11 @@ import { useToast } from "vue-toastification"
 const toast = useToast()
 const favoritos = ref([])
 const totalFavs = computed(() => favoritos.value.length)
+const formatPrice = (price) => {
+  return new Intl.NumberFormat('en-US', {
+    maximumFractionDigits: 0
+  }).format(Number(price))
+}
 
 const cargarFavoritos = async () => {
   const res = await obtenerWishlist()
@@ -40,129 +45,263 @@ onMounted(async () => {
     <router-link to="/login" class="loginBtn">Iniciar sesión</router-link>
   </div>
   <div v-else>
-    <h1>Mis favoritos ❤</h1>
 
-    <div class="grid">
-<!-- habra misma animacion igual q en app con products -->
-  <div v-for="(prod,index) in favoritos" :key="index" class="card" :style="{ animationDelay: `${index * 0.08}s` }">
+  <div class="luxuryHeader">
 
-    <img :src="prod?.image" :loading="index < 4 ? 'eager' : 'lazy'" decoding="async" alt="prod?.title">
-    <h3>{{ prod?.title }}</h3>
+    <div class="luxuryText">
 
-    <p class="price">{{ prod?.price }} €</p>
+      <p class="mini">
+        CURATED SELECTION
+      </p>
 
-    <button @click="borrarFav(prod.idDoc)" :disabled="eliminando === prod.idDoc">
-  {{
-    eliminando === prod.idDoc
-    ? 'Eliminando...'
-    : 'Eliminar'
-  }}</button>
+      <h1>
+        Wishlist Privada
+      </h1>
+
+      <p class="subtitle">
+        Guarda tus piezas favoritas y accede a ellas desde cualquier dispositivo.
+      </p>
+
+    </div>
 
   </div>
+
+  <div class="grid">
+
+    <div
+      v-for="(prod,index) in favoritos"
+      :key="index"
+      class="card"
+      :style="{ animationDelay: `${index * 0.08}s` }"
+    >
+
+      <div class="img-wrap">
+
+        <img
+          :src="prod?.image"
+          :loading="index < 4 ? 'eager' : 'lazy'"
+          decoding="async"
+          :alt="prod?.title"
+        >
+
+      </div>
+
+      <div class="contenido">
+
+        <h3>{{ prod?.title }}</h3>
+
+        <p class="oro">
+          {{ prod?.color_oro }}
+        </p>
+
+        <p class="price">
+          {{ formatPrice(prod?.price) }} €
+        </p>
+
+        <button
+          @click="borrarFav(prod.idDoc)"
+          :disabled="eliminando === prod.idDoc"
+        >
+          {{
+            eliminando === prod.idDoc
+              ? 'Eliminando...'
+              : 'Eliminar'
+          }}
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
-    
-    <!-- <div>
-
-    </div> -->
-  </div>
 
 </section>
 </template>
 
 <style lang="sass" scoped>
 .favs
-  max-width: 1300px
+  max-width: 1180px
   margin: 60px auto
   padding: 0 20px
 
-h1
+.luxuryHeader
+  margin-bottom: 60px
+
+.luxuryText
   text-align: center
-  font-size: 36px
-  font-weight: 400
-  margin-bottom: 40px
+
+.luxuryText h1
+  font-size: 48px
+  font-weight: 450
+  color: #111
+  margin-bottom: 15px
+
+.subtitle
+  max-width: 700px
+  margin: auto
+  color: #666
+  line-height: 1.8
+
+.mini
+  color: #D4AF37
+  letter-spacing: 5px
+  font-size: 12px
+  font-weight: 600
+  margin-bottom: 18px
 
 .notLogged
   background: white
-  padding: 50px 20px
+  padding: 50px
+  border-radius: 24px
   text-align: center
-  border-radius: 18px
-  box-shadow: 0 8px 25px rgba(0,0,0,.06)
-
-  p
-    margin-top: 10px
-    color: #666
+  box-shadow: 0 10px 30px rgba(0,0,0,.06)
 
 .loginBtn
   display: inline-block
   margin-top: 20px
-  padding: 12px 26px
-  border-radius: 30px
+  width: 180px
+  height: 48px
+  line-height: 48px
+  border-radius: 40px
   background: #111
   color: white
   text-decoration: none
+  transition: .35s
 
   &:hover
     background: #D4AF37
 
 .grid
   display: grid
-  grid-template-columns: repeat(4, 1fr)
-  gap: 25px
+  grid-template-columns: repeat(4, 250px)
+  justify-content: center
+  gap: 35px
 
 .card
   background: white
-  border-radius: 18px
-  padding: 20px
-  text-align: center
-  box-shadow: 0 8px 25px rgba(0,0,0,.06)
-  transition: .3s
+  border-radius: 24px
+  overflow: hidden
+  border: 1px solid rgba(212,175,55,.12)
+  box-shadow: 0 10px 30px rgba(0,0,0,.06)
+  transition: .45s ease
   opacity: 0
-  transform: translateY(10px)
-  animation: aparecer .4s ease forwards
+  animation: aparecer .5s ease forwards
 
   &:hover
-    transform: translateY(-6px)
+    transform: translateY(-10px)
+    box-shadow: 0 25px 60px rgba(0,0,0,.12)
 
-img
+  &:hover img
+    transform: scale(1.05)
+
+.img-wrap
+  height: 250px
+  overflow: hidden
+
+.img-wrap img
   width: 100%
-  height: 220px
+  height: 100%
   object-fit: cover
-  border-radius: 14px
-  margin-bottom: 15px
+  transition: .6s ease
+
+.contenido
+  padding: 18px 22px 30px
+  text-align: center
 
 h3
-  font-size: 18px
-  margin-top: 10px
+  font-size: 16px
+  font-weight: 600
+  line-height: 1.4
+  color: #111
+
+.oro
+  color: #777
+  font-size: 13px
+  margin-top: 8px
+  min-height: 40px
 
 .price
-  font-weight: bold
-  margin-top: 8px
+  color: #AA7C11
+  font-size: 22px
+  font-weight: 650
+  margin-top: 10px
 
 button
-  margin-top: 15px
-  padding: 10px 20px
+  width: 170px
+  height: 48px
   border: none
-  border-radius: 30px
+  border-radius: 40px
   background: #111
   color: white
   cursor: pointer
+  margin-top: 18px
+  transition: .35s ease
 
   &:hover
     background: #D4AF37
 
 button:disabled
-  background: #999
+  opacity: .7
 
-/* RESPONSIVE */
+@keyframes aparecer
+  from
+    opacity: 0
+    transform: translateY(20px)
+
+  to
+    opacity: 1
+    transform: translateY(0)
+
 @media (max-width: 1200px)
-  .grid
-    grid-template-columns: repeat(3, 1fr)
 
-@media (max-width: 900px)
   .grid
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: repeat(3, minmax(220px,1fr))
+    gap: 20px
 
-@media (max-width: 600px)
+@media (max-width: 768px)
+
+  .luxuryText h1
+    font-size: 34px
+
+  .grid
+    grid-template-columns: repeat(2,1fr)
+
+  .img-wrap
+    height: 200px
+
+@media (max-width: 480px)
+
+  .luxuryText h1
+    font-size: 28px
+
+  .subtitle
+    font-size: 14px
+
+  .grid
+    grid-template-columns: repeat(2,1fr)
+    gap: 12px
+
+  .img-wrap
+    height: 150px
+
+  h3
+    font-size: 13px
+
+  .oro
+    font-size: 11px
+
+  .price
+    font-size: 16px
+
+  button
+    width: 100%
+    height: 38px
+    font-size: 11px
+
+@media (max-width: 360px)
+
   .grid
     grid-template-columns: 1fr
 </style>

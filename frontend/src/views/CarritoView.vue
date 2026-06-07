@@ -55,40 +55,111 @@ const cerrarSesion = async () => {
 <template>
 <section class="carrito">
 
-  <div class="userPanel">
-    <div class="userInfo">
-      <i class="fa-solid fa-user-circle"></i>
-      <div>
-        <p class="welcome">Bienvenida</p>
-        <h3>{{ usuario?.email }}</h3>
-      </div>
-    </div>
+  <div class="luxuryHeader">
 
-    <button class="logoutBtn" @click="cerrarSesion">Cerrar sesión</button>
+  <div class="luxuryText">
+
+    <p class="mini">
+      LUMERIA PRIVATE COLLECTION
+    </p>
+
+    <h1>
+      Selección Exclusiva
+    </h1>
+
+    <p class="subtitle">
+      Tus piezas seleccionadas para una experiencia de compra personalizada.
+    </p>
+
   </div>
 
-  <h1>Tu carrito</h1>
+  <div class="clientPanel">
+
+    <div class="clientInfo">
+
+      <i class="fa-solid fa-user"></i>
+
+      <div>
+        <span>CLIENTE LUMERIA</span>
+        <h3>{{ usuario?.email }}</h3>
+      </div>
+
+    </div>
+
+    <button
+      class="logoutBtn"
+      @click="cerrarSesion"
+    >
+      Cerrar sesión
+    </button>
+
+  </div>
+
+</div>
+
+  
 
   <div v-if="carrito.length === 0" class="emptyCart">
   <p>Tu carrito está vacío</p>
   <button @click="irHome">Ir a explorar</button>
 </div>
 
-<div v-else class="favsGrid">
-  <div v-for="(prod, index) in carrito" :key="index" class="favCard">
-    <img :src="prod?.image" alt="">
-    <h4>{{ prod?.title }}</h4>
-    <p class="price">{{ formatPrice(prod?.price) }} €</p>
-    <p class="cantidad">Cantidad: {{ prod.rating?.count }}</p>
-    <button @click="borrar(prod.idDoc)">Eliminar</button>
-  </div>
-  <!-- <div>
-    <span class="badge">Total productos: {{ totalItems }}</span>
-    <h2>Total: {{ totalPrecio.toFixed(2) }} €</h2>
-</div> -->
+<div v-else>
 
-<!-- FORMULARIO -->
-  <ReservaCita />
+  <div class="favsGrid">
+
+    <div
+      v-for="(prod, index) in carrito"
+      :key="index"
+      class="favCard"
+    >
+
+      <img :src="prod?.image" alt="">
+
+      <div class="contenido">
+
+        <h4>{{ prod?.title }}</h4>
+
+        <p class="oro">
+          {{ prod?.color_oro }}
+        </p>
+
+        <p class="price">
+          {{ formatPrice(prod?.price) }} €
+        </p>
+
+        <button @click="borrar(prod.idDoc)">
+          Eliminar
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <section class="appointmentSection">
+
+    <div class="appointmentBox">
+
+      <p class="mini">
+        EXPERIENCIA PRIVADA
+      </p>
+
+      <h2>
+        Reserva una cita personalizada
+      </h2>
+
+      <p>
+        Descubre nuestras colecciones junto a un especialista y encuentra la joya perfecta.
+      </p>
+
+      <ReservaCita />
+
+    </div>
+
+  </section>
+
 </div>
 
 </section>
@@ -108,35 +179,7 @@ h1
   margin: 50px 0
   color: #111
 
-.userPanel
-  background: white
-  border-radius: 24px
-  padding: 25px 35px
-  display: flex
-  justify-content: space-between
-  align-items: center
-  box-shadow: 0 10px 30px rgba(0,0,0,.06)
-  border: 1px solid rgba(212,175,55,.12)
 
-.userInfo
-  display: flex
-  align-items: center
-  gap: 16px
-
-  i
-    font-size: 42px
-    color: #D4AF37
-
-.welcome
-  color: #777
-  font-size: 13px
-  letter-spacing: 2px
-  text-transform: uppercase
-
-.userInfo h3
-  font-size: 16px
-  color: #111
-  margin-top: 4px
 
 .logoutBtn
   width: 170px
@@ -260,6 +303,96 @@ h1
   font-size: 32px
   color: #111
 
+.luxuryHeader
+  margin-bottom: 70px
+
+.luxuryText
+  text-align: center
+
+.luxuryText h1
+  font-size: 48px
+  font-weight: 450
+  margin-bottom: 15px
+  color: #111
+
+.subtitle
+  max-width: 700px
+  margin: auto
+  color: #666
+  line-height: 1.8
+
+.mini
+  letter-spacing: 5px
+  color: #D4AF37
+  font-size: 12px
+  font-weight: 600
+  margin-bottom: 18px
+
+.clientPanel
+  margin-top: 40px
+  background: white
+  border-radius: 24px
+  padding: 25px 35px
+  display: flex
+  justify-content: space-between
+  align-items: center
+  border: 1px solid rgba(212,175,55,.12)
+  box-shadow: 0 10px 30px rgba(0,0,0,.06)
+
+.clientInfo
+  display: flex
+  align-items: center
+  gap: 16px
+
+.clientInfo i
+  width: 60px
+  height: 60px
+  border-radius: 50%
+  background: rgba(212,175,55,.12)
+  display: flex
+  justify-content: center
+  align-items: center
+  color: #D4AF37
+  font-size: 22px
+
+.clientInfo span
+  font-size: 12px
+  letter-spacing: 2px
+  color: #888
+
+.clientInfo h3
+  margin-top: 5px
+
+.contenido
+  padding: 20px 22px 30px
+
+.oro
+  color: #777
+  font-size: 13px
+  margin-top: 8px
+  min-height: 40px
+
+.appointmentSection
+  margin-top: 90px
+
+.appointmentBox
+  background: white
+  border-radius: 24px
+  padding: 60px
+  text-align: center
+  border: 1px solid rgba(212,175,55,.12)
+  box-shadow: 0 10px 30px rgba(0,0,0,.06)
+
+.appointmentBox h2
+  font-size: 34px
+  margin: 15px 0
+
+.appointmentBox p
+  color: #666
+  line-height: 1.8
+  max-width: 650px
+  margin: auto auto 35px
+
 @media (max-width: 1200px)
 
   .favsGrid
@@ -272,11 +405,6 @@ h1
   h1
     font-size: 34px
 
-  .userPanel
-    flex-direction: column
-    align-items: flex-start
-    gap: 20px
-
   .logoutBtn
     width: 100%
 
@@ -286,6 +414,18 @@ h1
 
   .favCard img
     height: 200px
+  .luxuryText h1
+    font-size: 34px
+
+  .clientPanel
+    flex-direction: column
+    gap: 20px
+
+  .logoutBtn
+    width: 100%
+
+  .appointmentBox
+    padding: 35px 25px
 
 @media (max-width: 480px)
 
@@ -321,9 +461,16 @@ h1
     height: 38px
     font-size: 11px
     margin-bottom: 15px
+  .luxuryText h1
+    font-size: 28px
+
+  .subtitle
+    font-size: 14px
+
+  .appointmentBox h2
+    font-size: 24px
 
 @media (max-width: 360px)
-
   .favsGrid
     grid-template-columns: 1fr
 </style>
