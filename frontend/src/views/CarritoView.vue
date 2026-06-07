@@ -175,7 +175,7 @@ const cerrarSesion = async () => {
 h1
   text-align: center
   font-family: "Outfit", sans-serif
-  font-size: 42px
+  font-size: 37px
   font-weight: 450
   margin: 50px 0
   color: #111
@@ -200,7 +200,7 @@ h1
   text-align: center
   box-shadow: 0 10px 30px rgba(0,0,0,.06)
   border: 1px solid rgba(212,175,55,.12)
-  max-width: 500px
+  max-width: 480px
   margin: 80px auto 0
 
   p
@@ -217,7 +217,7 @@ h1
     color: white
     cursor: pointer
     transition: .35s ease
-    font-size: 19px
+    font-size: 18.2px
 
     &:hover
       background: #D4AF37

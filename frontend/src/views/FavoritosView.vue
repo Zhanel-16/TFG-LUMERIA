@@ -139,7 +139,7 @@ onMounted(async () => {
   text-align: center
   box-shadow: 0 10px 30px rgba(0,0,0,.06)
   border: 1px solid rgba(212,175,55,.12)
-  max-width: 500px
+  max-width: 480px
   margin: 80px auto 0
 
   p
@@ -156,6 +156,7 @@ onMounted(async () => {
     color: white
     cursor: pointer
     transition: .35s ease
+    font-size: 18.2px
 
     &:hover
       background: #D4AF37
@@ -171,10 +172,12 @@ onMounted(async () => {
   text-align: center
 
 .luxuryText h1
-  font-size: 48px
+  text-align: center
+  font-family: "Outfit", sans-serif
+  font-size: 37px
   font-weight: 450
+  margin: 50px 0
   color: #111
-  margin-bottom: 15px
 
 .subtitle
   max-width: 700px
