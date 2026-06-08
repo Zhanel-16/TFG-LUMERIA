@@ -232,8 +232,8 @@ onMounted(async () => {
   flex-direction: column
   text-align: center
 
-  opacity: 0
-  animation: aparecer .5s ease forwards
+  // opacity: 0
+  // animation: aparecer .5s ease forwards
 
   
   &:hover
