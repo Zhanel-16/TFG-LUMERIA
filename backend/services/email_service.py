@@ -66,7 +66,6 @@ Tu cita privada ha sido confirmada ✨
 Fecha: {fecha}
 Hora: {hora}
 Experiencia reservada: {interest}
-
 {texto_notas}
 
 Será un placer acompañarte en esta experiencia exclusiva, nuestro equipo preparará una selección personalizada según tus preferencias 💎
@@ -74,7 +73,6 @@ Será un placer acompañarte en esta experiencia exclusiva, nuestro equipo prepa
 Gracias por confiar en LUMERIA, joyería fina diseñada para brillar toda la vida 💛
 """
         })
-
     #     print("4 - Email enviado OK")
 
     # except Exception as e:
