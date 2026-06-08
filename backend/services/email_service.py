@@ -54,7 +54,7 @@ def enviar_confirmacion(destinatario, fecha, hora, notes, interest=""):
     if interest == "Anillos de compromiso":
         texto_notas = notes
     else:
-        texto_notas = f"Preferencias para tu experiencia:\n\n{notes}"
+        texto_notas = f"Preferencias para tu experiencia: {notes}"
 
     resend.Emails.send({
         "from": "LUMERIA <onboarding@resend.dev>",
