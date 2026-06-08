@@ -51,20 +51,23 @@ import resend
 resend.api_key = os.getenv("RESEND_API_KEY")
 
 def enviar_confirmacion(destinatario, fecha, hora, notes, interest=""):
-    print("1 - Entrando en enviar_confirmacion")
+    if interest == "Anillos de compromiso":
+        texto_notas = notes
+    else:
+        texto_notas = f"Preferencias para tu experiencia:\n\n{notes}"
 
-    try:
-        resend.Emails.send({
-            "from": "onboarding@resend.dev",
-            "to": [destinatario],
-            "subject": "Reserva confirmada | LUMERIA",
-            "text": f"""
+    resend.Emails.send({
+        "from": "LUMERIA <onboarding@resend.dev>",
+        "to": [destinatario],
+        "subject": "Reserva confirmada | LUMERIA",
+        "text": f"""
 Tu cita privada ha sido confirmada ✨
 
 Fecha: {fecha}
 Hora: {hora}
 Experiencia reservada: {interest}
-Preferencias para tu experiencia: {notes}
+
+{texto_notas}
 
 Será un placer acompañarte en esta experiencia exclusiva, nuestro equipo preparará una selección personalizada según tus preferencias 💎
 
@@ -72,7 +75,7 @@ Gracias por confiar en LUMERIA, joyería fina diseñada para brillar toda la vid
 """
         })
 
-        print("4 - Email enviado OK")
+    #     print("4 - Email enviado OK")
 
-    except Exception as e:
-        print("ERROR enviando email:", e)
+    # except Exception as e:
+    #     print("ERROR enviando email:", e)
