@@ -21,6 +21,7 @@ const irHome = () => {
 const totalItems = computed(() => carrito.value.length)
 
 const carrito = ref([])
+const eliminando = ref(null)
 
 const obtenerDatos = async () => {
   const resultado = await obtenerCarrito()
@@ -38,8 +39,13 @@ const totalPrecio = computed(() => {
 
 
 const borrar = async (id) => {
+  eliminando.value = id
+  toast.info("Eliminando joya de tu wishlist...")
+
   await eliminarCarrito(id)
-  obtenerDatos() // recargar
+  await obtenerDatos()
+  eliminando.value = null
+  toast.success("Producto eliminado")
 }
 
 const cerrarSesion = async () => {
@@ -127,8 +133,8 @@ const cerrarSesion = async () => {
           {{ formatPrice(prod?.price) }} €
         </p>
 
-        <button @click="borrar(prod.idDoc)">
-          Eliminar
+        <button @click="borrar(prod.idDoc)" :disabled="eliminando === prod.idDoc">
+          {{eliminando === prod.idDoc ? 'Eliminando...' : 'Eliminar'}}
         </button>
 
       </div>

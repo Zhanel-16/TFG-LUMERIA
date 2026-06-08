@@ -66,6 +66,7 @@ Tu cita privada ha sido confirmada ✨
 Fecha: {fecha}
 Hora: {hora}
 Experiencia reservada: {interest}
+
 {texto_notas}
 
 Será un placer acompañarte en esta experiencia exclusiva, nuestro equipo preparará una selección personalizada según tus preferencias 💎
