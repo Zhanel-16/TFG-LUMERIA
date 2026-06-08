@@ -7,3 +7,6 @@ resend
 PyJWT
 google-auth
 google-api-python-client
+
+google-auth-oauthlib
+google-api-core
