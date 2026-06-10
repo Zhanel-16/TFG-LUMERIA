@@ -27,6 +27,12 @@
 
     <h2>Reserva una asesoría privada</h2>
     <p>Si reservas vuestra experiencia antes de la pedida, recibiréis una pulsera de diamantes en plata valorada en 499€</p>
+    <p class="reglas">Para garantizar una experiencia totalmente personalizada, las reservas deben realizarse con un mínimo de 3 días de antelación. La fecha prevista para la pedida deberá ser posterior a la fecha de vuestra cita privada.</p>
+
+    <p class="info-fecha">Las citas privadas requieren un mínimo de 3 días de antelación. Próxima fecha disponible:<strong>{{ fechaMinimaFormateada }}</strong></p>
+    <p v-if="fechaCita" class="info-reserva">La fecha de la pedida debe ser posterior a la cita privada. Primera fecha posible para la pedida: <strong>{{ fechaPedidaMinFormateada }}</strong>
+    </p>
+
     <img src="/images/hola.jpg">
   </div>
   
@@ -37,9 +43,12 @@
     
     <!-- TODOS LO SINPUTS + BUTTON + SELECTS EN GRIS = BLOQUEADOS SI NO ESTÁS LOGIN -->
     <span>Fecha de la pedida</span>
-    <input type="date" v-model="pedida" :min="fechaMin" :max="fechaMax" :disabled="!auth.currentUser"> <!-- fecha pedida -->
+    <input type="date" v-model="fechaPedida" :min="fechaPedidaMin" :disabled="!fechaCita"/>
+    <!-- no se puede elegir una fecha de pedida antes de seleccionar cita privada -->
+    <!-- <input type="date" v-model="pedida" :min="fechaMin" :max="fechaMax" :disabled="!auth.currentUser"> fecha pedida -->
     <span>Fecha de la cita privada</span>
-    <input type="date" v-model="fecha" :min="fechaMin" :max="fechaMax" :disabled="!auth.currentUser"> <!-- fecha de la cita privada -->
+    <input type="date" v-model="fechaCita" :min="fechaMinima"/>
+    <!-- <input type="date" v-model="fecha" :min="fechaMin" :max="fechaMax" :disabled="!auth.currentUser"> fecha de la cita privada -->
     
     <span>Hora de la experiencia</span>
     
@@ -78,30 +87,55 @@
 <script setup>
 import WhatsappExpert from "@/components/WhatsappExpert.vue"
 import { useRouter } from "vue-router"
+import { computed } from "vue"
 const router = useRouter()
 
 const goToProducto = (id) => {
   router.push(`/products/${id}`)
 }
-
 import axios from "axios"
 import { ref, onMounted } from "vue"
 import { auth } from "@/firebase/config"
 import { useToast } from "vue-toastification"
+const fechaMinima = computed(() => {
+  const fecha = new Date()
+  fecha.setDate(fecha.getDate() + 3)
 
+  return fecha.toISOString().split("T")[0]
+}) 
+
+const fechaPedidaMin = computed(() => {
+  if (!fechaCita.value) return ""
+  const fecha = new Date(fechaCita.value)
+  fecha.setDate(fecha.getDate() + 1)
+  return fecha.toISOString().split("T")[0]
+})
+
+const fechaMinimaFormateada = computed(() => {
+  return new Date(fechaMinima.value)
+    .toLocaleDateString("es-ES")
+})
+
+const fechaPedidaMinFormateada = computed(() => {
+  if (!fechaPedidaMin.value) return ""
+
+  return new Date(fechaPedidaMin.value)
+    .toLocaleDateString("es-ES")
+})
 const toast = useToast()
 const productos = ref([])
 
 const nombrePareja = ref("")
-const pedida = ref("")
 const presupuesto = ref("")
 
-const fecha = ref("")
+const fechaCita = ref("")
+const fechaPedida = ref("")
+
 const hora = ref("")
 const interest = ref("Anillos de compromiso")
 
-const fechaMin = "2026-01-01"
-const fechaMax = "2028-12-31"
+// const fechaMin = "2026-01-01"
+// const fechaMax = "2028-12-31"
 
 const formatPrice = (price) => {
   const num = typeof price === 'number'
@@ -129,16 +163,7 @@ const cargarProductos = async () => {
 const reservar = async () => {
   try {
     const user = auth.currentUser
-    const fechaSeleccionada = new Date(fecha.value)
-    const minDate = new Date(fechaMin)
-    const maxDate = new Date(fechaMax)
-    if (
-      fechaSeleccionada < minDate ||
-      fechaSeleccionada > maxDate
-    ) {
-      toast.error("Selecciona una fecha válida")
-      return //paro si la fecha es inválida!!!
-    }
+    
     if (!user) { // si no esta logueado
       toast.error(
         "Debes iniciar sesión para reservar"
@@ -146,7 +171,7 @@ const reservar = async () => {
       return
     }    
     if ( // VALIDACIONES
-      !fecha.value ||
+      !fechaCita.value ||
       !hora.value ||
       !presupuesto.value
     ) {
@@ -157,15 +182,35 @@ const reservar = async () => {
     // TEXTO EXTRA al form principal
     const notasVip =
   `Nombre pareja: ${nombrePareja.value}\n` +
-  `Fecha pedida: ${pedida.value}\n` +
+  `Fecha pedida: ${fechaPedida.value}\n` +
   `Presupuesto: ${presupuesto.value}`
+
+    // 
+    const hoyMas3 = new Date()
+    hoyMas3.setDate(hoyMas3.getDate() + 3)
+
+    const cita = new Date(fechaCita.value)
+    const pedida = new Date(fechaPedida.value)
+
+    if (cita < hoyMas3) {
+      toast.error(
+        `Las reservas requieren un mínimo de 3 días de antelación. La primera fecha disponible es ${fechaMinimaFormateada.value}`
+      )
+      return
+    }
+
+    if (pedida <= cita) {
+      toast.error("La fecha de la pedida debe ser posterior a la cita privada.")
+      return
+    }
+    // 
 
     await axios.post(
       "https://tfg-lumeria.onrender.com/appointments/",
       {
         user_id: user.uid,
         email: user.email,
-        date: fecha.value,
+        date: fechaCita.value,
         time: hora.value,
         service: "Engagement Concierge",
         interest: interest.value,
@@ -178,10 +223,9 @@ const reservar = async () => {
     )
     // limpiar
     nombrePareja.value = ""
-    pedida.value = ""
+    fechaPedida.value = ""
     presupuesto.value = ""
-
-    fecha.value = ""
+    fechaCita.value = ""
     hora.value = ""
 
   } catch (error) {
@@ -199,6 +243,47 @@ onMounted(() => {
 </script>
 
 <style lang="sass" scoped>
+.reglas
+  margin-top: 14px
+  padding: 16px 20px
+  background: rgba(212,175,55,.05)
+  border: 1px solid rgba(212,175,55,.18)
+  border-radius: 14px
+
+  font-size: 14px
+  color: #666
+  line-height: 1.8
+
+.info-fecha
+  margin-top: 14px
+  padding: 14px 18px
+
+  background: rgba(212,175,55,.06)
+  border-left: 4px solid #D4AF37
+  border-radius: 12px
+
+  font-size: 14px
+  color: #555
+
+  strong
+    color: #AA7C11
+
+.info-reserva
+  margin-top: 12px
+  padding: 14px 18px
+  background: rgba(212,175,55,.06)
+  border: 1px solid rgba(212,175,55,.25)
+  border-left: 4px solid #D4AF37
+  border-radius: 12px
+
+  color: #555
+  font-size: 14px
+  line-height: 1.7
+
+  strong
+    color: #AA7C11
+    font-weight: 650
+
 .coleccion
   max-width: 1180px
   margin: 80px auto

@@ -10,6 +10,16 @@ const route = useRoute()
 const producto = ref({})
 const toast = useToast()
 
+const formatPrice = (price) => {
+  const num = typeof price === 'number'
+    ? price
+    : parseFloat(String(price).replace(',', '.'))
+
+  return new Intl.NumberFormat('en-US', {
+    maximumFractionDigits: 0
+  }).format(num)
+}
+
 onMounted(async () => {
   let id = route.params.id
   let res = await axios.get(
@@ -52,7 +62,7 @@ const cartClick = async () => {
     <!-- IZQUIERDA info -->
     <div class="info">
       <h1>{{ producto.name }}</h1>
-      <p class="price">{{ producto.price }} €</p>
+      <p class="price">{{ formatPrice(prod.price) }} €</p>
       <p class="gold">{{ producto.color_oro }}</p>
 
       <p class="desc">{{ producto.description }}</p>
