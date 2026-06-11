@@ -29,8 +29,8 @@
     <p>Si reservas vuestra experiencia antes de la pedida, recibiréis una pulsera de diamantes en plata valorada en 499€</p>
     <p class="reglas">Para garantizar una experiencia totalmente personalizada, las reservas deben realizarse con un mínimo de 3 días de antelación. La fecha prevista para la pedida deberá ser posterior a la fecha de vuestra cita privada.</p>
 
-    <p class="info-fecha">Las citas privadas requieren un mínimo de 3 días de antelación. Próxima fecha disponible:<strong>{{ fechaMinimaFormateada }}</strong></p>
-    <p v-if="fechaCita" class="info-reserva">La fecha de la pedida debe ser posterior a la cita privada. Primera fecha posible para la pedida: <strong>{{ fechaPedidaMinFormateada }}</strong>
+    <p class="info-fecha">Las citas privadas requieren un mínimo de 3 días de antelación. Próxima fecha disponible: <strong>{{ fechaMinimaFormateada }}</strong></p>
+    <p v-if="fechaCita" class="info-reserva">La fecha de la pedida debe ser posterior a la cita privada. Primera fecha posible: <strong>{{ fechaPedidaMinFormateada }}</strong>
     </p>
 
     <img src="/images/hola.jpg">
@@ -203,7 +203,7 @@ const reservar = async () => {
       toast.error("La fecha de la pedida debe ser posterior a la cita privada.")
       return
     }
-    // 
+    const giftEligible = new Date(fechaPedida.value) > new Date(fechaCita.value)
 
     await axios.post(
       "https://tfg-lumeria.onrender.com/appointments/",
@@ -214,6 +214,10 @@ const reservar = async () => {
         time: hora.value,
         service: "Engagement Concierge",
         interest: interest.value,
+
+        proposalDate: fechaPedida.value,
+
+        giftEligible, giftStatus: "pendiente",
 
         notes: notasVip
       }
@@ -238,7 +242,8 @@ const reservar = async () => {
   }
 }
 onMounted(() => {
-  cargarProductos()
+  obtenerDatos()
+  obtenerReservaVip()
 })
 </script>
 

@@ -5,6 +5,7 @@ import { estaAutenticado, logOut, usuario } from '@/servicios/autenticacion'
 import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
+import axios from 'axios'
 
 import { eliminarCarrito } from '@/servicios/tarea'
 const formatPrice = (price) => {
@@ -21,7 +22,23 @@ const irHome = () => {
 const totalItems = computed(() => carrito.value.length)
 
 const carrito = ref([])
+const reservaVip = ref(null) //lo q aparecerá en carrito
 const eliminando = ref(null)
+
+const obtenerReservaVip = async () => {
+  if (!usuario.value) return //proteger 
+  try {
+
+    const res = await axios.get(
+      `https://tfg-lumeria.onrender.com/appointments/user/${usuario.value.uid}`
+    )
+
+    reservaVip.value = res.data
+
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const obtenerDatos = async () => {
   const resultado = await obtenerCarrito()
@@ -73,6 +90,14 @@ const cerrarSesion = async () => {
       Selección Exclusiva
     </h1>
 
+    <div v-if="reservaVip?.giftStatus === 'pendiente'">
+      Regalo pendiente de recoger
+    </div>
+
+    <div v-if="reservaVip?.giftStatus === 'entregado'">
+      Regalo entregado
+    </div>
+
     <p class="subtitle">
       Tus piezas seleccionadas para una experiencia de compra personalizada.
     </p>
@@ -100,6 +125,28 @@ const cerrarSesion = async () => {
     </button>
 
   </div>
+  <div
+  v-if="reservaVip?.giftEligible"
+  class="vipGiftCard"
+>
+  <p class="mini">
+    ENGAGEMENT CONCIERGE BENEFIT
+  </p>
+
+  <h2>
+    Regalo exclusivo desbloqueado
+  </h2>
+
+  <p>
+    Has reservado una experiencia privada antes de la fecha prevista para tu pedida.
+    Como agradecimiento, recibirás una pulsera de diamantes en plata valorada en 499€
+    durante vuestra visita privada a Lumeria.
+  </p>
+
+  <div class="giftValue">
+    Valor exclusivo · 499€
+  </div>
+</div>
 
 </div>
 
@@ -173,6 +220,36 @@ const cerrarSesion = async () => {
 </template>
 
 <style lang="sass" scoped>
+.vipGiftCard
+  margin: 50px auto
+  max-width: 850px
+  background: linear-gradient(135deg, #fff, #faf8f1)
+  border: 1px solid rgba(212,175,55,.25)
+  border-radius: 30px
+  padding: 45px
+  text-align: center
+  box-shadow: 0 20px 60px rgba(0,0,0,.08)
+
+.vipGiftCard h2
+  font-size: 34px
+  font-weight: 450
+  margin: 15px 0
+
+.vipGiftCard p
+  max-width: 650px
+  margin: auto
+  color: #666
+  line-height: 1.9
+
+.giftValue
+  margin-top: 30px
+  display: inline-flex
+  padding: 12px 24px
+  border-radius: 40px
+  background: rgba(212,175,55,.12)
+  color: #AA7C11
+  font-weight: 600
+
 .carrito
   max-width: 1180px
   margin: 60px auto
