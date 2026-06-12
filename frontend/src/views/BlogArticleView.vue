@@ -71,12 +71,13 @@ const article = computed(() => articles[route.params.id])
         propio estilo, su forma de entender el lujo y su manera de expresar el compromiso.</p>
 
       <div class="holis">
-        "El mejor anillo de compromiso no es el más grande,
-          sino aquel que sigue emocionando dentro de treinta años."
+        <span>"El mejor anillo de compromiso no es el más grande, sino aquel que sigue emocionando dentro de treinta años."</span>
       </div>
 
       <p>Por eso, esta guía nace para ayudarte a comprender los aspectos clave que debes tener en cuenta 
         antes de elegir la joya que marcará uno de los momentos más importantes de tu vida.</p>
+      <p>Más allá del presupuesto o las tendencias, la elección correcta siempre nace del equilibrio entre emoción, estética y significado.
+        Un gran anillo no solo impresiona el día de la pedida; sigue transmitiendo algo especial décadas después.</p>
       <div class="blog-image">
         <img src="/images/compromiso.webp">
       </div>
@@ -153,7 +154,13 @@ const article = computed(() => articles[route.params.id])
       <!-- ------------------------------------------------ -->
 
       <h2>¿Oro amarillo, blanco o rosa?</h2>
-      <p>El metal elegido influye tanto en la estética como en la personalidad del anillo.</p>
+
+      <p>El metal elegido transforma completamente la personalidad del anillo.
+      No solo cambia su apariencia visual; también modifica la forma en la que la piedra refleja la luz.</p>
+
+      <p>El oro amarillo aporta calidez clásica y sofisticación atemporal.
+      El oro blanco ofrece una estética moderna y luminosa, ideal para resaltar diamantes.
+      El oro rosa transmite romanticismo y delicadeza con un carácter más distintivo.</p>
 
       <h2>Más que un anillo</h2>
       <p>Un anillo de compromiso no se elige únicamente por su diseño.
@@ -167,32 +174,40 @@ const article = computed(() => articles[route.params.id])
       auténtica.
       </p>
 
-
-      <div class="blog-image">
-        <img src="/images/boda.webp">
-      </div>
-
   </div>
-  <div v-if="article.type === 'cuidado'" class="content"><!-- 2 -->
-    <p class="intro">Cuidar tus joyas es cuidar las historias que representan. Cada pieza acompaña momentos importantes, recuerdos irrepetibles y emociones que merecen conservarse intactas con el paso del tiempo.</p>
-    <p>Aunque el oro y los diamantes son materiales duraderos, el uso diario puede afectar poco a poco su brillo.</p>
+  <div v-if="article.type === 'cuidado'" class="content cuidado-content"><!-- 2 -->
+    <p class="intro">Cuidar tus joyas es cuidar las historias que representan. Cada pieza acompaña momentos importantes, recuerdos irrepetibles y emociones que merecen conservarse intactas con el paso del tiempo. Pero con el tiempo, residuos invisibles como cremas, jabón, maquillaje o polvo pueden opacar el reflejo natural de una joya.</p>
+    <p> Aunque el oro de 18 quilates y los diamantes son materiales extraordinariamente duraderos, el uso diario puede afectar poco a poco su brillo natural. Residuos invisibles como cremas, perfume, maquillaje, jabón o incluso la grasa natural de la piel terminan formando una fina capa que reduce la luminosidad de la pieza. </p>
     <div class="two-cols">
       <img :src="article.sideImg">
       <div>
-        <h2>Limpieza: el secreto del brillo</h2>
+        <div class="cuidado-quote">
+          “Una joya bien cuidada no solo conserva su brillo, también preserva su historia.”
+        </div>
 
-        <p>Agua tibia, jabón neutro y un cepillo suave bastan para eliminar residuos sin dañar la pieza.</p>
+        <p>La buena noticia es que mantener una joya en perfecto estado no requiere cuidados complejos. Pequeños hábitos consistentes marcan una enorme diferencia a largo plazo.</p>
       </div>
     </div>
 
-    <h2>Hábitos diarios</h2>
-    <p>Perfumes, cremas o productos de limpieza pueden afectar al oro con el tiempo.</p>
-
-    <h2>Guardarlas correctamente</h2>
-    <p>Guardar cada joya por separado evita arañazos.</p>
-
+    
+    <h2>Limpieza: el secreto del brillo</h2>
+    <p>Para una limpieza segura en casa, suele bastar con agua tibia, jabón neutro y un cepillo de cerdas suaves.</p>
+    <p>Frota delicadamente las zonas donde se acumula más suciedad, especialmente alrededor de engastes y piedras. Después, aclara con agua limpia y seca con un paño suave de microfibra.</p>
+    
+    <h2>Hábitos diarios que marcan la diferencia</h2>
+    <p>Muchas joyas se deterioran no por el paso del tiempo, sino por pequeños hábitos cotidianos. Aplicar perfume, laca o crema con la joya puesta puede dejar residuos químicos sobre el metal y las piedras.</p>
+    <p>También conviene quitarse anillos o pulseras antes de entrenar, ducharse, nadar o manipular productos de limpieza. El cloro, la sal y ciertos químicos pueden afectar al acabado con el tiempo.</p>
+    <h2>Cómo guardarlas correctamente</h2>
+    <p>Guardar todas las joyas juntas es uno de los errores más comunes. Aunque parezcan resistentes, el roce constante puede provocar microarañazos, especialmente en superficies pulidas.</p>
+    <p>Lo ideal es guardar cada pieza por separado, preferiblemente en estuches acolchados, bolsas suaves o compartimentos individuales. Esto ayuda a conservar tanto el brillo como el acabado original.</p>
+    <h2>Revisión profesional</h2>
+    <p>Incluso con buenos cuidados en casa, es recomendable realizar revisiones profesionales periódicas, especialmente en anillos con diamantes.</p>
+    <p>Un joyero puede comprobar si los engastes siguen firmes, detectar desgaste en garras y realizar una limpieza profunda imposible de conseguir en casa.</p>
     <h2>Belleza eterna</h2>
-    <p>Con pequeños cuidados, tus joyas brillarán durante generaciones.</p>
+    <p>El verdadero lujo no está solo en poseer una joya extraordinaria, sino en conservarla generación tras generación.</p>
+    <p>Con pequeños cuidados y atención regular, tus joyas seguirán brillando con la misma intensidad con la que llegaron a tu vida. </p>
+
+
   </div>
   <!-- 33333333333333333 -->
   <div v-if="article.type === 'stacking'" class="content">
@@ -325,7 +340,6 @@ const article = computed(() => articles[route.params.id])
   filter: brightness(45%)
   transform: scale(1.03)
 
-
 .hero-overlay
   z-index: 2 //texto encima del overlay
   position: absolute
@@ -336,6 +350,19 @@ const article = computed(() => articles[route.params.id])
   text-align: center
   width: 90%
   max-width: 900px
+
+  h1
+    font-size: 54px
+    font-weight: 300
+    letter-spacing: -1px
+    line-height: 1.01
+    text-shadow: 0 10px 30px rgba(0,0,0,.25)
+
+  p
+    font-size: 17px
+    max-width: 720px
+    margin: 0 auto
+    opacity: .95
 .hero::after
   z-index: 1
   content: ""
@@ -347,35 +374,21 @@ const article = computed(() => articles[route.params.id])
     rgba(0,0,0,.45)
   )
 
-  h1
-    font-size: 68px
-    font-weight: 300
-    letter-spacing: -1px
-    line-height: 1.05
-    text-shadow: 0 10px 30px rgba(0,0,0,.25)
-
-  p
-    font-size: 19px
-    max-width: 720px
-    margin: 0 auto
-    opacity: .95
-
 .content
-  margin: 120px auto
-  // max-width: 950px
-  max-width: 1100px
-  padding: 0 25px 120px
-
+  margin: 80px auto
+  max-width: 960px
+  padding: 0 24px 100px
 .content p
-  color: #4a4a4a
-  font-size: 18px
-  line-height: 2.1
+  color: #4A4A4A
+  font-size: 16px
+  line-height: 1.95
+  font-weight: 350
 
 .intro
   position: relative
   padding-left: 30px
-  font-size: 28px !important
-  line-height: 1.8 !important
+  font-size: 22px !important
+  line-height: 1.7 !important
   color: #111 !important
   font-weight: 300
   max-width: 900px
@@ -390,18 +403,25 @@ const article = computed(() => articles[route.params.id])
 
 .holis
   text-align: center
-  font-size: 32px
-  line-height: 1.6
-  color: #111
-  font-weight: 300
-  max-width: 850px
-  margin: 90px auto
+  max-width: 760px
+  margin: 70px auto
+  padding: 40px 30px
+  border-top: 1px solid rgba(212,175,55,.35)
+  border-bottom: 1px solid rgba(212,175,55,.35)
+  span
+    font-size: 24px
+    line-height: 1.7
+    color: #111
+    font-weight: 300
+    font-style: italic
 
 .content h2
-  font-size: 34px
-  margin: 70px 0 25px
+  font-size: 29px
+  margin-top: 72px
+  margin-bottom: 20px
+  font-weight: 400
+  letter-spacing: -.3px
   color: #111
-  font-weight: 500
   position: relative
   padding-top: 22px
 .content h2::before
@@ -423,7 +443,7 @@ const article = computed(() => articles[route.params.id])
 .two-cols img
   box-shadow: 0 20px 60px rgba(0,0,0,.10)
   width: 100%
-  height: 500px
+  height: 420px
   object-fit: cover
   border-radius: 20px
 
@@ -433,7 +453,7 @@ const article = computed(() => articles[route.params.id])
 .blog-image img
   box-shadow: 0 30px 80px rgba(0,0,0,.12)
   width: 100%
-  height: 550px
+  height: 470px
   object-fit: cover
   border-radius: 24px
 
@@ -445,6 +465,63 @@ const article = computed(() => articles[route.params.id])
 .blog-image img:hover,
 .two-cols img:hover
   transform: scale(1.02)
+
+
+// BLOG CUIDADO 2
+.cuidado-quote
+  margin: 70px auto
+  padding: 40px 50px
+  max-width: 820px
+  text-align: center
+  font-size: 30px
+  line-height: 1.7
+  font-style: italic
+  font-weight: 300
+  color: #111
+  border-top: 1px solid rgba(212,175,55,.35)
+  border-bottom: 1px solid rgba(212,175,55,.35)
+
+.cuidado-content
+  max-width: 1020px
+
+.cuidado-content p
+  font-size: 18px
+  line-height: 1.9
+  color: #555
+  font-weight: 320
+  letter-spacing: .15px
+
+.cuidado-content .intro
+  font-size: 25px !important
+  line-height: 1.8 !important
+  max-width: 950px
+  color: #151515 !important
+
+.cuidado-content h2
+  font-size: 29px //o 28
+  margin-top: 75px
+  margin-bottom: 22px
+  font-weight: 390
+  letter-spacing: -.4px
+
+.cuidado-content h2::before
+  width: 90px
+  height: 2px
+  background: linear-gradient(to right, #D4AF37, rgba(212,175,55,.25))
+
+.cuidado-content .two-cols
+  gap: 80px
+  margin: 90px 0
+
+.cuidado-content .two-cols img
+  height: 500px
+  border-radius: 26px
+  box-shadow: 0 30px 80px rgba(0,0,0,.14)
+
+.cuidado-content .blog-image img
+  height: 560px
+  border-radius: 30px
+  box-shadow: 0 35px 90px rgba(0,0,0,.16)
 
 @media(max-width: 900px)
   .hero

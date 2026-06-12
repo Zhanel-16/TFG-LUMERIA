@@ -106,7 +106,7 @@ const irProducto = (id) => {
 .hero_products
   width: 100%
   height: 75vh
-  background: url('/images/principal.webp') center/cover
+  background: url('/images/principal.png') center/cover
   position: relative
 
 .overlay
