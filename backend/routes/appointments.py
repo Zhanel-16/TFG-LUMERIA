@@ -44,9 +44,9 @@ def create_appointment():
             data["time"],
             data["interest"],
             data["notes"],
-            data["proposalDate"],
-            data["giftEligible"],
-            data["giftStatus"],
+            data.get("proposalDate"),
+            data.get("giftEligible", False),
+            data.get("giftStatus"),
             data["service"]
         ))
 

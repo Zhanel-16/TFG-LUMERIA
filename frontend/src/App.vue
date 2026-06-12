@@ -219,11 +219,21 @@ body
     text-align: center
     gap: 35px
     padding: 2rem 1rem
+    justify-items: center
   .footer_links,
   .footer_social
     padding-left: 0
   .footer_brand
     max-width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    p
+      width: auto 
+      max-width: 280px
+      margin: 0 auto
+      text-align: center
+
   .footer_social .icons
     justify-content: center
 

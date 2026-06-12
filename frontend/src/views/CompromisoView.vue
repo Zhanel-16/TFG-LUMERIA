@@ -243,7 +243,6 @@ const reservar = async () => {
 }
 onMounted(() => {
   obtenerDatos()
-  obtenerReservaVip()
 })
 </script>
 
