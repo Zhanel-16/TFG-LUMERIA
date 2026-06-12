@@ -306,8 +306,7 @@ const article = computed(() => articles[route.params.id])
   <p>Cuando el objetivo es marcar una ocasión importante, los diamantes y piezas de alta joyería se convierten en protagonistas absolutos.</p>
 
   <div class="two-cols">
-    <img :src="article.sideImg">
-    <div>
+    <img src="/images/stack.png" alt="">
       <h2>Joyas que cuentan historias</h2>
 
       <p>Más allá del precio, una joya representa recuerdos, emociones y momentos irrepetibles.</p>
