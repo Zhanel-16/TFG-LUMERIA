@@ -284,7 +284,6 @@ button
     font-size: 14px
     line-height: 1.6
 
-@media (max-width: 480px)
   .product-grid
     grid-template-columns: repeat(2, 1fr)
     gap: 12px
@@ -304,6 +303,9 @@ button
     font-size: 14px
 
   button
-    height: 36px
-    font-size: 11px
+  width: 120px
+  height: 32px
+  font-size: 10px
+  margin-left: auto
+  margin-right: auto
 </style>

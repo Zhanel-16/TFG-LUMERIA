@@ -111,17 +111,17 @@ section
   color: #D4AF37
 
 .story p
-  line-height: 1.8
-  margin-top: 15px
+  line-height: 1.75
+  margin-top: 10px
   color: #555
-
 .grid
   display: grid
   grid-template-columns: 1fr 1fr
   gap: 60px
 .experience p
   color: #555
-  line-height: 1.8
+  line-height: 1.75
+  margin-top: 10px
 .formReserva
   max-width: 550px
   margin: 30px auto 0
@@ -134,22 +134,28 @@ section
   text-align: center
 
 .cta h2
-  margin-bottom: 15px
+  margin: 0 auto 14px
+  max-width: 500px
 
 .cta p
-  margin-bottom: 25px
+  max-width: 620px
+  margin: 0 auto 22px
   color: #666
+  line-height: 1.7
+
 // INFO + WHATSAPP
 .luxury-row
   display: grid
-  grid-template-columns: 1.2fr .8fr
-  gap: 40px
-  margin-top: 50px
-  align-items: stretch
+  grid-template-columns: 1.05fr .75fr
+  gap: 28px
+  margin-top: 40px
+  max-width: 950px
+  margin-left: auto
+  margin-right: auto
 
 .luxury-note
   background: white
-  padding: 45px
+  padding: 34px
   border-radius: 32px
   border: 1px solid rgba(212,175,55,.12)
   box-shadow: 0 15px 45px rgba(0,0,0,.06)
@@ -158,7 +164,7 @@ section
     transform: translateY(-6px)
     box-shadow: 0 25px 60px rgba(0,0,0,.10)
   h3
-    font-size: 25px
+    font-size: 22px
     font-weight: 400
     line-height: 1.2
     margin-bottom: 25px
@@ -169,7 +175,8 @@ section
 .whatsapp-box
   background: linear-gradient(to bottom, #ffffff, #f9f7f2)
   border-radius: 32px
-  padding: 35px
+  padding: 24px
+  min-height: 280px
   border: 1px solid rgba(212,175,55,.12)
   box-shadow: 0 15px 45px rgba(0,0,0,.06)
   display: flex

@@ -228,8 +228,7 @@ Este anillo es mucho más que una joya: es un amuleto contemporáneo pensado par
 '/images/charmOjoTurcoZafiro.webp',
 'talismanes'),
 
-('Anillo Esmeraldas Marquise y Diamante 0,20 Cts.', 'Oro Amarillo de 18 Kt',
-'Anillo Esmeraldas Marquise y Diamante 0,20 Cts.', 'Oro Amarillo de 18 Kt', 'Fabricado en oro amarillo de 18 quilates, este anillo destaca por la armonía de sus líneas y la delicadeza de sus detalles. Su diseño incorpora dos esmeraldas talla marquise de intenso color verde, acompañadas por un diamante central de 0,20 quilates que aporta luminosidad y equilibrio a la composición.
+('Anillo Esmeraldas Marquise y Diamante 0,20 Cts.', 'Oro Amarillo de 18 Kt', 'Fabricado en oro amarillo de 18 quilates, este anillo destaca por la armonía de sus líneas y la delicadeza de sus detalles. Su diseño incorpora dos esmeraldas talla marquise de intenso color verde, acompañadas por un diamante central de 0,20 quilates que aporta luminosidad y equilibrio a la composición.
 
 La talla marquise, reconocida por su elegante forma alargada y sus extremos puntiagudos, realza la belleza natural de las esmeraldas y aporta una sensación de ligereza y sofisticación. Inspirado en formas orgánicas y delicadas, el diseño evoca la belleza de la naturaleza y la frescura de los nuevos comienzos.
 
