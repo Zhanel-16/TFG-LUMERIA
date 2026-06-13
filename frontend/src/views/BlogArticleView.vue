@@ -307,6 +307,7 @@ const article = computed(() => articles[route.params.id])
 
   <div class="two-cols">
     <img src="/images/stack.png" alt="">
+    <div>
       <h2>Joyas que cuentan historias</h2>
 
       <p>Más allá del precio, una joya representa recuerdos, emociones y momentos irrepetibles.</p>
