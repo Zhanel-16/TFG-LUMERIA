@@ -225,7 +225,6 @@ button
   margin-right: auto
   cursor: pointer
   transition: .35s ease
-
   &:hover
     background: #D4AF37
 
@@ -303,9 +302,9 @@ button
     font-size: 14px
 
   button
-  width: 120px
-  height: 32px
-  font-size: 10px
-  margin-left: auto
-  margin-right: auto
-</style>
+    width: 120px
+    height: 32px
+    font-size: 10px
+    margin-left: auto
+    margin-right: auto
+  </style>
