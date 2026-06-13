@@ -46,8 +46,7 @@ import WhatsappExpert from "@/components/WhatsappExpert.vue";
   <section class="cta">
     <div class="luxury-container">
       <h2>Reserva tu cita privada</h2>
-      <p>Agenda una visita en nuestro atelier y vive la experiencia completa. Sin
-        compromiso, sin prisa y con asesoramiento personalizado.</p>
+      <p>Te invitamos a descubrir nuestro atelier y disfrutar de una auténtica experiencia de lujo a tu medida. Déjate mimar con un asesoramiento personalizado y relajado, donde cada detalle importa.</p>
 <!-- FORMULARIO -->
 <div class="formReserva">
   <ReservaCita />
