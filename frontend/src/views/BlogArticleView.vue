@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 const route = useRoute()
+import stackImg from '/images/stack.png'
 const articles = {
   1: {
     hero: "/images/compromiso.webp",
@@ -306,7 +307,7 @@ const article = computed(() => articles[route.params.id])
   <p>Cuando el objetivo es marcar una ocasión importante, los diamantes y piezas de alta joyería se convierten en protagonistas absolutos.</p>
 
   <div class="two-cols">
-    <img src="/images/stack.png" alt="">
+    <img :src="stackImg" alt="">
     <div>
       <h2>Joyas que cuentan historias</h2>
 
