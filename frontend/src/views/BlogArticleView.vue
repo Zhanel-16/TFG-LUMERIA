@@ -44,7 +44,7 @@ const articles = {
 
   6: {
     hero: "/images/colleccionArtic.webp",
-    sideImg: "/images/colleccionArtic.webp",
+    sideImg: "/images/coleccion.webp",
     title: "Guía de regalos según presupuesto",
     subtitle: "Ideas sofisticadas para sorprender sin importar el presupuesto.",
     type: "regalos"
@@ -267,7 +267,7 @@ const article = computed(() => articles[route.params.id])
   <p>Mientras la aguamarina suele asociarse con serenidad y sofisticación ligera, el topacio azul ofrece una presencia más intensa y vibrante.</p>
 
   <div class="blog-image">
-    <img src="/images/AguamarinaCompromisoOroAmarillo.webp">
+    <img src="/images/pendientes_collar111111111.webp">
   </div>
 
   <h2>La delicadeza de la aguamarina</h2>
@@ -295,7 +295,7 @@ const article = computed(() => articles[route.params.id])
   <p class="intro">Encontrar el regalo perfecto no depende únicamente del presupuesto. Las joyas más especiales suelen ser aquellas que consiguen transmitir emoción y significado.</p>
   <p>Desde piezas minimalistas hasta diamantes más sofisticados, cada detalle puede convertirse en un recuerdo eterno.</p>
   <div class="blog-image">
-    <img src="/images/colleccionArtic.webp">
+    <img src="/images/coleccion.webp">
   </div>
 
   <h2>Hasta 500€</h2>
