@@ -42,13 +42,14 @@
     <input type="text" v-model="nombrePareja" placeholder="Nombre de tu pareja" :disabled="!auth.currentUser">
     
     <!-- TODOS LO SINPUTS + BUTTON + SELECTS EN GRIS = BLOQUEADOS SI NO ESTÁS LOGIN -->
-    <span>Fecha de la pedida</span>
-    <input type="date" v-model="fechaPedida" :min="fechaPedidaMin" :disabled="!fechaCita"/>
+    
     <!-- no se puede elegir una fecha de pedida antes de seleccionar cita privada -->
     <!-- <input type="date" v-model="pedida" :min="fechaMin" :max="fechaMax" :disabled="!auth.currentUser"> fecha pedida -->
     <span>Fecha de la cita privada</span>
     <input type="date" v-model="fechaCita" :min="fechaMinima"/>
     <!-- <input type="date" v-model="fecha" :min="fechaMin" :max="fechaMax" :disabled="!auth.currentUser"> fecha de la cita privada -->
+    <span>Fecha de la pedida</span>
+    <input type="date" v-model="fechaPedida" :min="fechaPedidaMin" :disabled="!fechaCita"/>
     
     <span>Hora de la experiencia</span>
     
