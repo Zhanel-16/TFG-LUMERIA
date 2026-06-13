@@ -242,6 +242,8 @@ const reservar = async () => {
   }
 }
 onMounted(() => {
+  console.log("Compromiso mounted")
+  console.log("typeof obtenerDatos:", typeof obtenerDatos)
   cargarProductos()
 })
 </script>

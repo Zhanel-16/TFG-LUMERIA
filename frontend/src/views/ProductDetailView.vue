@@ -20,13 +20,29 @@ const formatPrice = (price) => {
   }).format(num)
 }
 
-onMounted(async () => {
-  let id = route.params.id
-  let res = await axios.get(
-    `https://tfg-lumeria.onrender.com/products/${id}`
-  )
+// onMounted(async () => {
+//   let id = route.params.id
+//   let res = await axios.get(
+//     `https://tfg-lumeria.onrender.com/products/${id}`
+//   )
 
-  producto.value = res.data
+//   producto.value = res.data
+// })
+onMounted(async () => {
+  try {
+    let id = route.params.id
+    console.log("ID:", id)
+
+    let res = await axios.get(
+      `https://tfg-lumeria.onrender.com/products/${id}`
+    )
+
+    console.log("PRODUCTO:", res.data)
+
+    producto.value = res.data
+  } catch (error) {
+    console.log("ERROR PRODUCT DETAIL:", error)
+  }
 })
 const favClick = async () => { //wishlist
   if(!estaAutenticado()){

@@ -49,6 +49,7 @@ const obtenerDatos = async () => {
 }
 onMounted(() => {
   obtenerDatos()
+  obtenerReservaVip()
 })
 const totalPrecio = computed(() => {
   return carrito.value.reduce((acc, prod) => acc + Number(prod.price), 0)
