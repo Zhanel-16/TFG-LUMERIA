@@ -7,7 +7,7 @@ import { estaAutenticado } from '@/servicios/autenticacion'
 import { useToast } from 'vue-toastification'
 import { anadirAFavoritos, anadirFavoritos } from '@/servicios/tarea' //wish y carrito 
 const route = useRoute()
-const producto = ref({})
+const producto = ref(null)
 const toast = useToast()
 
 const formatPrice = (price) => {
@@ -62,7 +62,7 @@ const cartClick = async () => {
     <!-- IZQUIERDA info -->
     <div class="info">
       <h1>{{ producto.name }}</h1>
-      <p class="price">{{ formatPrice(prod.price) }} €</p>
+      <p class="price">{{ formatPrice(producto.price) }} €</p>
       <p class="gold">{{ producto.color_oro }}</p>
 
       <p class="desc">{{ producto.description }}</p>

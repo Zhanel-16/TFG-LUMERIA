@@ -242,7 +242,7 @@ const reservar = async () => {
   }
 }
 onMounted(() => {
-  obtenerDatos()
+  cargarProductos()
 })
 </script>
 
