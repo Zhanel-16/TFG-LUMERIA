@@ -88,48 +88,52 @@ def create_appointment():
 # Flask responde rapido, no hay timeout
 
 # ruta para citas privadas 
+# @appointments.route("/user/<uid>", methods=["GET"])
+# def get_user_appointment(uid):
+
+#     conn = db_conn()
+#     cursor = conn.cursor(dictionary=True)
+
+#     cursor.execute("""
+#         SELECT *
+#         FROM appointments
+#         WHERE user_id = %s
+#         AND service = 'Engagement Concierge'
+#         LIMIT 1
+#     """, (uid,))
+
+#     cita = cursor.fetchone()
+
+#     cursor.close()
+#     conn.close()
+
+#     return jsonify(cita)
+
+
 @appointments.route("/user/<uid>", methods=["GET"])
 def get_user_appointment(uid):
+    try:
+        print("UID recibido:", uid)
 
-    conn = db_conn()
-    cursor = conn.cursor(dictionary=True)
+        conn = db_conn()
+        cursor = conn.cursor(dictionary=True)
 
-    cursor.execute("""
-        SELECT *
-        FROM appointments
-        WHERE user_id = %s
-        AND service = 'Engagement Concierge'
-        LIMIT 1
-    """, (uid,))
+        cursor.execute("""
+            SELECT *
+            FROM appointments
+            WHERE user_id = %s
+            AND service = %s
+            LIMIT 1
+        """, (uid, "Engagement Concierge"))
 
-    cita = cursor.fetchone()
+        cita = cursor.fetchone()
+        print("CITA:", cita)
 
-    cursor.close()
-    conn.close()
+        cursor.close()
+        conn.close()
 
-    return jsonify(cita)
+        return jsonify(cita)
 
-
-@appointments.route("/user/<uid>", methods=["GET"])
-def get_user_appointment(uid):
-    print("UID recibido:", uid)
-
-    conn = db_conn()
-    cursor = conn.cursor(dictionary=True)
-
-    cursor.execute("""
-        SELECT *
-        FROM appointments
-        WHERE user_id = %s
-        AND service = 'Engagement Concierge'
-        LIMIT 1
-    """, (uid,))
-
-    cita = cursor.fetchone()
-
-    print("CITA:", cita)
-
-    cursor.close()
-    conn.close()
-
-    return jsonify(cita)
+    except Exception as e:
+        print("ERROR GET APPOINTMENT:", e)
+        return jsonify({"error": str(e)}), 500
