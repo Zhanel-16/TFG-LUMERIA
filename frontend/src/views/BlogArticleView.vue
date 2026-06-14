@@ -3,6 +3,7 @@ import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 const route = useRoute()
 import stackImg from '/images/stack.png'
+import collecionImg from '/images/coleccion.png'
 const articles = {
   1: {
     hero: "/images/compromiso.webp",
@@ -296,7 +297,8 @@ const article = computed(() => articles[route.params.id])
   <p class="intro">Encontrar el regalo perfecto no depende únicamente del presupuesto. Las joyas más especiales suelen ser aquellas que consiguen transmitir emoción y significado.</p>
   <p>Desde piezas minimalistas hasta diamantes más sofisticados, cada detalle puede convertirse en un recuerdo eterno.</p>
   <div class="blog-image">
-    <img src="/images/coleccion.png">
+    <!-- <img src="/images/coleccion.png"> -->
+    <img :src="collecionImg" alt="">
   </div>
 
   <h2>Hasta 500€</h2>

@@ -109,11 +109,10 @@ def create_appointment():
 
 #     return jsonify(cita)
 
-
 @appointments.route("/user/<uid>", methods=["GET"])
 def get_user_appointment(uid):
     try:
-        print("UID recibido:", uid)
+        # print("UID recibido:", uid)
 
         conn = db_conn()
         cursor = conn.cursor(dictionary=True)
@@ -127,7 +126,13 @@ def get_user_appointment(uid):
         """, (uid, "Engagement Concierge"))
 
         cita = cursor.fetchone()
-        print("CITA:", cita)
+        # print("CITA:", cita)
+        if cita: #transform los campos antes de devolver
+            # asi evito error TypeError: Object of type timedelta is not JSON serializable 
+            cita["time"] = str(cita["time"])
+            cita["date"] = str(cita["date"])
+            cita["proposalDate"] = str(cita["proposalDate"]) if cita["proposalDate"] else None
+            cita["created_at"] = str(cita["created_at"])
 
         cursor.close()
         conn.close()
