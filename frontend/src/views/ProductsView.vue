@@ -74,7 +74,8 @@ const irProducto = (id) => {
 <div>
   <section class="hero_products">
     <div class="overlay">
-      <p class="mini">CRAFTED TO LAST FOREVER | LUMERIA </p>
+      <p class="mini desktop-mini">CRAFTED TO LAST FOREVER | LUMERIA </p>
+      <p class="mini mobile-mini">CRAFTED TO LAST FOREVER</p>
       <h1>Alta joyería creada en España con oro de 18 quilates y diamantes naturales</h1>
       <p class="desc">Joyas exclusivas diseñadas para acompañarte toda la vida...<br>Explora nuestro catálogo y encuentra tu estilo único.</p>
     </div>
@@ -140,6 +141,10 @@ const irProducto = (id) => {
   margin-bottom: 18px
   font-weight: 630
   color: #D4AF37
+
+.mobile-mini
+  display: none
+
 .products-container
   max-width: 1180px
   margin: 80px auto
@@ -273,6 +278,12 @@ button
     font-size: 16px
 
 @media (max-width: 480px)
+  .desktop-mini
+    display: none
+
+  .mobile-mini
+    display: block
+
   .hero_products
     height: 50vh
 
@@ -290,8 +301,8 @@ button
   .img-wrap
     height: 150px
   .contenido
-    padding: 10px 12px 22px
-    // 22 es abajo despues del boton
+    padding: 17px 12px 26px
+    // 26 es abajo despues del boton
 
   h3
     font-size: 12px
