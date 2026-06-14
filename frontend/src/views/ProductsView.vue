@@ -181,7 +181,7 @@ img
   transition: .6s ease
 
 .contenido
-  padding: 12px 25px 35px
+  padding: 12px 20px 30px
   text-align: center
   display: flex
   flex-direction: column
@@ -290,16 +290,22 @@ button
   .img-wrap
     height: 150px
   .contenido
-    padding: 12px 20px 30px
+    padding: 10px 12px 16px
 
   h3
-    font-size: 13px
+    font-size: 12px
+    margin-bottom: 2px
+    line-height: 1.25
 
   .oro
     font-size: 11px
+    min-height: 25px
+    margin: 3px 0
+    line-height: 1.2
 
   .price
     font-size: 14px
+    margin: 3px 0 8px
 
   button
     width: 120px
