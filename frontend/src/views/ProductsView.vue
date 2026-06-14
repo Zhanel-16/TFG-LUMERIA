@@ -290,12 +290,20 @@ button
   .img-wrap
     height: 150px
   .contenido
-    padding: 10px 12px 16px
+    padding: 10px 12px 22px
+    // 22 es abajo despues del boton
 
   h3
     font-size: 12px
-    margin-bottom: 2px
-    line-height: 1.25
+    line-height: 1.3
+    width: 92%          // ocupa casi todo el ancho
+    max-width: 140px    // pero no demasiado
+    margin: 0 auto 4px  // centrado + margen abajo
+    min-height: 32px    
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
 
   .oro
     font-size: 11px
