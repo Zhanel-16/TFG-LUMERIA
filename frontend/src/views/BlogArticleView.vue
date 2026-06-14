@@ -296,7 +296,7 @@ const article = computed(() => articles[route.params.id])
   <p class="intro">Encontrar el regalo perfecto no depende únicamente del presupuesto. Las joyas más especiales suelen ser aquellas que consiguen transmitir emoción y significado.</p>
   <p>Desde piezas minimalistas hasta diamantes más sofisticados, cada detalle puede convertirse en un recuerdo eterno.</p>
   <div class="blog-image">
-    <img src="/images/coleccion.webp">
+    <img src="/images/coleccion.png">
   </div>
 
   <h2>Hasta 500€</h2>
