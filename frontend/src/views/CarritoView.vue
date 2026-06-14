@@ -143,18 +143,18 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
       Selección Exclusiva
     </h1>
 
+    
+
+    <p class="subtitle">
+      Tus piezas seleccionadas ya están preparadas para ti. Cada artículo forma parte de una selección exclusiva pensada para reflejar tu estilo y tu identidad. Te invitamos a descubrir esta experiencia de lujo en persona en nuestra tienda física Joeyria, donde podrás disfrutar de una atención privada y un entorno diseñado para que vivas el lujo con calma y exclusividad.
+    </p>
     <div v-if="reservaVip?.giftStatus === 'pendiente'">
-      Regalo pendiente de recoger
+      Tienes un regalo especial reservado para ti, pendiente de recoger.
     </div>
 
     <div v-if="reservaVip?.giftStatus === 'entregado'">
       Regalo entregado
     </div>
-
-    <p class="subtitle">
-      Tus piezas seleccionadas para una experiencia de compra personalizada.
-    </p>
-
   </div>
 
   <div class="clientPanel">

@@ -55,18 +55,13 @@ onMounted(async () => {
 
     <div class="luxuryText">
 
-      <p class="mini">
-        CURATED SELECTION
-      </p>
+      <p class="mini">SAVED PIECES COLLECTION</p>
 
       <h1>
         Wishlist
       </h1>
 
-      <p class="subtitle">
-        Guarda tus piezas favoritas y accede a ellas desde cualquier dispositivo.
-      </p>
-
+      <p class="subtitle">Guarda tus piezas favoritas y accede a ellas desde cualquier dispositivo. Inspírate y da forma a una experiencia de lujo pensada solo para ti.</p>
     </div>
 
   </div>
