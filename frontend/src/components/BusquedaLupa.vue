@@ -52,7 +52,7 @@ const abrirProducto = (id) => {
           <h3>{{ prod.name }}</h3>
           <p class="oro">{{ prod.color_oro }}</p>
 
-          <p class="price">{{ formatPrice(producto.price) }} €</p>
+          <p class="price">{{ formatPrice(prod.price) }} €</p>
         </div>
       </div>
       <div v-if="busqueda && resultados.length === 0" class="sin_resultados">
