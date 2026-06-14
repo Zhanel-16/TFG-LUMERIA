@@ -129,10 +129,14 @@ def get_user_appointment(uid):
         # print("CITA:", cita)
         if cita: #transform los campos antes de devolver
             # asi evito error TypeError: Object of type timedelta is not JSON serializable 
+            print("ANTES:", type(cita["time"]), cita["time"])
+
             cita["time"] = str(cita["time"])
             cita["date"] = str(cita["date"])
             cita["proposalDate"] = str(cita["proposalDate"]) if cita["proposalDate"] else None
             cita["created_at"] = str(cita["created_at"])
+            
+            print("DESPUES:", type(cita["time"]), cita["time"])
 
         cursor.close()
         conn.close()

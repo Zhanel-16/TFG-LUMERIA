@@ -26,14 +26,15 @@ const reservaVip = ref(null) //lo q aparecerá en carrito
 const eliminando = ref(null)
 
 const obtenerReservaVip = async () => {
-  if (!usuario.value) return
-  console.log("Consultando UID:", usuario.value.uid)
-  const res = await axios.get(
-    `https://tfg-lumeria.onrender.com/appointments/user/${usuario.value.uid}`
-  )
-  console.log("Respuesta backend:", res.data)
-
-  reservaVip.value = res.data
+  try {
+    if (!usuario.value) return
+    const res = await axios.get(
+      `https://tfg-lumeria.onrender.com/appointments/user/${usuario.value.uid}`
+    )
+    reservaVip.value = res.data
+  } catch (error) {
+    console.log("Error reserva VIP:", error.response?.data || error)
+  }
 }
 
 // prueba watch 
