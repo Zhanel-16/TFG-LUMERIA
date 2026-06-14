@@ -6,6 +6,11 @@ import { useToast } from "vue-toastification"
 import { useRouter } from 'vue-router'
 const toast = useToast()
 const favoritos = ref([])
+
+const irProducto = (id) => {
+  router.push(`/products/${id}`)
+}
+
 const totalFavs = computed(() => favoritos.value.length)
 const formatPrice = (price) => {
   return new Intl.NumberFormat('en-US', {
@@ -79,7 +84,7 @@ onMounted(async () => {
       v-for="(prod,index) in favoritos"
       :key="index"
       class="card"
-      :style="{ animationDelay: `${index * 0.08}s` }"
+      :style="{ animationDelay: `${index * 0.08}s` }" @click="irProducto(prod.id || prod.productId)"
     >
 
       <div class="img-wrap">
@@ -104,7 +109,7 @@ onMounted(async () => {
         </p>
 
         <button
-          @click="borrarFav(prod.idDoc)"
+          @click.stop="borrarFav(prod.idDoc)"
           :disabled="eliminando === prod.idDoc"
         >
           {{
@@ -226,6 +231,7 @@ onMounted(async () => {
   display: flex
   flex-direction: column
   text-align: center
+  cursor: pointer
 
   // opacity: 0
   // animation: aparecer .5s ease forwards

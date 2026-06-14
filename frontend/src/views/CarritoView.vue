@@ -13,6 +13,11 @@ const formatPrice = (price) => {
     maximumFractionDigits: 0
   }).format(Number(price))
 }
+
+const irProducto = (id) => {
+  router.push(`/products/${id}`)
+}
+
 const router = useRouter()
 const toast = useToast()
 const yaTienePulsera = ref(false)
@@ -149,7 +154,7 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
       Tus piezas seleccionadas ya están preparadas para ti. Cada artículo forma parte de una selección exclusiva pensada para reflejar tu estilo y tu identidad. Te invitamos a descubrir esta experiencia de lujo en persona en nuestra tienda física Joeyria, donde podrás disfrutar de una atención privada y un entorno diseñado para que vivas el lujo con calma y exclusividad.
     </p>
     <div v-if="reservaVip?.giftStatus === 'pendiente'">
-      Tienes un regalo especial reservado para ti, pendiente de recoger.
+      Pendiente de recoger: un regalo especial reservado para ti | Lumeria Exclusive Gifts
     </div>
 
     <div v-if="reservaVip?.giftStatus === 'entregado'">
@@ -197,7 +202,7 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
       </p>
 
       <p v-if="diasParaPedida > 0">
-        Faltan <strong>{{ diasParaPedida }}</strong> días para vuestro gran momento ✨
+        Faltan <strong>{{ diasParaPedida }}</strong> días para vuestro gran momento...
       </p>
       <p v-else>La fecha prevista ya ha llegado 💍</p>
     </div>
@@ -222,7 +227,7 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
     <div
       v-for="(prod, index) in carrito"
       :key="index"
-      class="favCard"
+      class="favCard" @click="irProducto(prod.id || prod.productId)"
     >
 
       <div class="img-wrap">
@@ -240,7 +245,7 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
           {{ formatPrice(prod?.price) }} €
         </p>
 
-        <button @click="borrar(prod.idDoc)" :disabled="eliminando === prod.idDoc">
+        <button @click.stop="borrar(prod.idDoc)" :disabled="eliminando === prod.idDoc">
           {{eliminando === prod.idDoc ? 'Eliminando...' : 'Eliminar'}}
         </button>
 
@@ -393,6 +398,7 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
   display: flex
   flex-direction: column
   text-align: center
+  cursor: pointer
   // opacity: 0
   // animation: aparecer .5s ease forwards
 
