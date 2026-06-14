@@ -59,10 +59,10 @@
     <!-- no se puede elegir una fecha de pedida antes de seleccionar cita privada -->
     <!-- <input type="date" v-model="pedida" :min="fechaMin" :max="fechaMax" :disabled="!auth.currentUser"> fecha pedida -->
     <span>Fecha de la cita privada</span>
-    <input type="date" v-model="fechaCita" :min="fechaMinima"/>
+    <input type="date" v-model="fechaCita" :min="fechaMinima > fechaMinAgenda ? fechaMinima : fechaMinAgenda" :max="fechaMaxima"/>
     <!-- <input type="date" v-model="fecha" :min="fechaMin" :max="fechaMax" :disabled="!auth.currentUser"> fecha de la cita privada -->
     <span>Fecha de la pedida</span>
-    <input type="date" v-model="fechaPedida" :min="fechaPedidaMin" :disabled="!fechaCita"/>
+    <input type="date" v-model="fechaPedida" :min="fechaPedidaMin" :max="fechaMaxima" :disabled="!fechaCita"/>
 
     <span>Hora de la experiencia</span>
     
@@ -148,8 +148,8 @@ const fechaPedida = ref("")
 const hora = ref("")
 const interest = ref("Anillos de compromiso")
 
-// const fechaMin = "2026-01-01"
-// const fechaMax = "2028-12-31"
+const fechaMaxima = "2028-12-31"
+const fechaMinAgenda = "2026-06-20"
 
 const formatPrice = (price) => {
   const num = typeof price === 'number'
@@ -220,11 +220,28 @@ const reservar = async () => {
 
     const cita = new Date(fechaCita.value)
     const pedida = new Date(fechaPedida.value)
+    if (fechaCita.value > fechaMaxima) {
+      toast.error("La agenda privada solo está disponible hasta el 31/12/2028")
+      return
+    }
+
+    if (fechaPedida.value > fechaMaxima) {
+      toast.error("La fecha de la pedida no puede superar el 31/12/2028")
+      return
+    }
 
     if (cita < hoyMas3) {
       toast.error(
         `Las reservas requieren un mínimo de 3 días de antelación. La primera fecha disponible es ${fechaMinimaFormateada.value}`
       )
+      return
+    }
+    if (fechaCita.value < fechaMinAgenda) {
+      toast.error("La agenda privada abre el 20/06/2026")
+      return
+    }
+    if (fechaPedida.value < fechaMinAgenda) {
+      toast.error("La fecha de la pedida no puede ser anterior al 20/06/2026")
       return
     }
 
@@ -234,7 +251,7 @@ const reservar = async () => {
     }
     const giftEligible = new Date(fechaPedida.value) > new Date(fechaCita.value)
 
-    const res = await axios.post(
+    await axios.post(
       "https://tfg-lumeria.onrender.com/appointments/",
       {
         user_id: user.uid,
