@@ -41,6 +41,16 @@
   
   <!-- block si no estas log + si paso el ratón not allowed cursor -->
   <div class="right" :class="{ bloqueado: !auth.currentUser }" @mouseenter="mostrarToastLogin">
+    <div class="agenda-card">
+      <p class="mini-agenda">AGENDA PRIVADA</p>
+      <p>
+        Agenda privada abierta desde el
+        <strong>20 junio 2026</strong>
+        hasta el
+        <strong>31 diciembre 2028</strong>.
+        Las plazas son limitadas para garantizar una experiencia exclusiva y personalizada.
+      </p>
+    </div>
     <span>Nombre de tu prometida o prometido</span>
     <input type="text" v-model="nombrePareja" placeholder="Nombre de tu pareja" :disabled="!auth.currentUser">
     
@@ -268,6 +278,31 @@ onMounted(() => {
   font-size: 14px
   color: #666
   line-height: 1.8
+
+.agenda-card
+  padding: 22px 24px
+  border-radius: 22px
+  background: linear-gradient(135deg, rgba(212,175,55,.10), rgba(212,175,55,.04))
+  border: 1px solid rgba(212,175,55,.22)
+  margin-bottom: 22px
+  box-shadow: 0 12px 35px rgba(0,0,0,.04)
+
+  p
+    margin: 0
+    color: #666
+    line-height: 1.8
+    font-size: 14px
+
+  strong
+    color: #AA7C11
+    font-weight: 700
+
+.mini-agenda
+  margin-bottom: 12px !important
+  letter-spacing: 4px
+  font-size: 12px !important
+  font-weight: 700
+  color: #D4AF37 !important
 
 .info-fecha
   margin-top: 14px

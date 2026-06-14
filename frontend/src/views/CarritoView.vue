@@ -286,7 +286,8 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
 
 <style lang="sass" scoped>
 .timeline
-  margin: 30px 0
+  max-width: 520px
+  margin: 30px auto
   padding: 25px
   background: rgba(212,175,55,.06)
   border-radius: 18px
