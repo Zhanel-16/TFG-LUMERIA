@@ -125,10 +125,10 @@ section
   margin-bottom: 10px
 
 .price
-  font-size: 22px
-  font-weight: 600
-  color: #111
-  margin-bottom: 6px
+  color: #AA7C11
+  font-size: 20px
+  font-weight: 650
+  margin: 6px 0 12px
 
 .gold
   color: #777

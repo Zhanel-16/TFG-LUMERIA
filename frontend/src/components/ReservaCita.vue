@@ -62,7 +62,9 @@ const reservar = async () => {
 <template>
 
 <div class="box">
-  <div class="agenda">Agenda privada abierta desde junio 2026 hasta diciembre 2028. Las plazas son limitadas para garantizar una experiencia exclusiva y personalizada.</div>
+  <!-- const fechaMin = "2026-06-20"
+const fechaMax = "2028-12-31" -->
+  <div class="agenda">Agenda privada abierta desde el 20 junio 2026 hasta el 31 de diciembre de 2028. Las plazas son limitadas para garantizar una experiencia exclusiva y personalizada.</div>
   <!-- FECHA -->
   <input type="date" v-model="fecha" :min="fechaMin" :max="fechaMax">
 
@@ -97,7 +99,9 @@ const reservar = async () => {
   <!-- NOTAS -->
   <textarea v-model="notes" placeholder="Cuéntanos qué tipo de experiencia buscas y prepararemos una selección personalizada para tu visita."></textarea>
 
-  <button @click="reservar" :disabled="!fecha || !hora || !interest">Reservar asesoramiento</button>
+  <button @click="reservar" :disabled="!auth.currentUser">Reservar asesoramiento</button>
+  <!-- para q este en gris si no estas register -->
+  <!-- :disabled="!fecha || !hora || !interest" -->
 </div>
 </template>
 
@@ -107,6 +111,7 @@ const reservar = async () => {
   flex-direction: column
   gap: 18px
   margin-top: 30px
+  // align-items: center
 
 .agenda
   background: #f5f1e8
@@ -137,11 +142,13 @@ button
   background: black
   color: white
   border: none
-  padding: 15px
+  padding: 15px 28px
   border-radius: 40px
   cursor: pointer
   transition: .3s
   font-size: 15px
+  width: min(320px, 90%) // PC: 320px, movil: 90%
+  align-self: center
 
   &:hover
     background: #D4AF37

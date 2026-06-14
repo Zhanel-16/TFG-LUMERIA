@@ -2,7 +2,7 @@
 import ReservaCita from '@/components/ReservaCita.vue'
 import { obtenerCarrito } from '@/servicios/tarea'
 import { estaAutenticado, logOut, usuario } from '@/servicios/autenticacion'
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import axios from 'axios'
@@ -39,6 +39,11 @@ const obtenerReservaVip = async () => {
     console.log(error)
   }
 }
+watch(usuario, (nuevoUsuario) => {
+  if (nuevoUsuario) {
+    obtenerReservaVip()
+  }
+}, { immediate: true })
 
 const obtenerDatos = async () => {
   const resultado = await obtenerCarrito()
@@ -49,7 +54,7 @@ const obtenerDatos = async () => {
 }
 onMounted(() => {
   obtenerDatos()
-  obtenerReservaVip()
+  // obtenerReservaVip()
 })
 const totalPrecio = computed(() => {
   return carrito.value.reduce((acc, prod) => acc + Number(prod.price), 0)

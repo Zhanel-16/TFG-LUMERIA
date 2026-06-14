@@ -45,7 +45,7 @@ const articles = {
 
   6: {
     hero: "/images/colleccionArtic.webp",
-    sideImg: "/images/coleccion.webp",
+    sideImg: "/images/coleccion.png",
     title: "Guía de regalos según presupuesto",
     subtitle: "Ideas sofisticadas para sorprender sin importar el presupuesto.",
     type: "regalos"

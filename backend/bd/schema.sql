@@ -142,7 +142,7 @@ Este anillo de compromiso representa la unión entre luz, elegancia y simbolismo
 'anillosCompromiso'),
 
 
-('Fortuna Diamond 0,30 Cts.', 'Oro Blanco de 18 Kt',
+('Anillo Fortuna con Diamantes 0,30 Cts.', 'Oro Blanco de 18 Kt',
 'Inspirado en el símbolo universal de la buena suerte, este anillo de herradura combina significado, elegancia y luminosidad en una joya llena de encanto. Elaborado en oro blanco de 18 quilates, su diseño delicado y sofisticado convierte un emblema atemporal en una pieza refinada para llevar siempre contigo.
 
 La silueta de la herradura se encuentra realzada por un pavé de diamantes con un total de 0,30 quilates, aportando un brillo sutil pero constante que envuelve la pieza con una luz elegante y distinguida. Cada diamante ha sido dispuesto para seguir la curva perfecta del diseño, creando un efecto armonioso y lleno de destellos.
@@ -191,7 +191,7 @@ Este anillo es mucho más que una joya: es un amuleto contemporáneo pensado par
 'talismanes'),
 
 
-('Ojo Turco Nácar Diamond Charm 0,052 Cts.', 'Oro Amarillo de 18 Kt',
+('Charm Ojo Turco Nácar 0,052 Cts.', 'Oro Amarillo de 18 Kt',
 'Inspirado en el tradicional símbolo protector contra las energías negativas, este charm de ojo turco combina la pureza del nácar con el brillo delicado de diamantes naturales. Elaborado en oro amarillo de 18 quilates, su diseño elegante y luminoso lo convierte en un amuleto moderno de protección, armonía y buena fortuna.',
 399.00,
 '/images/charmOjoTurcoNacar.webp',
@@ -204,7 +204,7 @@ Este anillo es mucho más que una joya: es un amuleto contemporáneo pensado par
 '/images/charmAnclaDiamantes.webp',
 'talismanes'),
 
-('Charm Barco de Diamantes', 'Oro Amarillo de 18 Kt',
+('Charm Barco de Diamantes 0,086 Cts.', 'Oro Amarillo de 18 Kt',
 'Inspirado en la travesía marítima y el espíritu aventurero, este charm en forma de barco está elaborado en oro amarillo de 18 quilates y adornado con diamantes naturales de 0,086 quilates. Una joya sofisticada que simboliza el viaje, la libertad y la fortuna.',
 529.00,
 '/images/charmBarcoDiamantes.webp',
@@ -228,7 +228,7 @@ Este anillo es mucho más que una joya: es un amuleto contemporáneo pensado par
 '/images/charmOjoTurcoZafiro.webp',
 'talismanes'),
 
-('Anillo Esmeraldas Marquise y Diamante 0,20 Cts.', 'Oro Amarillo de 18 Kt', 'Fabricado en oro amarillo de 18 quilates, este anillo destaca por la armonía de sus líneas y la delicadeza de sus detalles. Su diseño incorpora dos esmeraldas talla marquise de intenso color verde, acompañadas por un diamante central de 0,20 quilates que aporta luminosidad y equilibrio a la composición.
+('Anillo Marquise Emerald & Diamond 0,20 Cts.', 'Oro Amarillo de 18 Kt', 'Fabricado en oro amarillo de 18 quilates, este anillo destaca por la armonía de sus líneas y la delicadeza de sus detalles. Su diseño incorpora dos esmeraldas talla marquise de intenso color verde, acompañadas por un diamante central de 0,20 quilates que aporta luminosidad y equilibrio a la composición.
 
 La talla marquise, reconocida por su elegante forma alargada y sus extremos puntiagudos, realza la belleza natural de las esmeraldas y aporta una sensación de ligereza y sofisticación. Inspirado en formas orgánicas y delicadas, el diseño evoca la belleza de la naturaleza y la frescura de los nuevos comienzos.
 

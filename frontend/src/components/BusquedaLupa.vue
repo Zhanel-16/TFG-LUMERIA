@@ -6,6 +6,15 @@ const emit = defineEmits(["cerrar"])
 const router = useRouter()
 const busqueda = ref("")
 const resultados = ref([])
+const formatPrice = (price) => {
+  const num = typeof price === 'number'
+    ? price
+    : parseFloat(String(price).replace(',', '.'))
+
+  return new Intl.NumberFormat('en-US', {
+    maximumFractionDigits: 0
+  }).format(num)
+}
 const buscarProductos = async () => {
   if (!busqueda.value.trim()) {
     resultados.value = []
@@ -16,6 +25,7 @@ const buscarProductos = async () => {
   )
   resultados.value = res.data
 }
+
 const abrirProducto = (id) => {
   emit("cerrar")
   router.push(`/products/${id}`)
@@ -42,7 +52,7 @@ const abrirProducto = (id) => {
           <h3>{{ prod.name }}</h3>
           <p class="oro">{{ prod.color_oro }}</p>
 
-          <p class="precio">{{ prod.price }} €</p>
+          <p class="price">{{ formatPrice(producto.price) }} €</p>
         </div>
       </div>
       <div v-if="busqueda && resultados.length === 0" class="sin_resultados">
