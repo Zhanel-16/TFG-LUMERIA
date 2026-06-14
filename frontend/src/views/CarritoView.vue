@@ -15,7 +15,7 @@ const formatPrice = (price) => {
 }
 const router = useRouter()
 const toast = useToast()
-
+const yaTienePulsera = ref(false)
 const irHome = () => {
   router.push('/')
 }
@@ -32,10 +32,48 @@ const obtenerReservaVip = async () => {
       `https://tfg-lumeria.onrender.com/appointments/user/${usuario.value.uid}`
     )
     reservaVip.value = res.data
+    yaTienePulsera.value = !!res.data?.giftEligible
   } catch (error) {
     console.log("Error reserva VIP:", error.response?.data || error)
   }
 }
+// q me muestre las fechas cuando se solicito la cita + fecha pedida 
+const fechaCitaFormateada = computed(() => {
+  if (!reservaVip.value?.date) return ""
+
+  return new Date(reservaVip.value.date)
+    .toLocaleDateString("es-ES", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    })
+})
+
+const fechaPedidaFormateada = computed(() => {
+  if (!reservaVip.value?.proposalDate) return ""
+
+  return new Date(reservaVip.value.proposalDate)
+    .toLocaleDateString("es-ES", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    })
+})
+
+const diasParaPedida = computed(() => { //dias rest
+  if (!reservaVip.value?.proposalDate) return null
+
+  const hoy = new Date(now.value)
+  const pedida = new Date(reservaVip.value.proposalDate)
+
+  hoy.setHours(0,0,0,0)
+  pedida.setHours(0,0,0,0)
+
+  const diff = pedida - hoy
+  return Math.ceil(diff / (1000 * 60 * 60 * 24))
+})
+
+
 
 // prueba watch 
 watch(usuario, (nuevoUsuario) => {
@@ -81,6 +119,13 @@ const cerrarSesion = async () => {
     router.push("/login")
   }
 }
+const now = ref(Date.now())
+
+onMounted(() => {   // que mañana cambie automáticamente sin recargar
+  setInterval(() => {
+    now.value = Date.now()
+  }, 60000)
+})
 </script>
 
 <template>
@@ -133,28 +178,35 @@ const cerrarSesion = async () => {
     </button>
 
   </div>
-  <div
-  v-if="reservaVip?.giftEligible"
-  class="vipGiftCard"
->
-  <p class="mini">
-    ENGAGEMENT CONCIERGE BENEFIT
-  </p>
+  <div v-if="reservaVip?.giftEligible" class="vipGiftCard">
+    <p class="mini">ENGAGEMENT CONCIERGE BENEFIT</p>
 
-  <h2>
-    Regalo exclusivo desbloqueado
-  </h2>
+    <h2>Regalo exclusivo desbloqueado</h2>
 
-  <p>
-    Has reservado una experiencia privada antes de la fecha prevista para tu pedida.
-    Como agradecimiento, recibirás una pulsera de diamantes en plata valorada en 499€
-    durante vuestra visita privada a Lumeria.
-  </p>
+    <p>Tu pulsera exclusiva está reservada para vuestra visita privada.</p>
 
-  <div class="giftValue">
-    Valor exclusivo · 499€
+    <div class="timeline">
+      <p>
+        <strong>Cita privada:</strong>
+        {{ fechaCitaFormateada }}
+      </p>
+
+      <p>
+        <strong>Pedida prevista:</strong>
+        {{ fechaPedidaFormateada }}
+      </p>
+
+      <p v-if="diasParaPedida > 0">
+        Faltan <strong>{{ diasParaPedida }}</strong> días para vuestro gran momento ✨
+      </p>
+      <p v-else>La fecha prevista ya ha llegado 💍</p>
+    </div>
+
+    <div class="giftValue">
+      Valor exclusivo · 499€
+    </div>
+
   </div>
-</div>
 
 </div>
 
@@ -228,6 +280,15 @@ const cerrarSesion = async () => {
 </template>
 
 <style lang="sass" scoped>
+.timeline
+  margin: 30px 0
+  padding: 25px
+  background: rgba(212,175,55,.06)
+  border-radius: 18px
+
+  p
+    margin: 12px 0
+    font-size: 16px
 .vipGiftCard
   margin: 50px auto
   max-width: 850px

@@ -26,7 +26,10 @@
     <p class="mini">PRIVATE EXPERIENCE</p>
 
     <h2>Reserva una asesoría privada</h2>
-    <p>Si reservas vuestra experiencia antes de la pedida, recibiréis una pulsera de diamantes en plata valorada en 499€</p>
+    <p v-if="!yaTienePulsera">Si reservas vuestra experiencia antes de la pedida, recibiréis una pulsera de diamantes en plata valorada en 499€</p>
+    
+    <p v-else class="regalo-usado">Ya habéis desbloqueado vuestro regalo exclusivo. Podéis seguir reservando citas privadas cuando queráis.</p>
+
     <p class="reglas">Para garantizar una experiencia totalmente personalizada, las reservas deben realizarse con un mínimo de 3 días de antelación. La fecha prevista para la pedida deberá ser posterior a la fecha de vuestra cita privada.</p>
 
     <p class="info-fecha">Las citas privadas requieren un mínimo de 3 días de antelación. Próxima fecha disponible: <strong>{{ fechaMinimaFormateada }}</strong></p>
@@ -50,7 +53,7 @@
     <!-- <input type="date" v-model="fecha" :min="fechaMin" :max="fechaMax" :disabled="!auth.currentUser"> fecha de la cita privada -->
     <span>Fecha de la pedida</span>
     <input type="date" v-model="fechaPedida" :min="fechaPedidaMin" :disabled="!fechaCita"/>
-    
+
     <span>Hora de la experiencia</span>
     
     <select v-model="hora" :disabled="!auth.currentUser">
@@ -90,7 +93,7 @@ import WhatsappExpert from "@/components/WhatsappExpert.vue"
 import { useRouter } from "vue-router"
 import { computed } from "vue"
 const router = useRouter()
-
+const yaTienePulsera = ref(false)
 const goToProducto = (id) => {
   router.push(`/products/${id}`)
 }
@@ -226,6 +229,11 @@ const reservar = async () => {
     toast.success(
       "¡Reserva realizada correctamente!"
     )
+    setTimeout(() => {
+      toast.info(
+        "💎 Tu experiencia ya está confirmada. En tu panel privado te espera algo especial..."
+      )
+    }, 1800)
     // limpiar
     nombrePareja.value = ""
     fechaPedida.value = ""

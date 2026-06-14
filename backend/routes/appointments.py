@@ -24,7 +24,6 @@ appointments = Blueprint("appointments", __name__)
 def create_appointment():
     try:
         data = request.get_json()
-
         # VALIDACIONES 
         if not data.get("user_id"):
             return jsonify({"ok": False, "error": "Usuario no autenticado"}), 401
@@ -34,6 +33,22 @@ def create_appointment():
 
         conn = db_conn()
         cursor = conn.cursor()
+        
+        # comprobar si ya recibió pulsera alguna vez
+        cursor.execute("""
+            SELECT id
+            FROM appointments
+            WHERE user_id = %s
+            AND giftEligible = TRUE
+            LIMIT 1
+        """, (data["user_id"],))
+
+        ya_tuvo_regalo = cursor.fetchone() is not None
+
+        giftEligible = (
+            not ya_tuvo_regalo
+            and data.get("giftEligible", False)
+        )
 
         cursor.execute("""
             INSERT INTO appointments (user_id,date,time,interest,notes,proposalDate,giftEligible,giftStatus,service)
@@ -45,7 +60,8 @@ def create_appointment():
             data["interest"],
             data["notes"],
             data.get("proposalDate"),
-            data.get("giftEligible", False),
+            giftEligible,
+            # data.get("giftEligible", False),
             data.get("giftStatus"),
             data["service"]
         ))
@@ -113,7 +129,6 @@ def create_appointment():
 def get_user_appointment(uid):
     try:
         # print("UID recibido:", uid)
-
         conn = db_conn()
         cursor = conn.cursor(dictionary=True)
 
@@ -122,6 +137,7 @@ def get_user_appointment(uid):
             FROM appointments
             WHERE user_id = %s
             AND service = %s
+            ORDER BY created_at DESC
             LIMIT 1
         """, (uid, "Engagement Concierge"))
 
@@ -129,14 +145,14 @@ def get_user_appointment(uid):
         # print("CITA:", cita)
         if cita: #transform los campos antes de devolver
             # asi evito error TypeError: Object of type timedelta is not JSON serializable 
-            print("ANTES:", type(cita["time"]), cita["time"])
+            # print("ANTES:", type(cita["time"]), cita["time"])
 
             cita["time"] = str(cita["time"])
             cita["date"] = str(cita["date"])
             cita["proposalDate"] = str(cita["proposalDate"]) if cita["proposalDate"] else None
             cita["created_at"] = str(cita["created_at"])
             
-            print("DESPUES:", type(cita["time"]), cita["time"])
+            # print("DESPUES:", type(cita["time"]), cita["time"])
 
         cursor.close()
         conn.close()
