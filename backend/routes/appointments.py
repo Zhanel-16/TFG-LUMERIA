@@ -137,6 +137,7 @@ def get_user_appointment(uid):
             FROM appointments
             WHERE user_id = %s
             AND service = %s
+            AND giftEligible = TRUE
             ORDER BY created_at DESC
             LIMIT 1
         """, (uid, "Engagement Concierge"))

@@ -174,6 +174,21 @@ const cargarProductos = async () => {
   productos.value = (res.data.products || res.data).slice(0, 4)
 }
 
+const cargarEstadoPulsera = async () => {
+  const user = auth.currentUser
+  if (!user) return
+
+  try {
+    const res = await axios.get(
+      `https://tfg-lumeria.onrender.com/appointments/user/${user.uid}`
+    )
+
+    yaTienePulsera.value = !!res.data?.giftEligible
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const reservar = async () => {
   try {
     const user = auth.currentUser
@@ -219,7 +234,7 @@ const reservar = async () => {
     }
     const giftEligible = new Date(fechaPedida.value) > new Date(fechaCita.value)
 
-    await axios.post(
+    const res = await axios.post(
       "https://tfg-lumeria.onrender.com/appointments/",
       {
         user_id: user.uid,
@@ -239,11 +254,13 @@ const reservar = async () => {
     toast.success(
       "¡Reserva realizada correctamente!"
     )
-    setTimeout(() => {
-      toast.info(
-        "💎 Tu experiencia ya está confirmada. En tu panel privado te espera algo especial..."
-      )
-    }, 1800)
+    if (giftEligible) {
+      setTimeout(() => {
+        toast.info( //toast vip para una unica vez de pedir pulsera
+          "💎 Tu experiencia ya está confirmada. En tu panel privado te espera algo especial..."
+        )
+      }, 1800)
+    }
     // limpiar
     nombrePareja.value = ""
     fechaPedida.value = ""
@@ -261,9 +278,8 @@ const reservar = async () => {
   }
 }
 onMounted(() => {
-  console.log("Compromiso mounted")
-  console.log("typeof obtenerDatos:", typeof obtenerDatos)
   cargarProductos()
+  cargarEstadoPulsera()
 })
 </script>
 

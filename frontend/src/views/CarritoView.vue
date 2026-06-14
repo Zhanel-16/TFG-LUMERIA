@@ -64,6 +64,17 @@ const fechaPedidaFormateada = computed(() => {
       year: "numeric"
     })
 })
+// CUANDO SE HA CREADO!!!!!!!!!!!!!!!!!!!
+const fechaReservaFormateada = computed(() => {
+  if (!reservaVip.value?.created_at) return ""
+
+  return new Date(reservaVip.value.created_at)
+    .toLocaleDateString("es-ES", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    })
+})
 
 const diasParaPedida = computed(() => { //dias rest
   if (!reservaVip.value?.proposalDate) return null
@@ -153,7 +164,7 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
     <p class="subtitle">
       Tus piezas seleccionadas ya están preparadas para ti. Cada artículo forma parte de una selección exclusiva pensada para reflejar tu estilo y tu identidad. Te invitamos a descubrir esta experiencia de lujo en persona en nuestra tienda física Joeyria, donde podrás disfrutar de una atención privada y un entorno diseñado para que vivas el lujo con calma y exclusividad.
     </p>
-    <div v-if="reservaVip?.giftStatus === 'pendiente'">
+    <div v-if="reservaVip?.giftStatus === 'pendiente'" class="giftStatusMessage">
       Pendiente de recoger: un regalo especial reservado para ti | Lumeria Exclusive Gifts
     </div>
 
@@ -191,15 +202,11 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
     <p>Tu pulsera exclusiva está reservada para vuestra visita privada.</p>
 
     <div class="timeline">
-      <p>
-        <strong>Cita privada:</strong>
-        {{ fechaCitaFormateada }}
-      </p>
 
-      <p>
-        <strong>Pedida prevista:</strong>
-        {{ fechaPedidaFormateada }}
-      </p>
+      <p><strong>Reserva realizada:</strong>{{ fechaReservaFormateada }}</p>
+      <p><strong>Cita privada:</strong>{{ fechaCitaFormateada }}</p>
+
+      <p><strong>Pedida prevista:</strong>{{ fechaPedidaFormateada }}</p>
 
       <p v-if="diasParaPedida > 0">
         Faltan <strong>{{ diasParaPedida }}</strong> días para vuestro gran momento...
@@ -291,10 +298,13 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
   padding: 25px
   background: rgba(212,175,55,.06)
   border-radius: 18px
-
   p
     margin: 12px 0
     font-size: 16px
+
+.giftStatusMessage
+  margin-top: 32px
+
 .vipGiftCard
   margin: 50px auto
   max-width: 850px
