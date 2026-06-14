@@ -631,49 +631,38 @@ h3
 
   .appointmentBox
     padding: 35px 25px
-
 @media (max-width: 480px)
-
-  .carrito
-    margin-top: 30px
-
-  h1
-    font-size: 28px
-
-  .favsGrid
-    grid-template-columns: repeat(2, 1fr)
-    gap: 12px
-
-  .favCard
-    border-radius: 18px
-
-  .favCard img
+  .img-wrap
     height: 150px
 
-  .favCard h4
-    font-size: 13px
-    min-height: 55px
-    padding: 14px 12px 0
+  .contenido
+    padding: 17px 12px 26px
+
+  h3
+    font-size: 12px
+    line-height: 1.3
+    margin: 0 auto 4px
+    min-height: 32px
+    width: 92%
+    max-width: 140px
+    text-align: center
+
+  .oro
+    font-size: 11px
+    min-height: 25px
+    margin: 3px 0
+    line-height: 1.2
 
   .price
-    font-size: 17px
-
-  .cantidad
-    font-size: 11px
-
-  .favCard button
-    width: 90%
-    height: 38px
-    font-size: 11px
-    margin-bottom: 15px
-  .luxuryText h1
-    font-size: 28px
-
-  .subtitle
     font-size: 14px
+    margin: 3px 0 8px
 
-  .appointmentBox h2
-    font-size: 24px
+  button
+    width: 120px
+    height: 32px
+    font-size: 10px
+    margin-left: auto
+    margin-right: auto
 
 @media (max-width: 360px)
   .favsGrid

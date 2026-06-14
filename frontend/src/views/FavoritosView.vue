@@ -335,6 +335,8 @@ button:disabled
     height: 200px
 
 @media (max-width: 480px)
+  .img-wrap
+    height: 150px
 
   .luxuryText h1
     font-size: 28px
@@ -346,25 +348,34 @@ button:disabled
     grid-template-columns: repeat(2,1fr)
     gap: 12px
 
-  .img-wrap
-    height: 150px
+  .contenido
+    padding: 17px 12px 26px
 
   h3
-    font-size: 13px
+    font-size: 12px
+    line-height: 1.3
+    margin: 0 auto 4px
+    min-height: 32px
+    text-align: center
 
   .oro
     font-size: 11px
+    min-height: 25px
+    margin: 3px 0
+    line-height: 1.2
 
   .price
-    font-size: 16px
+    font-size: 14px
+    margin: 3px 0 8px
 
   button
-    width: 100%
-    height: 38px
-    font-size: 11px
+    width: 120px
+    height: 32px
+    font-size: 10px
+    margin-left: auto
+    margin-right: auto
 
 @media (max-width: 360px)
-
   .grid
     grid-template-columns: 1fr
 </style>
