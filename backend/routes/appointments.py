@@ -108,3 +108,28 @@ def get_user_appointment(uid):
     conn.close()
 
     return jsonify(cita)
+
+
+@appointments.route("/user/<uid>", methods=["GET"])
+def get_user_appointment(uid):
+    print("UID recibido:", uid)
+
+    conn = db_conn()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("""
+        SELECT *
+        FROM appointments
+        WHERE user_id = %s
+        AND service = 'Engagement Concierge'
+        LIMIT 1
+    """, (uid,))
+
+    cita = cursor.fetchone()
+
+    print("CITA:", cita)
+
+    cursor.close()
+    conn.close()
+
+    return jsonify(cita)

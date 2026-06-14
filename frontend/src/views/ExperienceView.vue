@@ -71,7 +71,7 @@ import WhatsappExpert from "@/components/WhatsappExpert.vue";
 </template>
 <style lang="sass" scoped>
 section
-  padding: 80px 20px
+  padding: 55px 20px
 .container
   max-width: 1100px
   margin: auto
@@ -109,18 +109,17 @@ section
   font-weight: 630
   color: #D4AF37
 
-.story p
-  line-height: 1.75
-  margin-top: 10px
-  color: #555
 .grid
   display: grid
   grid-template-columns: 1fr 1fr
-  gap: 60px
+  gap: 25px
+
+.story p,
 .experience p
-  color: #555
-  line-height: 1.75
-  margin-top: 10px
+  margin-top: 6px
+  margin-bottom: 0
+  line-height: 1.7
+  
 .formReserva
   max-width: 550px
   margin: 30px auto 0
