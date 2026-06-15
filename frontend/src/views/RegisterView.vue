@@ -165,33 +165,43 @@ button
     height: 54px
 
 @media (max-width: 480px)
-
   .auth
-    padding: 20px
+    padding: 12px
 
   .card
-    padding: 35px 22px
-    border-radius: 24px
+    max-width: 360px
+    padding: 24px 16px
+    border-radius: 18px
+    box-shadow: 0 6px 18px rgba(0,0,0,.05)
 
   h1
-    font-size: 26px
+    font-size: 22px
     margin-bottom: 5px
+  .subtitle
+    font-size: 13px
+    line-height: 1.4
 
   form
-    margin-top: 25px
+    margin-top: 18px
 
   input
-    height: 50px
-    font-size: 14px
-    border-radius: 14px
+    height: 44px
+    font-size: 13px
+    margin-bottom: 10px
+    border-radius: 12px
 
   button
-    height: 50px
-    font-size: 14px
+    width: 46%
+    min-width: 130px
+    height: 44px
+    font-size: 13px
+    margin-top: 6px
 
   .cambio
-    font-size: 13px
+    margin-top: 18px
+    font-size: 12px
 
   .back
-    font-size: 13px
+    margin-top: 20px
+    font-size: 12px
 </style>          
