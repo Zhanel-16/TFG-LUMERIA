@@ -127,7 +127,7 @@ async (usuarioActual = null) => {
     await sendEmailVerification(
       usuarioFirebase,
       {
-        url: window.location.origin + "/perfil"
+        url: window.location.origin + "/login"
       }
     )
 

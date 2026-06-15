@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from "vue";
-import { login } from "@/servicios/autenticacion";
 import { useRouter } from "vue-router";
 import { useToast } from "vue-toastification";
+import { login, logOut } from "@/servicios/autenticacion";
 const email = ref("");
 const password = ref("");
 const router = useRouter();
@@ -22,6 +22,7 @@ const iniciarSesion = async () => {
   await res.usuario.user.reload();
 
   if (!res.usuario.user.emailVerified) {
+    await logOut()
     toast.error("Debes verificar tu email antes de iniciar sesión");
     return;
   }

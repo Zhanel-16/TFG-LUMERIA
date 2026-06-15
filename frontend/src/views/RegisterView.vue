@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { registrar, enviarEmailVerificacion } from "@/servicios/autenticacion";
+import { registrar, enviarEmailVerificacion, logOut } from "@/servicios/autenticacion";
 import { useRouter } from "vue-router";
 import { useToast } from "vue-toastification";
 const nombre = ref("");
@@ -25,13 +25,24 @@ const registrarse = async () => {
   }
 
   const res = await registrar(email.value, password.value);
-  if (res.ok) {
-    await enviarEmailVerificacion(res.usuario.user);
-
-    toast.success("Te hemos enviado un correo de verificación");
-    router.push("/login");
+  if (!res.ok) {
+    toast.error("No se pudo crear la cuenta") // res.mensaje || 
+    return
   }
-};
+  await enviarEmailVerificacion(res.usuario.user)
+  await logOut()
+
+  // if (res.ok) {
+  //   await enviarEmailVerificacion(res.usuario.user);
+
+    // toast.success("Te hemos enviado un correo de verificación");
+    // router.push("/login");
+  toast.success("Cuenta creada, revisa tu correo y inicia sesión.")
+  setTimeout(() => {
+    router.push("/login")
+  }, 1100)
+  }
+// };
 </script>
 
 <template>
