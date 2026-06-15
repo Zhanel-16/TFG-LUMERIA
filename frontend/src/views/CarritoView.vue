@@ -161,9 +161,13 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
 
     
 
-    <p class="subtitle">
-      Tus piezas seleccionadas ya están preparadas para ti. Cada artículo forma parte de una selección exclusiva pensada para reflejar tu estilo y tu identidad. Te invitamos a descubrir esta experiencia de lujo en persona en nuestra tienda física Joeyria, donde podrás disfrutar de una atención privada y un entorno diseñado para que vivas el lujo con calma y exclusividad.
+    <p class="subtitle desktop-subtitle">
+      Tus piezas seleccionadas ya están preparadas para ti. Cada artículo forma parte de una selección exclusiva pensada para reflejar tu estilo y tu identidad.<br>Te invitamos a descubrir esta experiencia de lujo en persona en nuestra tienda física, donde podrás disfrutar de una atención privada y un entorno diseñado para que vivas el lujo con calma y exclusividad.
     </p>
+    <p class="subtitle mobile-subtitle">
+      Tus piezas seleccionadas ya están preparadas para ti. Cada artículo forma parte de una selección exclusiva pensada para reflejar tu estilo y tu identidad.
+    </p>
+    
     <div v-if="reservaVip?.giftStatus === 'pendiente'" class="giftStatusMessage">
       Pendiente de recoger: un regalo especial reservado para ti | Lumeria Exclusive Gifts
     </div>
@@ -203,10 +207,10 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
 
     <div class="timeline">
 
-      <p><strong>Reserva realizada:</strong>{{ fechaReservaFormateada }}</p>
-      <p><strong>Cita privada:</strong>{{ fechaCitaFormateada }}</p>
+      <p><strong>Reserva realizada: </strong>{{ fechaReservaFormateada }}</p>
+      <p><strong>Cita privada: </strong>{{ fechaCitaFormateada }}</p>
 
-      <p><strong>Pedida prevista:</strong>{{ fechaPedidaFormateada }}</p>
+      <p><strong>Pedida prevista: </strong>{{ fechaPedidaFormateada }}</p>
 
       <p v-if="diasParaPedida > 0">
         Faltan <strong>{{ diasParaPedida }}</strong> días para vuestro gran momento...
@@ -292,6 +296,12 @@ onMounted(() => {   // que mañana cambie automáticamente sin recargar
 </template>
 
 <style lang="sass" scoped>
+.desktop-subtitle
+  display: block
+
+.mobile-subtitle
+  display: none
+
 .timeline
   max-width: 520px
   margin: 30px auto
@@ -635,29 +645,46 @@ h3
     flex-direction: column
     gap: 20px
 
-  .logoutBtn
-    width: 100%
-
   .appointmentBox
     padding: 35px 25px
 @media (max-width: 480px)
+  .desktop-subtitle
+    display: none
+
+  .mobile-subtitle
+    display: block
+    font-size: 13px
+    line-height: 1.65
+    max-width: 260px
+    margin: 0 auto
+    
+  .carrito
+    padding: 0 14px
+
+  .favsGrid
+    grid-template-columns: repeat(2, 1fr)
+    gap: 12px
+
   .favCard
     border-radius: 24px
+
   .img-wrap
     height: 150px
-    // img
-    //   object-position: center
 
   .contenido
     padding: 17px 12px 26px
+    text-align: center
 
   h3
     font-size: 12px
     line-height: 1.3
+    width: 92%
+    max-width: 140px
     margin: 0 auto 4px
     min-height: 32px
-    width: 92%
-    // max-width: 140px
+    display: flex
+    align-items: center
+    justify-content: center
     text-align: center
 
   .oro
@@ -676,6 +703,82 @@ h3
     font-size: 10px
     margin-left: auto
     margin-right: auto
+  .clientPanel
+    max-width: 280px
+    min-width: unset
+    padding: 16px
+    gap: 14px
+    margin-top: 24px
+
+  .clientInfo
+    gap: 10px
+
+  .clientInfo i
+    width: 42px
+    height: 42px
+    font-size: 15px
+
+  .clientInfo span
+    font-size: 9px
+    letter-spacing: 1px
+
+  .clientInfo h3
+    font-size: 11px
+    max-width: 170px
+    line-height: 1.3
+    overflow-wrap: anywhere //para q no se salga el correo
+
+  .logoutBtn
+    width: 100%
+    height: 36px
+    font-size: 11px
+  .subtitle
+    font-size: 13px
+    line-height: 1.65
+    max-width: 95%
+  .luxuryText h1
+    font-size: 26px
+    margin: 25px 0
+  .emptyCart
+    padding: 30px 18px
+    max-width: 280px
+    margin-top: 40px
+
+  .emptyCart p
+    font-size: 15px
+    margin-bottom: 14px
+
+  .emptyCart button
+    width: 130px
+    height: 38px
+    font-size: 12px
+
+  .vipGiftCard
+    padding: 24px 16px
+    border-radius: 20px
+    margin: 30px auto
+
+  .vipGiftCard h2
+    font-size: 20px
+
+  .vipGiftCard p
+    font-size: 13px
+    line-height: 1.6
+
+  .timeline
+    padding: 16px
+
+    p
+      font-size: 12px
+
+  .appointmentBox
+    padding: 28px 16px
+
+    h2
+      font-size: 22px
+
+    p
+      font-size: 13px
 
 @media (max-width: 360px)
   .favsGrid

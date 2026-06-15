@@ -1,6 +1,18 @@
 <script setup>
 import ReservaCita from "@/components/ReservaCita.vue";
 import WhatsappExpert from "@/components/WhatsappExpert.vue";
+
+// mismo estilo overlay inicia sesion encima del form
+import { auth } from "@/firebase/config"
+import { useToast } from "vue-toastification"
+
+const toast = useToast()
+
+const mostrarToastLogin = () => {
+  if (!auth.currentUser) {
+    toast.info("Inicia sesión o regístrate para reservar tu experiencia privada")
+  }
+}
 </script>
 <template>
   <div id="app-layout">
@@ -48,8 +60,8 @@ import WhatsappExpert from "@/components/WhatsappExpert.vue";
       <h2>Reserva tu cita privada</h2>
       <p>Te invitamos a descubrir nuestro atelier y disfrutar de una auténtica experiencia de lujo a tu medida. Déjate mimar con un asesoramiento personalizado y relajado, donde cada detalle importa.</p>
 <!-- FORMULARIO -->
-<div class="formReserva">
-  <ReservaCita />
+<div class="formReserva" :class="{ bloqueado: !auth.currentUser }" @mouseenter="mostrarToastLogin">
+  <ReservaCita /> <!-- @ llama a la fun de arriab de mostrar toast -->
 </div>
 
 <div class="luxury-row">
@@ -119,7 +131,7 @@ section
   margin-top: 6px
   margin-bottom: 0
   line-height: 1.7
-  
+
 .formReserva
   max-width: 550px
   margin: 30px auto 0
@@ -127,6 +139,29 @@ section
   padding: 40px
   border-radius: 30px
   box-shadow: 0 20px 50px rgba(0,0,0,.05)
+  position: relative
+  cursor: pointer
+
+.bloqueado
+  opacity: .65
+  position: relative
+
+  &::after
+    content: "Inicia sesión o regístrate para desbloquear\Ala experiencia privada"
+    white-space: pre-line
+    position: absolute
+    inset: 0
+    background: rgba(255,255,255,.45)
+    backdrop-filter: blur(1.5px)
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    font-size: 21px
+    font-weight: 600
+    letter-spacing: 1px
+    color: #111
+    border-radius: 30px
 .cta
   background: #FAF8F3
   text-align: center
