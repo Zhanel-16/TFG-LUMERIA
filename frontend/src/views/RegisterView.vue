@@ -166,7 +166,9 @@ button
 
 @media (max-width: 480px)
   .auth
-    padding: 12px
+    min-height: auto
+    align-items: flex-start
+    padding-top: 28px
 
   .card
     max-width: 360px

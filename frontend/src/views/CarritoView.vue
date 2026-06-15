@@ -617,8 +617,17 @@ h3
     grid-template-columns: repeat(2, 1fr)
     gap: 18px
 
-  .favCard img
+  // .img-wrap
+  //   height: 200px
+  //   img
+  //     width: 100%
+  //     height: 100%
+  //     object-fit: cover
+  //     object-position: center
+  //     transition: .6s ease
+  .img-wrap
     height: 200px
+
   .luxuryText h1
     font-size: 34px
 
@@ -632,8 +641,12 @@ h3
   .appointmentBox
     padding: 35px 25px
 @media (max-width: 480px)
+  .favCard
+    border-radius: 24px
   .img-wrap
     height: 150px
+    // img
+    //   object-position: center
 
   .contenido
     padding: 17px 12px 26px
@@ -644,7 +657,7 @@ h3
     margin: 0 auto 4px
     min-height: 32px
     width: 92%
-    max-width: 140px
+    // max-width: 140px
     text-align: center
 
   .oro
@@ -657,7 +670,7 @@ h3
     font-size: 14px
     margin: 3px 0 8px
 
-  button
+  .favCard button
     width: 120px
     height: 32px
     font-size: 10px
