@@ -142,12 +142,12 @@ button
   background: black
   color: white
   border: none
-  padding: 15px 28px
+  padding: 12px 20px
   border-radius: 40px
   cursor: pointer
   transition: .3s
-  font-size: 15px
-  width: min(320px, 90%) // PC: 320px, movil: 90%
+  font-size: 14px
+  max-width: 220px
   align-self: center
 
   &:hover
@@ -156,4 +156,10 @@ button
 button:disabled
   opacity: .5
   cursor: not-allowed
+
+@media (max-width: 480px)
+  button
+    min-width: 160px
+    font-size: 13px
+    padding: 10px 16px
 </style>

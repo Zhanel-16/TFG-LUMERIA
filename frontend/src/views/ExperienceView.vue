@@ -253,9 +253,6 @@ section
     font-size: 52px
 
 @media (max-width: 768px)
-  .hero_experience
-    height: 60vh
-
   .overlay h1
     font-size: 30px
 
@@ -276,8 +273,8 @@ section
     font-size: 32px
   .desc
     font-size: 15px
-  .formReserva
-    padding: 25px
+  
+  
 
 @media (max-width: 480px) //móvil pequeño
   h1
