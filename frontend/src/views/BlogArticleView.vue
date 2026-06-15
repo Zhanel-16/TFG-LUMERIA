@@ -75,14 +75,15 @@ const article = computed(() => articles[route.params.id])
       <div class="holis">
         <span>"El mejor anillo de compromiso no es el más grande, sino aquel que sigue emocionando dentro de treinta años."</span>
       </div>
+      <div class="blog-image">
+        <img src="/images/compromiso.webp">
+      </div>
 
       <p>Por eso, esta guía nace para ayudarte a comprender los aspectos clave que debes tener en cuenta 
         antes de elegir la joya que marcará uno de los momentos más importantes de tu vida.</p>
       <p>Más allá del presupuesto o las tendencias, la elección correcta siempre nace del equilibrio entre emoción, estética y significado.
         Un gran anillo no solo impresiona el día de la pedida; sigue transmitiendo algo especial décadas después.</p>
-      <div class="blog-image">
-        <img src="/images/compromiso.webp">
-      </div>
+      
       <div class="two-cols">
         <img :src="article.sideImg">
         <div>
@@ -96,9 +97,9 @@ const article = computed(() => articles[route.params.id])
         </div>
         
       </div>
-      <div class="blog-image">
+      <!-- <div class="blog-image">
         <img src="/images/radiantCut.webp">
-      </div>
+      </div> -->
 
       <!-- seccion 1 -->
       <h2>Los estilos de anillo más icónicos</h2>
@@ -218,13 +219,15 @@ const article = computed(() => articles[route.params.id])
     <p>La combinación de anillos permite jugar con volúmenes, metales y piedras preciosas para crear un look único. Algunas personas mezclan oro amarillo y blanco; otras prefieren diseños minimalistas acompañados de diamantes delicados.</p>
 
     <div class="blog-image">
-      <img src="/images/stackOroBlanco.webp">
+      <img src="/images/aguamarinaChica.webp">
     </div>
 
     <h2>El equilibrio visual</h2>
     <p>La clave del stacking perfecto está en encontrar armonía entre tamaños y texturas. Un anillo dominante puede equilibrarse con bandas finas o piezas más discretas.</p>
 
     <p>También es importante dejar espacio visual para que cada joya respire y mantenga protagonismo sin sobrecargar la mano.</p>
+    <p>Una de las grandes ventajas del ring stacking es su versatilidad. Puedes crear combinaciones diferentes según la ocasión: algo más minimalista para el día a día o composiciones más sofisticadas para eventos especiales.</p>
+    <p>Muchas colecciones modernas están diseñadas precisamente con esta filosofía, permitiendo combinar anillos finos, alianzas con diamantes y piezas con piedras de color sin perder coherencia estética.</p>
 
     <div class="two-cols">
       <img :src="article.sideImg">
@@ -237,15 +240,25 @@ const article = computed(() => articles[route.params.id])
         </p>
       </div>
     </div>
+    <h2>Cómo empezar tu combinación</h2>
+
+    <p>Si nunca has probado esta tendencia, una buena forma de empezar es elegir una pieza principal que actúe como base visual. Puede ser un solitario, un anillo con piedra central o una banda de diamantes.</p>
+
+    <p>A partir de ahí, puedes añadir anillos más finos que aporten textura y profundidad. El objetivo no es acumular, sino construir una composición equilibrada que refleje tu personalidad.</p>
+
+    <p>En Lumeria, entendemos el stacking como una forma de autoexpresión. Cada combinación cuenta una historia distinta y evoluciona contigo con el paso del tiempo.</p>
 </div>
 <!-- 4 -->
 <div v-if="article.type === 'pedida'" class="content">
   <p class="intro">Una pedida perfecta no depende del lujo extremo ni de escenarios imposibles. Depende de crear un momento auténtico, íntimo y emocionalmente inolvidable.</p>
   <p>Algunas personas eligen una cena elegante; otras prefieren un viaje, una playa tranquila o incluso el salón de casa. Lo importante es que el momento represente vuestra historia.</p>
 
-  <div class="blog-image">
+  <p>Preparar una pedida implica pensar tanto en la logística como en la emoción. El lugar, el momento del día y la atmósfera influyen en cómo se vivirá ese recuerdo durante años.</p>
+
+  <p>Algunas personas prefieren sorprender completamente; otras optan por conversaciones previas para asegurarse de que el momento esté alineado con las expectativas de ambos.</p>
+  <!-- <div class="blog-image">
     <img src="/images/boda.webp">
-  </div>
+  </div> -->
   <h2>El anillo correcto</h2>
   <p>Elegir el anillo adecuado implica entender la personalidad de quien lo llevará cada día. El diseño perfecto no siempre es el más grande, sino el que conecta emocionalmente.</p>
 
@@ -260,13 +273,22 @@ const article = computed(() => articles[route.params.id])
       <p>Porque al final, las personas olvidan lugares y fechas… pero nunca olvidan cómo se sintieron en ese instante.</p>
     </div>
   </div>
+  <h2>La importancia de los detalles</h2>
+
+  <p>Los pequeños detalles suelen marcar la diferencia: una carta escrita a mano, una canción significativa o un lugar especial para la pareja pueden transformar por completo la experiencia.</p>
+
+  <p>La pedida perfecta no busca impresionar a todo el mundo. Busca emocionar a una sola persona.</p>
+
+  <p>Por eso, el verdadero éxito de una pedida está en su autenticidad y en la conexión emocional que transmite.</p>
 </div>
 <!-- 5 -->
 <div v-if="article.type === 'gemas'" class="content">
 
   <p class="intro">El topacio y la aguamarina comparten tonalidades azules fascinantes, pero transmiten sensaciones completamente distintas.</p>
+  <p>Ambas gemas son populares en alta joyería por su luminosidad y por la elegancia que aportan a diseños contemporáneos y clásicos.</p>
   
   <p>Mientras la aguamarina suele asociarse con serenidad y sofisticación ligera, el topacio azul ofrece una presencia más intensa y vibrante.</p>
+  <p>La aguamarina suele asociarse a calma, equilibrio y serenidad. Su transparencia crea un efecto etéreo muy apreciado en anillos y colgantes.</p>
 
   <div class="blog-image">
     <img src="/images/pendientes_collar111111111.webp">
@@ -289,12 +311,20 @@ const article = computed(() => articles[route.params.id])
       <p>Ambas piedras son preciosas. La elección final depende de la emoción que quieras transmitir.</p>
     </div>
   </div>
+  <h2>¿Cuál elegir?</h2>
+
+  <p>Si buscas una estética suave, elegante y delicada, la aguamarina suele ser una opción excelente.</p>
+
+  <p>Si prefieres una joya con más intensidad visual y presencia, el topacio azul puede encajar mejor contigo.</p>
+
+  <p>No existe una respuesta universal: la elección ideal depende de tu estilo personal y de la emoción que quieras representar con la pieza.</p>
 </div>
 
 <!-- 6 -->
 <div v-if="article.type === 'regalos'" class="content">
 
   <p class="intro">Encontrar el regalo perfecto no depende únicamente del presupuesto. Las joyas más especiales suelen ser aquellas que consiguen transmitir emoción y significado.</p>
+  <p>Regalar una joya es una forma de capturar emociones en un objeto físico. Cada pieza puede convertirse en un símbolo de amor, celebración o recuerdo.</p>
   <p>Desde piezas minimalistas hasta diamantes más sofisticados, cada detalle puede convertirse en un recuerdo eterno.</p>
   <div class="blog-image">
     <!-- <img src="/images/coleccion.png"> -->
@@ -302,10 +332,12 @@ const article = computed(() => articles[route.params.id])
   </div>
 
   <h2>Hasta 500€</h2>
+  <p>En este rango encontramos piezas versátiles y elegantes que pueden llevarse a diario. Son ideales para cumpleaños, aniversarios o pequeños momentos que merecen ser recordados.</p>
   <p>Charms delicados, pendientes minimalistas o charms personalizados son opciones perfectas para sorprender sin necesidad de grandes presupuestos.</p>
   <!-- AÑADIR LINK A LOS CHARMS REALES y el cuidado de tu joya, que salgan 3 productos en fila / boton descubir más -->
 
   <h2>Más de 500€</h2>
+  <p>En presupuestos superiores, la experiencia cambia completamente. Aquí entran piezas de mayor complejidad artesanal, diamantes centrales y diseños exclusivos.</p>
   <p>Cuando el objetivo es marcar una ocasión importante, los diamantes y piezas de alta joyería se convierten en protagonistas absolutos.</p>
 
   <div class="two-cols">
@@ -317,6 +349,13 @@ const article = computed(() => articles[route.params.id])
       <p>Ese es el verdadero valor del lujo: crear algo capaz de acompañarte toda la vida.</p>
     </div>
   </div>
+  <h2>El regalo perfecto</h2>
+
+  <p>Elegir una joya no consiste únicamente en mirar el precio o el tamaño de la piedra. También implica entender a la persona que la recibirá.</p>
+
+  <p>Su estilo, sus gustos y su personalidad ayudan a encontrar una pieza que realmente conecte con ella.</p>
+
+  <p>Cuando una joya consigue transmitir emoción, deja de ser un simple regalo para convertirse en un recuerdo eterno.</p>
 </div>
 
 
@@ -525,6 +564,7 @@ const article = computed(() => articles[route.params.id])
   height: 560px
   border-radius: 30px
   box-shadow: 0 35px 90px rgba(0,0,0,.16)
+
 
 @media(max-width: 900px)
   .hero

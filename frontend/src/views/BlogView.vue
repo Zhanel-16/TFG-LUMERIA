@@ -166,5 +166,41 @@ button
 
   &:hover
     background: #D4AF37
+
+
+@media (max-width: 768px)
+  .grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: 16px
+
+  .blog
+    padding: 0 14px
+
+  h1
+    font-size: 28px
+    margin-bottom: 30px
+
+  .card_img
+    height: 140px
+
+  .card_content
+    padding: 14px
+
+  .card_content h2
+    font-size: 16px
+    height: auto
+    margin-bottom: 10px
+
+  .desc
+    font-size: 12px
+    line-height: 1.5
+    height: auto
+    margin-bottom: 14px
+
+  button
+    width: 100%
+    padding: 10px 0
+    font-size: 13px
+    
 </style>
 
