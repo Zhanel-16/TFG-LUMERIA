@@ -198,9 +198,9 @@ button
     margin-bottom: 14px
 
   button
-    width: 100%
+    width: 80%
     padding: 10px 0
     font-size: 13px
-    
+
 </style>
 

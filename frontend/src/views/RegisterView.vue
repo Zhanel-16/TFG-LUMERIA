@@ -27,9 +27,8 @@ const registrarse = async () => {
   const res = await registrar(email.value, password.value);
   if (res.ok) {
     await enviarEmailVerificacion(res.usuario.user);
-    toast.success(
-      "¡Qué alegría verte! ¿Es momento de añadir algo de brillo a tu día?"
-    );
+
+    toast.success("Te hemos enviado un correo de verificación");
     router.push("/login");
   }
 };
@@ -61,19 +60,20 @@ const registrarse = async () => {
 <style lang="sass" scoped>
 .auth
   min-height: 100vh
+  // min-height: calc(100vh - 110px)
   display: flex
   justify-content: center
   align-items: center
   padding: 40px 20px
-  background: linear-gradient(to bottom, #faf8f3, #f5f1e8)
+  // background: linear-gradient(to bottom, #faf8f3, #f5f1e8)
 
 .card
   width: 100%
   max-width: 480px
   background: white
   padding: 55px 50px
-  border-radius: 30px
-  box-shadow: 0 20px 60px rgba(0,0,0,.08)
+  border-radius: 24px
+  box-shadow: 0 10px 30px rgba(0,0,0,.06)
   border: 1px solid rgba(212,175,55,.12)
   text-align: center
 

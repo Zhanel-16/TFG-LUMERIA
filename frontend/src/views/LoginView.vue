@@ -15,11 +15,21 @@ const iniciarSesion = async () => {
     toast.error("Credenciales incorrectas");
     return;
   }
+  // if (!res.usuario.user.emailVerified) {
+  //   toast.error("Por favor, verifica su email");
+  //   return;
+  // }
+  await res.usuario.user.reload();
+
   if (!res.usuario.user.emailVerified) {
-    toast.error("Por favor, verifica su email");
+    toast.error("Debes verificar tu email antes de iniciar sesión");
     return;
   }
-  toast.success("Tu brillo empieza aquí... ¡Descubre piezas hechas para ti!");
+  // toast.success(
+  //     "¡Qué alegría verte! ¿Es momento de añadir algo de brillo a tu día?"
+  //   );
+  //   router.push("/login");
+  toast.success("¡Qué alegría verte! ¿Es momento de añadir algo de brillo a tu día?");
   router.push("/");
 };
 </script>
